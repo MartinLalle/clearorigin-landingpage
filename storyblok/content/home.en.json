@@ -12,8 +12,8 @@
 			"cta_link": "#cta",
 			"cta_secondary_label": "See how it works",
 			"cta_secondary_link": "#how",
-			"image": "__ASSET__:webapp-traceability-map.png",
-			"image_caption": "Batch traceability — WHISP analysis (FAO) · 4.3517° S, 15.2663° E"
+			"image": "__ASSET__:pwa-parcels.png",
+			"image_caption": "Geolocated plot on satellite imagery — 4.54 ha · producer PWA"
 		},
 		{
 			"component": "benefits",
@@ -57,7 +57,7 @@
 					"component": "step_item",
 					"title": "Geolocate the plots",
 					"text": "The producer draws their plots on a satellite basemap from their phone — or the cooperative does it for them.",
-					"image": "__ASSET__:pwa-parcels.png"
+					"image": "__ASSET__:pwa-home.png"
 				},
 				{
 					"component": "step_item",
@@ -69,13 +69,13 @@
 					"component": "step_item",
 					"title": "Create the batch — the analysis starts on its own",
 					"text": "WHISP (FAO) automatically assesses every plot in the batch and freezes an immutable, timestamped, defensible deforestation audit.",
-					"image": "__ASSET__:webapp-lots.png"
+					"image": "__ASSET__:pwa-lot-create.png"
 				},
 				{
 					"component": "step_item",
 					"title": "Share the proof with the importer",
 					"text": "A public link and a QR code give your European client the full picture: map, supply chain, documents, risk level. No account needed.",
-					"image": "__ASSET__:webapp-public-importer.png"
+					"image": ""
 				}
 			]
 		},
@@ -87,24 +87,24 @@
 			"items": [
 				{
 					"component": "feature_item",
-					"tag": "webApp · cooperatives & exporters",
-					"title": "Unified traceability map",
-					"text": "Plots, actor chain and deforestation analysis brought together on a single interactive map, from field to port of arrival.",
-					"image": "__ASSET__:webapp-traceability-map.png"
-				},
-				{
-					"component": "feature_item",
 					"tag": "PWA · producers",
 					"title": "The mobile app built for the field",
-					"text": "Draw plots on a satellite basemap, photograph documents, create batches — from any smartphone.",
+					"text": "Draw plots on satellite imagery, photograph documents, create batches — from any smartphone.",
 					"image": "__ASSET__:pwa-parcel-draw.png"
 				},
 				{
 					"component": "feature_item",
-					"tag": "Public view · importers",
-					"title": "Compliance you can verify in one scan",
-					"text": "Your client scans a QR code and checks the batch: origin, documents, deforestation risk. No account required.",
-					"image": "__ASSET__:webapp-public-importer.png"
+					"tag": "Compliance · legality grids",
+					"title": "The exact document list, per country and product",
+					"text": "Legality principles, the status of every document and what is still missing — for timber and coffee alike.",
+					"image": "__ASSET__:pwa-documents.png"
+				},
+				{
+					"component": "feature_item",
+					"tag": "webApp · cooperatives & exporters",
+					"title": "Manage suppliers, purchases and sales",
+					"text": "Supplier invitations, upstream-downstream links, purchase and sales tracking — your whole chain in one interface.",
+					"image": "__ASSET__:webapp-suppliers.png"
 				}
 			]
 		},
@@ -114,10 +114,26 @@
 			"title": "Built on international standards",
 			"intro": "ClearOrigin doesn't reinvent verification: it relies on the industry's reference tools.",
 			"stats": [
-				{ "component": "stat_item", "value": "WHISP", "label": "The FAO's deforestation analysis tool, natively integrated" },
-				{ "component": "stat_item", "value": "2023/1115", "label": "The EUDR regulation covered end to end" },
-				{ "component": "stat_item", "value": "7", "label": "Commodities: timber, coffee, cocoa, rubber, palm oil, cattle, soy" },
-				{ "component": "stat_item", "value": "4", "label": "Languages for the whole chain: FR, EN, ES, PT" }
+				{
+					"component": "stat_item",
+					"value": "WHISP",
+					"label": "The FAO's deforestation analysis tool, natively integrated"
+				},
+				{
+					"component": "stat_item",
+					"value": "2023/1115",
+					"label": "The EUDR regulation covered end to end"
+				},
+				{
+					"component": "stat_item",
+					"value": "7",
+					"label": "Commodities: timber, coffee, cocoa, rubber, palm oil, cattle, soy"
+				},
+				{
+					"component": "stat_item",
+					"value": "4",
+					"label": "Languages for the whole chain: FR, EN, ES, PT"
+				}
 			],
 			"testimonials": []
 		},
@@ -127,11 +143,31 @@
 			"title": "Everything you need to pass an inspection. Nothing you don't.",
 			"intro": "",
 			"items": [
-				{ "component": "offer_item", "title": "Geolocation & satellite mapping", "text": "GPS polygons of your plots, drawn in the field or at the office." },
-				{ "component": "offer_item", "title": "Legality grids per country and product", "text": "The exact list of required documents, customisable by your organisation." },
-				{ "component": "offer_item", "title": "Deforestation analysis on every batch", "text": "WHISP (FAO) running in the background, immutable audit frozen on the batch." },
-				{ "component": "offer_item", "title": "Public link & importer QR code", "text": "Up to 10 recipients per batch, approvals and rejections fully tracked." },
-				{ "component": "offer_item", "title": "Supplier management and connections", "text": "Invitations, represented producers, complete upstream-to-downstream chain." }
+				{
+					"component": "offer_item",
+					"title": "Geolocation & satellite mapping",
+					"text": "GPS polygons of your plots, drawn in the field or at the office."
+				},
+				{
+					"component": "offer_item",
+					"title": "Legality grids per country and product",
+					"text": "The exact list of required documents, customisable by your organisation."
+				},
+				{
+					"component": "offer_item",
+					"title": "Deforestation analysis on every batch",
+					"text": "WHISP (FAO) running in the background, immutable audit frozen on the batch."
+				},
+				{
+					"component": "offer_item",
+					"title": "Public link & importer QR code",
+					"text": "Up to 10 recipients per batch, approvals and rejections fully tracked."
+				},
+				{
+					"component": "offer_item",
+					"title": "Supplier management and connections",
+					"text": "Invitations, represented producers, complete upstream-to-downstream chain."
+				}
 			],
 			"bonus_title": "Onboarding support",
 			"bonus_text": "BF Consult sets up your legality grids with you and onboards your first producers — so your first compliant batch ships in days, not months."
