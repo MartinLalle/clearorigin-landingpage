@@ -1,0 +1,23 @@
+.quote {
+	border: 1px solid var(--navy-soft);
+	border-left: 3px solid var(--orange);
+	border-radius: var(--radius-sm);
+	padding: 26px 28px;
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+}
+
+.quote__text {
+	font-size: 1.02rem;
+	line-height: 1.65;
+}
+
+.quote__author strong {
+	font-weight: 600;
+	display: block;
+}
+
+.quote__role {
+	color: var(--text-inverse-muted);
+}

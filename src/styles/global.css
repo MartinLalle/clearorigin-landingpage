@@ -18,13 +18,17 @@
 	--text-inverse: #f4f6f8;
 	--text-inverse-muted: #9aa8bf;
 
-	/* Type */
-	--font-sans: 'Lexend', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-	--font-mono: 'IBM Plex Mono', 'Cascadia Code', Consolas, monospace;
+	/* Type — polices servies par next/font (variables posées sur <html>) */
+	--font-sans:
+		var(--font-lexend), 'Lexend', system-ui, -apple-system, 'Segoe UI', Roboto,
+		Helvetica, Arial, sans-serif;
+	--font-mono:
+		var(--font-plex-mono), 'IBM Plex Mono', 'Cascadia Code', Consolas, monospace;
 
 	--radius: 14px;
 	--radius-sm: 8px;
-	--shadow-card: 0 1px 2px rgba(19, 28, 43, 0.06), 0 12px 32px -12px rgba(19, 28, 43, 0.18);
+	--shadow-card:
+		0 1px 2px rgba(19, 28, 43, 0.06), 0 12px 32px -12px rgba(19, 28, 43, 0.18);
 	--container: 1160px;
 }
 
@@ -136,7 +140,10 @@ a {
 	border-radius: 999px;
 	text-decoration: none;
 	border: 1.5px solid transparent;
-	transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+	transition:
+		background-color 160ms ease,
+		border-color 160ms ease,
+		transform 160ms ease;
 	cursor: pointer;
 }
 
@@ -218,7 +225,9 @@ a {
 	.has-js .reveal {
 		opacity: 0;
 		transform: translateY(18px);
-		transition: opacity 600ms ease, transform 600ms ease;
+		transition:
+			opacity 600ms ease,
+			transform 600ms ease;
 	}
 
 	.has-js .reveal.is-visible {

@@ -1,23 +1,23 @@
 # ClearOrigin — Landing page
 
-Landing page marketing de [ClearOrigin](https://clearorigin.azurewebsites.net) (traçabilité & conformité EUDR), gérée dans **Storyblok** et rendue par **Astro**. Projet indépendant de l'app ClearOrigin.
+Landing page marketing de [ClearOrigin](https://clearorigin.azurewebsites.net) (traçabilité & conformité EUDR), gérée dans **Storyblok** et rendue par **Next.js**. Projet indépendant de l'app ClearOrigin.
 
 ## Stack
 
-- **Astro 6** (output statique) + `@storyblok/astro`
+- **Next.js 16** (App Router, SSG + ISR) + `@storyblok/react` (entry RSC)
 - **Storyblok** : space `ClearOrigin` (ID `294620695570259`), story `home`, contenu multilingue FR (défaut) / EN / ES / PT via field-level translations
-- HTTPS local via `vite-plugin-mkcert` (requis par le Visual Editor Storyblok)
+- HTTPS local via `next dev --experimental-https` (requis par le Visual Editor Storyblok)
 
 ## Démarrer
 
 ```bash
 npm install
-npm run dev        # https://localhost:4321 (accepter le certificat au premier lancement)
+npm run dev        # https://localhost:3000 (accepter le certificat au premier lancement)
 ```
 
 Routes : `/` (FR), `/en/`, `/es/`, `/pt/`.
 
-En dev, la page rend la version **draft** de la story ; en build (`npm run build`), la version **publiée**.
+En dev, la page rend la version **draft** de la story (avec les attributs d'édition du Visual Editor) ; en build (`npm run build`), la version **publiée**.
 
 ## Structure du contenu (théorie des 9 sections)
 
@@ -33,13 +33,13 @@ La story `home` est un `landing_page` dont le champ `body` empile les bloks :
 8. `guarantees` — garanties
 9. `faq` + `cta_final` — FAQ et appel à l'action final
 
-Chaque blok a son composant Astro dans `src/storyblok/` (mapping dans `astro.config.mjs`) et sa définition de schéma dans `storyblok/components.json`.
+Chaque blok a son composant React dans `src/components/storyblok/` (mapping dans `src/lib/storyblok.ts`) et sa définition de schéma dans `storyblok/components.json`.
 
 ## Modifier le contenu
 
 Deux façons :
 
-- **Visual Editor Storyblok** (recommandé pour l'éditorial) : lancer `npm run dev`, puis ouvrir la story `home` sur app.storyblok.com — la preview pointe sur `https://localhost:4321/`. Publier pour mettre en prod.
+- **Visual Editor Storyblok** (recommandé pour l'éditorial) : lancer `npm run dev`, puis ouvrir la story `home` sur app.storyblok.com — la preview pointe sur `https://localhost:3000/`. Le bridge met la page à jour en live pendant l'édition. Publier pour mettre en prod.
 - **Par code** : éditer `storyblok/content/home.<lang>.json` puis relancer le push (ci-dessous). ⚠️ Le push écrase le contenu de la story — ne pas mélanger les deux méthodes sans re-synchroniser.
 
 ## Pousser vers Storyblok (components-as-code)
@@ -56,4 +56,4 @@ Les screenshots de l'app vont dans `screenshots/` (non versionné) ; le contenu 
 
 ## Déploiement
 
-`npm run build` produit `dist/` statique (fetch de la story **publiée**). Hébergeable n'importe où ; pour rebuilder à chaque publication Storyblok, brancher un webhook « story published » sur la CI/CD de l'hébergeur.
+`npm run build` prérend les 4 routes en statique (fetch de la story **publiée**). La page porte `revalidate = 300` : sur un hébergeur supportant l'ISR (Vercel, Netlify), une publication Storyblok se reflète en prod au plus tard 5 minutes après, sans rebuild.

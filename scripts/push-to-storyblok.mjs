@@ -21,7 +21,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SPACE_ID = process.env.STORYBLOK_SPACE_ID || '294620695570259';
 const MAPI = 'https://mapi.storyblok.com/v1';
-const PREVIEW_URL = 'https://localhost:4321/';
+const PREVIEW_URL = 'https://localhost:3000/';
 const SCREENSHOTS_DIR = process.env.SCREENSHOTS_DIR || path.join(ROOT, 'screenshots');
 const LANGS = [
 	{ code: 'en', name: 'English' },

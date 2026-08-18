@@ -1,0 +1,23 @@
+.site-footer {
+	border-top: 1px solid var(--line);
+	background: var(--mist);
+	padding-block: 40px;
+}
+
+.site-footer__inner {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.site-footer__logo {
+	height: 24px;
+	width: auto;
+}
+
+.site-footer__by {
+	font-size: 0.9rem;
+	color: var(--text-muted);
+}

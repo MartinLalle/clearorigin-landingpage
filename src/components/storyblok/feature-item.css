@@ -1,0 +1,38 @@
+.feature {
+	padding: 0;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+
+.feature__media {
+	border-bottom: 1px solid var(--line);
+	background: var(--mist);
+}
+
+.feature__media img {
+	width: 100%;
+	aspect-ratio: 16 / 10;
+	object-fit: cover;
+	object-position: top;
+}
+
+.feature__body {
+	padding: 24px 26px 28px;
+}
+
+.feature__tag {
+	color: var(--orange-deep);
+	margin-bottom: 8px;
+}
+
+.feature__title {
+	font-size: 1.1rem;
+	font-weight: 600;
+}
+
+.feature__text {
+	margin-top: 8px;
+	color: var(--text-muted);
+	font-size: 0.95rem;
+}

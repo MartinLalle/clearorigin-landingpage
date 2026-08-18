@@ -1,0 +1,12 @@
+.pricing__grid {
+	margin-top: 48px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	gap: 20px;
+	align-items: stretch;
+}
+
+.pricing__note {
+	margin-top: 24px;
+	text-align: center;
+}
