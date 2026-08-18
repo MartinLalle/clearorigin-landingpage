@@ -82,19 +82,24 @@ const site = Astro.site?.href?.replace(/\/$/, '') ?? '';
 		</footer>
 
 		<script>
-			// Scroll reveal — one observer for every .reveal element
+			// Scroll reveal — masqué seulement une fois le JS actif (.has-js), avec
+			// un filet de sécurité : tout est révélé après 3 s même sans scroll.
+			document.documentElement.classList.add('has-js');
+			const reveal = (el: Element) => el.classList.add('is-visible');
 			const observer = new IntersectionObserver(
 				(entries) => {
 					for (const entry of entries) {
 						if (entry.isIntersecting) {
-							entry.target.classList.add('is-visible');
+							reveal(entry.target);
 							observer.unobserve(entry.target);
 						}
 					}
 				},
 				{ threshold: 0.12 }
 			);
-			document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+			const elements = document.querySelectorAll('.reveal');
+			elements.forEach((el) => observer.observe(el));
+			setTimeout(() => elements.forEach(reveal), 3000);
 		</script>
 	</body>
 </html>

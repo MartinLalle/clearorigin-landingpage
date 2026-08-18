@@ -213,14 +213,15 @@ a {
 
 /* ---- Motion ---- */
 
+/* L'état masqué n'est appliqué que si le JS a posé .has-js (progressive enhancement) */
 @media (prefers-reduced-motion: no-preference) {
-	.reveal {
+	.has-js .reveal {
 		opacity: 0;
 		transform: translateY(18px);
 		transition: opacity 600ms ease, transform 600ms ease;
 	}
 
-	.reveal.is-visible {
+	.has-js .reveal.is-visible {
 		opacity: 1;
 		transform: none;
 	}
