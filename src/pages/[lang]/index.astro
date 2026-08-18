@@ -1,0 +1,21 @@
+---
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+import Layout from '../../layouts/Layout.astro';
+import { getLandingStory } from '../../lib/getLandingStory';
+
+export function getStaticPaths() {
+	return [{ params: { lang: 'en' } }, { params: { lang: 'es' } }, { params: { lang: 'pt' } }];
+}
+
+const { lang } = Astro.params;
+const story = await getLandingStory(lang!);
+const content = story.content;
+---
+
+<Layout
+	lang={lang!}
+	title={content.seo_title || 'ClearOrigin — EUDR traceability & compliance'}
+	description={content.seo_description || ''}
+>
+	<StoryblokComponent blok={content} />
+</Layout>

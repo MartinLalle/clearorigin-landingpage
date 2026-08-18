@@ -1,0 +1,82 @@
+---
+import { storyblokEditable } from '@storyblok/astro';
+const { blok, index = 0 } = Astro.props;
+const number = String(index + 1).padStart(2, '0');
+---
+
+<li class="step reveal" {...storyblokEditable(blok)}>
+	<span class="step__marker" aria-hidden="true">{number}</span>
+	<div class="step__body">
+		<h3 class="step__title">{blok.title}</h3>
+		<p class="step__text">{blok.text}</p>
+	</div>
+	{
+		blok.image?.filename && (
+			<img class="step__image" src={blok.image.filename} alt={blok.image.alt || ''} loading="lazy" />
+		)
+	}
+</li>
+
+<style>
+	.step {
+		display: grid;
+		grid-template-columns: 56px minmax(0, 1.1fr) minmax(0, 0.9fr);
+		gap: 24px;
+		align-items: center;
+		padding-block: 30px;
+	}
+
+	.step + .step {
+		border-top: 1px solid var(--line);
+	}
+
+	.step__marker {
+		font-family: var(--font-mono);
+		font-size: 0.9rem;
+		font-weight: 500;
+		width: 54px;
+		height: 54px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
+		background: var(--navy-deep);
+		color: var(--orange);
+		position: relative;
+		z-index: 1;
+		align-self: start;
+	}
+
+	.step__title {
+		font-size: 1.15rem;
+		font-weight: 600;
+	}
+
+	.step__text {
+		margin-top: 8px;
+		color: var(--text-muted);
+		max-width: 52ch;
+	}
+
+	.step__image {
+		border-radius: var(--radius-sm);
+		border: 1px solid var(--line);
+		box-shadow: var(--shadow-card);
+	}
+
+	@media (max-width: 720px) {
+		.step {
+			grid-template-columns: 42px minmax(0, 1fr);
+		}
+
+		.step__marker {
+			width: 42px;
+			height: 42px;
+			font-size: 0.8rem;
+		}
+
+		.step__image {
+			grid-column: 2;
+		}
+	}
+</style>

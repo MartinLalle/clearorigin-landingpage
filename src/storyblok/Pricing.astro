@@ -1,0 +1,32 @@
+---
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+import { storyblokEditable } from '@storyblok/astro';
+const { blok } = Astro.props;
+---
+
+<section class="section section--mist" id="pricing" {...storyblokEditable(blok)}>
+	<div class="container">
+		{blok.eyebrow && <p class="eyebrow">{blok.eyebrow}</p>}
+		<h2 class="section-title">{blok.title}</h2>
+		{blok.intro && <p class="section-intro">{blok.intro}</p>}
+		<div class="pricing__grid">
+			{blok.plans?.map((plan: any) => <StoryblokComponent blok={plan} />)}
+		</div>
+		{blok.note && <p class="geo-tag pricing__note">{blok.note}</p>}
+	</div>
+</section>
+
+<style>
+	.pricing__grid {
+		margin-top: 48px;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+		gap: 20px;
+		align-items: stretch;
+	}
+
+	.pricing__note {
+		margin-top: 24px;
+		text-align: center;
+	}
+</style>

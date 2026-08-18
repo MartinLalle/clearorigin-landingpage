@@ -1,0 +1,16 @@
+---
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+import Layout from '../layouts/Layout.astro';
+import { getLandingStory } from '../lib/getLandingStory';
+
+const story = await getLandingStory('fr');
+const content = story.content;
+---
+
+<Layout
+	lang="fr"
+	title={content.seo_title || 'ClearOrigin — Traçabilité & conformité EUDR'}
+	description={content.seo_description || ''}
+>
+	<StoryblokComponent blok={content} />
+</Layout>

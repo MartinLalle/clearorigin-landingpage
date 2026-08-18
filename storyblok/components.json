@@ -1,0 +1,256 @@
+[
+	{
+		"name": "landing_page",
+		"display_name": "Landing Page",
+		"is_root": true,
+		"is_nestable": false,
+		"schema": {
+			"body": { "type": "bloks", "pos": 0 },
+			"seo_title": { "type": "text", "translatable": true, "pos": 1 },
+			"seo_description": { "type": "textarea", "translatable": true, "pos": 2 }
+		}
+	},
+	{
+		"name": "hero",
+		"display_name": "1 — Hero (Value Proposition)",
+		"is_root": false,
+		"is_nestable": true,
+		"schema": {
+			"badge": { "type": "text", "translatable": true, "pos": 0 },
+			"headline": { "type": "text", "translatable": true, "required": true, "pos": 1 },
+			"subheadline": { "type": "textarea", "translatable": true, "pos": 2 },
+			"cta_label": { "type": "text", "translatable": true, "pos": 3 },
+			"cta_link": { "type": "text", "pos": 4 },
+			"cta_secondary_label": { "type": "text", "translatable": true, "pos": 5 },
+			"cta_secondary_link": { "type": "text", "pos": 6 },
+			"image": { "type": "asset", "filetypes": ["images"], "pos": 7 },
+			"image_caption": { "type": "text", "translatable": true, "pos": 8 }
+		}
+	},
+	{
+		"name": "benefits",
+		"display_name": "2 — Benefits (Why)",
+		"is_root": false,
+		"is_nestable": true,
+		"schema": {
+			"eyebrow": { "type": "text", "translatable": true, "pos": 0 },
+			"title": { "type": "text", "translatable": true, "pos": 1 },
+			"intro": { "type": "textarea", "translatable": true, "pos": 2 },
+			"items": { "type": "bloks", "restrict_components": true, "component_whitelist": ["benefit_item"], "pos": 3 }
+		}
+	},
+	{
+		"name": "benefit_item",
+		"display_name": "Benefit",
+		"is_root": false,
+		"is_nestable": true,
+		"schema": {
+			"icon": {
+				"type": "option",
+				"options": [
+					{ "name": "Map pin", "value": "map-pin" },
+					{ "name": "File check", "value": "file-check" },
+					{ "name": "Satellite", "value": "satellite" },
+					{ "name": "Share", "value": "share" },
+					{ "name": "Shield", "value": "shield" },
+					{ "name": "Clock", "value": "clock" }
+				],
+				"pos": 0
+			},
+			"title": { "type": "text", "translatable": true, "pos": 1 },
+			"text": { "type": "textarea", "translatable": true, "pos": 2 }
+		}
+	},
+	{
+		"name": "steps",
+		"display_name": "3 — Steps (How)",
+		"is_root": false,
+		"is_nestable": true,
+		"schema": {
+			"eyebrow": { "type": "text", "translatable": true, "pos": 0 },
+			"title": { "type": "text", "translatable": true, "pos": 1 },
+			"intro": { "type": "textarea", "translatable": true, "pos": 2 },
+			"items": { "type": "bloks", "restrict_components": true, "component_whitelist": ["step_item"], "pos": 3 }
+		}
+	},
+	{
+		"name": "step_item",
+		"display_name": "Step",
+		"is_root": false,
+		"is_nestable": true,
+		"schema": {
+			"title": { "type": "text", "translatable": true, "pos": 0 },
+			"text": { "type": "textarea", "translatable": true, "pos": 1 },
+			"image": { "type": "asset", "filetypes": ["images"], "pos": 2 }
+		}
+	},
+	{
+		"name": "features_grid",
+		"display_name": "3b — Features grid",
+		"is_root": false,
+		"is_nestable": true,
+		"schema": {
+			"eyebrow": { "type": "text", "translatable": true, "pos": 0 },
+			"title": { "type": "text", "translatable": true, "pos": 1 },
+			"intro": { "type": "textarea", "translatable": true, "pos": 2 },
+			"items": { "type": "bloks", "restrict_components": true, "component_whitelist": ["feature_item"], "pos": 3 }
+		}
+	},
+	{
+		"name": "feature_item",
+		"display_name": "Feature",
+		"is_root": false,
+		"is_nestable": true,
+		"schema": {
+			"tag": { "type": "text", "translatable": true, "pos": 0 },
+			"title": { "type": "text", "translatable": true, "pos": 1 },
+			"text": { "type": "textarea", "translatable": true, "pos": 2 },
+			"image": { "type": "asset", "filetypes": ["images"], "pos": 3 }
+		}
+	},
+	{
+		"name": "social_proof",
+		"display_name": "4 — Social proof",
+		"is_root": false,
+		"is_nestable": true,
+		"schema": {
+			"eyebrow": { "type": "text", "translatable": true, "pos": 0 },
+			"title": { "type": "text", "translatable": true, "pos": 1 },
+			"intro": { "type": "textarea", "translatable": true, "pos": 2 },
+			"stats": { "type": "bloks", "restrict_components": true, "component_whitelist": ["stat_item"], "pos": 3 },
+			"testimonials": { "type": "bloks", "restrict_components": true, "component_whitelist": ["testimonial"], "pos": 4 }
+		}
+	},
+	{
+		"name": "stat_item",
+		"display_name": "Stat",
+		"is_root": false,
+		"is_nestable": true,
+		"schema": {
+			"value": { "type": "text", "translatable": true, "pos": 0 },
+			"label": { "type": "text", "translatable": true, "pos": 1 }
+		}
+	},
+	{
+		"name": "testimonial",
+		"display_name": "Testimonial",
+		"is_root": false,
+		"is_nestable": true,
+		"schema": {
+			"quote": { "type": "textarea", "translatable": true, "pos": 0 },
+			"author": { "type": "text", "pos": 1 },
+			"role": { "type": "text", "translatable": true, "pos": 2 }
+		}
+	},
+	{
+		"name": "offer",
+		"display_name": "5 — Offer + Bonus",
+		"is_root": false,
+		"is_nestable": true,
+		"schema": {
+			"eyebrow": { "type": "text", "translatable": true, "pos": 0 },
+			"title": { "type": "text", "translatable": true, "pos": 1 },
+			"intro": { "type": "textarea", "translatable": true, "pos": 2 },
+			"items": { "type": "bloks", "restrict_components": true, "component_whitelist": ["offer_item"], "pos": 3 },
+			"bonus_title": { "type": "text", "translatable": true, "pos": 4 },
+			"bonus_text": { "type": "textarea", "translatable": true, "pos": 5 }
+		}
+	},
+	{
+		"name": "offer_item",
+		"display_name": "Offer item",
+		"is_root": false,
+		"is_nestable": true,
+		"schema": {
+			"title": { "type": "text", "translatable": true, "pos": 0 },
+			"text": { "type": "textarea", "translatable": true, "pos": 1 }
+		}
+	},
+	{
+		"name": "pricing",
+		"display_name": "6 — Pricing",
+		"is_root": false,
+		"is_nestable": true,
+		"schema": {
+			"eyebrow": { "type": "text", "translatable": true, "pos": 0 },
+			"title": { "type": "text", "translatable": true, "pos": 1 },
+			"intro": { "type": "textarea", "translatable": true, "pos": 2 },
+			"plans": { "type": "bloks", "restrict_components": true, "component_whitelist": ["pricing_plan"], "pos": 3 },
+			"note": { "type": "text", "translatable": true, "pos": 4 }
+		}
+	},
+	{
+		"name": "pricing_plan",
+		"display_name": "Pricing plan",
+		"is_root": false,
+		"is_nestable": true,
+		"schema": {
+			"name": { "type": "text", "translatable": true, "pos": 0 },
+			"price": { "type": "text", "pos": 1 },
+			"period": { "type": "text", "translatable": true, "pos": 2 },
+			"description": { "type": "textarea", "translatable": true, "pos": 3 },
+			"features": { "type": "textarea", "translatable": true, "description": "Une feature par ligne", "pos": 4 },
+			"highlight": { "type": "boolean", "pos": 5 },
+			"highlight_label": { "type": "text", "translatable": true, "pos": 6 },
+			"cta_label": { "type": "text", "translatable": true, "pos": 7 },
+			"cta_link": { "type": "text", "pos": 8 }
+		}
+	},
+	{
+		"name": "guarantees",
+		"display_name": "7 — Guarantees",
+		"is_root": false,
+		"is_nestable": true,
+		"schema": {
+			"eyebrow": { "type": "text", "translatable": true, "pos": 0 },
+			"title": { "type": "text", "translatable": true, "pos": 1 },
+			"intro": { "type": "textarea", "translatable": true, "pos": 2 },
+			"items": { "type": "bloks", "restrict_components": true, "component_whitelist": ["guarantee_item"], "pos": 3 }
+		}
+	},
+	{
+		"name": "guarantee_item",
+		"display_name": "Guarantee",
+		"is_root": false,
+		"is_nestable": true,
+		"schema": {
+			"title": { "type": "text", "translatable": true, "pos": 0 },
+			"text": { "type": "textarea", "translatable": true, "pos": 1 }
+		}
+	},
+	{
+		"name": "faq",
+		"display_name": "8 — FAQ",
+		"is_root": false,
+		"is_nestable": true,
+		"schema": {
+			"eyebrow": { "type": "text", "translatable": true, "pos": 0 },
+			"title": { "type": "text", "translatable": true, "pos": 1 },
+			"intro": { "type": "textarea", "translatable": true, "pos": 2 },
+			"items": { "type": "bloks", "restrict_components": true, "component_whitelist": ["faq_item"], "pos": 3 }
+		}
+	},
+	{
+		"name": "faq_item",
+		"display_name": "FAQ item",
+		"is_root": false,
+		"is_nestable": true,
+		"schema": {
+			"question": { "type": "text", "translatable": true, "pos": 0 },
+			"answer": { "type": "textarea", "translatable": true, "pos": 1 }
+		}
+	},
+	{
+		"name": "cta_final",
+		"display_name": "9 — Final CTA",
+		"is_root": false,
+		"is_nestable": true,
+		"schema": {
+			"title": { "type": "text", "translatable": true, "pos": 0 },
+			"subtitle": { "type": "textarea", "translatable": true, "pos": 1 },
+			"cta_label": { "type": "text", "translatable": true, "pos": 2 },
+			"cta_link": { "type": "text", "pos": 3 },
+			"note": { "type": "text", "translatable": true, "pos": 4 }
+		}
+	}
+]

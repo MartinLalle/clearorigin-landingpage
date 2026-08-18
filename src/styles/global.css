@@ -1,0 +1,233 @@
+/* ClearOrigin landing — design tokens & shared patterns */
+
+:root {
+	/* Brand */
+	--orange: #f8922b;
+	--orange-deep: #d9740f;
+	--orange-soft: #fdeedd;
+	--navy: #1e293b;
+	--navy-deep: #131c2b;
+	--navy-soft: #33415c;
+	--forest: #2f6b4f;
+	--forest-soft: #e5f1ea;
+	--paper: #ffffff;
+	--mist: #f4f6f8;
+	--line: #e2e8f0;
+	--text: #1e293b;
+	--text-muted: #55637a;
+	--text-inverse: #f4f6f8;
+	--text-inverse-muted: #9aa8bf;
+
+	/* Type */
+	--font-sans: 'Lexend', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+	--font-mono: 'IBM Plex Mono', 'Cascadia Code', Consolas, monospace;
+
+	--radius: 14px;
+	--radius-sm: 8px;
+	--shadow-card: 0 1px 2px rgba(19, 28, 43, 0.06), 0 12px 32px -12px rgba(19, 28, 43, 0.18);
+	--container: 1160px;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: var(--font-sans);
+	font-weight: 300;
+	color: var(--text);
+	background: var(--paper);
+	line-height: 1.6;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+img {
+	max-width: 100%;
+	display: block;
+}
+
+a {
+	color: inherit;
+}
+
+/* ---- Shared layout ---- */
+
+.container {
+	max-width: var(--container);
+	margin-inline: auto;
+	padding-inline: 24px;
+}
+
+.section {
+	padding-block: 96px;
+}
+
+.section--mist {
+	background: var(--mist);
+}
+
+.section--navy {
+	background: var(--navy-deep);
+	color: var(--text-inverse);
+}
+
+/* ---- Type patterns ---- */
+
+.eyebrow {
+	font-family: var(--font-mono);
+	font-size: 0.78rem;
+	font-weight: 500;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--orange-deep);
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.eyebrow::before {
+	content: '';
+	width: 22px;
+	height: 1px;
+	background: var(--orange);
+}
+
+.section--navy .eyebrow {
+	color: var(--orange);
+}
+
+.section-title {
+	font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+	font-weight: 600;
+	line-height: 1.18;
+	letter-spacing: -0.015em;
+	margin-top: 14px;
+	max-width: 22ch;
+}
+
+.section-intro {
+	margin-top: 16px;
+	max-width: 58ch;
+	color: var(--text-muted);
+	font-size: 1.05rem;
+}
+
+.section--navy .section-intro {
+	color: var(--text-inverse-muted);
+}
+
+/* ---- Buttons ---- */
+
+.btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	font-family: var(--font-sans);
+	font-weight: 500;
+	font-size: 1rem;
+	padding: 14px 28px;
+	border-radius: 999px;
+	text-decoration: none;
+	border: 1.5px solid transparent;
+	transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+	cursor: pointer;
+}
+
+.btn:active {
+	transform: translateY(1px);
+}
+
+.btn--primary {
+	background: var(--orange);
+	color: var(--navy-deep);
+}
+
+.btn--primary:hover {
+	background: var(--orange-deep);
+}
+
+.btn--ghost {
+	border-color: var(--line);
+	color: var(--text);
+	background: transparent;
+}
+
+.btn--ghost:hover {
+	border-color: var(--navy);
+}
+
+.section--navy .btn--ghost {
+	border-color: var(--navy-soft);
+	color: var(--text-inverse);
+}
+
+.section--navy .btn--ghost:hover {
+	border-color: var(--text-inverse);
+}
+
+:focus-visible {
+	outline: 2px solid var(--orange-deep);
+	outline-offset: 3px;
+	border-radius: 4px;
+}
+
+/* ---- Signature: GIS parcel motif ---- */
+
+.parcel-motif {
+	position: absolute;
+	pointer-events: none;
+	fill: none;
+	stroke: var(--orange);
+	stroke-width: 1.5;
+	stroke-dasharray: 7 6;
+	opacity: 0.5;
+}
+
+.parcel-motif circle {
+	fill: var(--orange);
+	stroke: none;
+}
+
+.geo-tag {
+	font-family: var(--font-mono);
+	font-size: 0.72rem;
+	letter-spacing: 0.04em;
+	color: var(--text-muted);
+}
+
+/* ---- Cards ---- */
+
+.card {
+	background: var(--paper);
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	padding: 28px;
+}
+
+/* ---- Motion ---- */
+
+@media (prefers-reduced-motion: no-preference) {
+	.reveal {
+		opacity: 0;
+		transform: translateY(18px);
+		transition: opacity 600ms ease, transform 600ms ease;
+	}
+
+	.reveal.is-visible {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@media (max-width: 720px) {
+	.section {
+		padding-block: 64px;
+	}
+}

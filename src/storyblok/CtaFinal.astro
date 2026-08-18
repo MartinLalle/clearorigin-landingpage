@@ -1,0 +1,75 @@
+---
+import { storyblokEditable } from '@storyblok/astro';
+const { blok } = Astro.props;
+---
+
+<section class="section section--navy cta-final" id="cta" {...storyblokEditable(blok)}>
+	<svg class="parcel-motif cta-final__motif" viewBox="0 0 340 300" aria-hidden="true">
+		<polygon points="30,90 130,20 280,45 310,170 220,270 70,250"></polygon>
+		<circle cx="30" cy="90" r="3.5"></circle>
+		<circle cx="130" cy="20" r="3.5"></circle>
+		<circle cx="280" cy="45" r="3.5"></circle>
+		<circle cx="310" cy="170" r="3.5"></circle>
+		<circle cx="220" cy="270" r="3.5"></circle>
+		<circle cx="70" cy="250" r="3.5"></circle>
+	</svg>
+	<div class="container cta-final__inner">
+		<h2 class="cta-final__title">{blok.title}</h2>
+		{blok.subtitle && <p class="cta-final__sub">{blok.subtitle}</p>}
+		<div class="cta-final__actions">
+			{
+				blok.cta_label && (
+					<a class="btn btn--primary" href={blok.cta_link || 'mailto:info@bfconsult.be'}>
+						{blok.cta_label}
+					</a>
+				)
+			}
+		</div>
+		{blok.note && <p class="geo-tag cta-final__note">{blok.note}</p>}
+	</div>
+</section>
+
+<style>
+	.cta-final {
+		position: relative;
+		overflow: hidden;
+		text-align: center;
+	}
+
+	.cta-final__motif {
+		left: -80px;
+		bottom: -60px;
+		width: 360px;
+	}
+
+	.cta-final__inner {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.cta-final__title {
+		font-size: clamp(1.8rem, 3.6vw, 2.7rem);
+		font-weight: 700;
+		line-height: 1.15;
+		letter-spacing: -0.015em;
+		max-width: 24ch;
+	}
+
+	.cta-final__sub {
+		margin-top: 16px;
+		color: var(--text-inverse-muted);
+		font-size: 1.08rem;
+		max-width: 54ch;
+	}
+
+	.cta-final__actions {
+		margin-top: 34px;
+	}
+
+	.cta-final__note {
+		margin-top: 18px;
+		color: var(--text-inverse-muted);
+	}
+</style>

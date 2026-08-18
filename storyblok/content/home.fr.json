@@ -1,0 +1,263 @@
+{
+	"component": "landing_page",
+	"seo_title": "ClearOrigin — Traçabilité & conformité EUDR, de la parcelle à l'importateur",
+	"seo_description": "Géolocalisation des parcelles, documents de légalité, analyse de déforestation par satellite (WHISP/FAO) : ClearOrigin automatise la diligence raisonnée EUDR pour le bois, le café, le cacao et 4 autres filières.",
+	"body": [
+		{
+			"component": "hero",
+			"badge": "Règlement (UE) 2023/1115 — en vigueur depuis le 30 déc. 2025",
+			"headline": "Prouvez votre conformité EUDR, de la parcelle à l'importateur",
+			"subheadline": "ClearOrigin centralise géolocalisation des parcelles, documents de légalité et analyse de déforestation par satellite — pour que chaque lot de bois, café, cacao ou caoutchouc entre en Europe avec une diligence raisonnée complète.",
+			"cta_label": "Demander une démo",
+			"cta_link": "#cta",
+			"cta_secondary_label": "Voir comment ça marche",
+			"cta_secondary_link": "#how",
+			"image": "__ASSET__:webapp-traceability-map.png",
+			"image_caption": "Traçabilité d'un lot — analyse WHISP (FAO) · 4.3517° S, 15.2663° E"
+		},
+		{
+			"component": "benefits",
+			"eyebrow": "Pourquoi",
+			"title": "La diligence raisonnée ne devrait pas être un métier à plein temps",
+			"intro": "Depuis le 30 décembre 2025, chaque lot importé dans l'UE doit prouver qu'il ne provient pas d'une terre déboisée. Sans outil dédié, ce sont des tableurs, des scans perdus et des semaines de retard à chaque expédition.",
+			"items": [
+				{
+					"component": "benefit_item",
+					"icon": "map-pin",
+					"title": "Des parcelles géolocalisées, pas des déclarations sur l'honneur",
+					"text": "Chaque parcelle est un polygone GPS dessiné sur carte satellite, relié à son producteur et à ses documents de légalité."
+				},
+				{
+					"component": "benefit_item",
+					"icon": "satellite",
+					"title": "L'analyse de déforestation en automatique",
+					"text": "À chaque création de lot, l'outil WHISP de la FAO évalue le risque de déforestation de chaque parcelle. Résultat normalisé : Low, Medium, High."
+				},
+				{
+					"component": "benefit_item",
+					"icon": "file-check",
+					"title": "Une charge documentaire divisée",
+					"text": "Les grilles de légalité par pays et par produit vous disent exactement quels documents collecter — et leur statut en un coup d'œil."
+				},
+				{
+					"component": "benefit_item",
+					"icon": "share",
+					"title": "Une chaîne sans maillon manquant",
+					"text": "Producteurs sans smartphone ? Votre coopérative les représente dans l'outil. La traçabilité reste complète, du champ au port."
+				}
+			]
+		},
+		{
+			"component": "steps",
+			"eyebrow": "Comment",
+			"title": "Quatre étapes, une preuve irréfutable",
+			"intro": "",
+			"items": [
+				{
+					"component": "step_item",
+					"title": "Géolocalisez les parcelles",
+					"text": "Le producteur dessine ses parcelles sur fond satellite depuis son téléphone — ou la coopérative le fait pour lui.",
+					"image": "__ASSET__:pwa-parcels.png"
+				},
+				{
+					"component": "step_item",
+					"title": "Collectez les documents de légalité",
+					"text": "Photos prises sur le terrain, jusqu'à 10 fichiers par document, suivi de validité — guidés par la grille de légalité de votre pays et de votre produit.",
+					"image": "__ASSET__:pwa-documents.png"
+				},
+				{
+					"component": "step_item",
+					"title": "Créez le lot — l'analyse démarre seule",
+					"text": "WHISP (FAO) évalue automatiquement chaque parcelle du lot et fige un audit de déforestation immuable, horodaté, opposable.",
+					"image": "__ASSET__:webapp-lots.png"
+				},
+				{
+					"component": "step_item",
+					"title": "Partagez la preuve à l'importateur",
+					"text": "Un lien public et un QR code donnent à votre client européen la vue complète : carte, chaîne d'approvisionnement, documents, niveau de risque. Sans créer de compte.",
+					"image": "__ASSET__:webapp-public-importer.png"
+				}
+			]
+		},
+		{
+			"component": "features_grid",
+			"eyebrow": "La plateforme",
+			"title": "Une webApp pour le bureau, une app mobile pour le terrain",
+			"intro": "Chaque acteur de la chaîne a son interface — dans sa langue.",
+			"items": [
+				{
+					"component": "feature_item",
+					"tag": "webApp · coopératives & exportateurs",
+					"title": "Carte de traçabilité unifiée",
+					"text": "Parcelles, chaîne d'acteurs et analyse de déforestation réunies sur une seule carte interactive, du champ au port d'arrivée.",
+					"image": "__ASSET__:webapp-traceability-map.png"
+				},
+				{
+					"component": "feature_item",
+					"tag": "PWA · producteurs",
+					"title": "L'app mobile pensée pour le terrain",
+					"text": "Dessin de parcelle sur fond satellite, photo des documents, création de lots — depuis n'importe quel smartphone.",
+					"image": "__ASSET__:pwa-parcel-draw.png"
+				},
+				{
+					"component": "feature_item",
+					"tag": "Vue publique · importateurs",
+					"title": "La conformité vérifiable en un scan",
+					"text": "Votre client scanne un QR code et vérifie le lot : origine, documents, risque de déforestation. Aucun compte requis.",
+					"image": "__ASSET__:webapp-public-importer.png"
+				}
+			]
+		},
+		{
+			"component": "social_proof",
+			"eyebrow": "Preuves",
+			"title": "Adossé aux standards internationaux",
+			"intro": "ClearOrigin ne réinvente pas la vérification : il s'appuie sur les outils de référence de la filière.",
+			"stats": [
+				{ "component": "stat_item", "value": "WHISP", "label": "L'outil d'analyse de déforestation de la FAO, intégré nativement" },
+				{ "component": "stat_item", "value": "2023/1115", "label": "Le règlement EUDR couvert de bout en bout" },
+				{ "component": "stat_item", "value": "7", "label": "Matières premières : bois, café, cacao, caoutchouc, huile de palme, bœuf, soja" },
+				{ "component": "stat_item", "value": "4", "label": "Langues pour toute la chaîne : FR, EN, ES, PT" }
+			],
+			"testimonials": []
+		},
+		{
+			"component": "offer",
+			"eyebrow": "L'offre",
+			"title": "Tout ce qu'il faut pour passer un contrôle. Rien de superflu.",
+			"intro": "",
+			"items": [
+				{ "component": "offer_item", "title": "Géolocalisation & cartographie satellite", "text": "Polygones GPS des parcelles, dessinés sur le terrain ou au bureau." },
+				{ "component": "offer_item", "title": "Grilles de légalité par pays et produit", "text": "La liste exacte des documents requis, personnalisable par votre organisation." },
+				{ "component": "offer_item", "title": "Analyse de déforestation à chaque lot", "text": "WHISP (FAO) en tâche de fond, audit immuable figé sur le lot." },
+				{ "component": "offer_item", "title": "Lien public & QR code importateur", "text": "Jusqu'à 10 destinataires par lot, approbation ou refus tracés." },
+				{ "component": "offer_item", "title": "Gestion des fournisseurs et liaisons", "text": "Invitations, producteurs représentés, chaîne amont-aval complète." }
+			],
+			"bonus_title": "Accompagnement à la mise en route",
+			"bonus_text": "BF Consult paramètre vos grilles de légalité avec vous et embarque vos premiers producteurs — pour que votre premier lot conforme sorte en jours, pas en mois."
+		},
+		{
+			"component": "pricing",
+			"eyebrow": "Tarifs",
+			"title": "Un plan par taille de chaîne d'approvisionnement",
+			"intro": "Commencez gratuitement, montez en gamme quand vos volumes suivent.",
+			"plans": [
+				{
+					"component": "pricing_plan",
+					"name": "Gratuit",
+					"price": "0 €",
+					"period": "mois",
+					"description": "Pour découvrir la plateforme.",
+					"features": "Parcelles et lots en volume limité\nAnalyse de déforestation WHISP\nLien public importateur",
+					"highlight": false,
+					"cta_label": "Créer un compte",
+					"cta_link": "#cta"
+				},
+				{
+					"component": "pricing_plan",
+					"name": "Plus",
+					"price": "29 €",
+					"period": "mois",
+					"description": "Pour les petites coopératives.",
+					"features": "Volumes étendus\nGrilles de légalité personnalisées\nSupport par email",
+					"highlight": false,
+					"cta_label": "Choisir Plus",
+					"cta_link": "#cta"
+				},
+				{
+					"component": "pricing_plan",
+					"name": "Pro",
+					"price": "99 €",
+					"period": "mois",
+					"description": "Pour les exportateurs actifs.",
+					"features": "Volumes professionnels\nMulti-utilisateurs\nSupport prioritaire",
+					"highlight": true,
+					"highlight_label": "Le plus choisi",
+					"cta_label": "Choisir Pro",
+					"cta_link": "#cta"
+				},
+				{
+					"component": "pricing_plan",
+					"name": "Max",
+					"price": "249 €",
+					"period": "mois",
+					"description": "Pour les chaînes à fort volume.",
+					"features": "Volumes illimités\nAccompagnement dédié\nSupport prioritaire",
+					"highlight": false,
+					"cta_label": "Choisir Max",
+					"cta_link": "#cta"
+				}
+			],
+			"note": "Sans engagement — changez de plan à tout moment via le portail de facturation."
+		},
+		{
+			"component": "guarantees",
+			"eyebrow": "Garanties",
+			"title": "Vos données, vos preuves, vos règles",
+			"intro": "",
+			"items": [
+				{
+					"component": "guarantee_item",
+					"title": "Audit immuable",
+					"text": "Chaque lot fige une copie horodatée de ses rapports de déforestation : une ré-analyse ultérieure ne réécrit jamais l'historique."
+				},
+				{
+					"component": "guarantee_item",
+					"title": "Vos données restent les vôtres",
+					"text": "Hébergement européen (Azure), export de vos données à tout moment."
+				},
+				{
+					"component": "guarantee_item",
+					"title": "Sans engagement",
+					"text": "Plans mensuels, changement ou annulation en un clic depuis le portail de facturation."
+				}
+			]
+		},
+		{
+			"component": "faq",
+			"eyebrow": "FAQ",
+			"title": "Les questions qu'on nous pose",
+			"intro": "",
+			"items": [
+				{
+					"component": "faq_item",
+					"question": "Mes producteurs n'ont pas de smartphone. C'est bloquant ?",
+					"answer": "Non. Votre coopérative crée des producteurs « représentés » et saisit leurs parcelles, documents et lots à leur place. La chaîne de traçabilité reste complète."
+				},
+				{
+					"component": "faq_item",
+					"question": "D'où vient l'analyse de déforestation ?",
+					"answer": "De WHISP, l'outil d'analyse de la FAO : chaque polygone de parcelle est évalué et le résultat est normalisé en niveaux de risque (Low, Medium, High). L'analyse se lance automatiquement à la création du lot."
+				},
+				{
+					"component": "faq_item",
+					"question": "Mon client importateur doit-il créer un compte ?",
+					"answer": "Non. Il reçoit un lien public (ou scanne un QR code) et consulte la traçabilité complète du lot en lecture seule : carte, documents, niveaux de risque."
+				},
+				{
+					"component": "faq_item",
+					"question": "Quelles matières premières sont couvertes ?",
+					"answer": "Les sept filières du règlement EUDR : bois, café, cacao, caoutchouc, huile de palme, bœuf et soja."
+				},
+				{
+					"component": "faq_item",
+					"question": "Dans quelles langues la plateforme existe-t-elle ?",
+					"answer": "Français, anglais, espagnol et portugais — pour que chaque maillon de la chaîne travaille dans sa langue."
+				},
+				{
+					"component": "faq_item",
+					"question": "Comment démarrer ?",
+					"answer": "Demandez une démo : nous parcourons votre chaîne d'approvisionnement ensemble et paramétrons votre espace. Votre premier lot tracé peut sortir la semaine même."
+				}
+			]
+		},
+		{
+			"component": "cta_final",
+			"title": "Votre prochain lot peut entrer en Europe l'esprit tranquille",
+			"subtitle": "Montrez-nous votre chaîne d'approvisionnement — on vous montre la diligence raisonnée qui va avec.",
+			"cta_label": "Demander une démo",
+			"cta_link": "mailto:info@bfconsult.be?subject=D%C3%A9mo%20ClearOrigin",
+			"note": "Réponse sous 48 h — BF Consult"
+		}
+	]
+}
