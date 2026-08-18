@@ -1,0 +1,263 @@
+{
+	"component": "landing_page",
+	"seo_title": "ClearOrigin — EUDR traceability & compliance, from plot to importer",
+	"seo_description": "Plot geolocation, legality documents, satellite deforestation analysis (WHISP/FAO): ClearOrigin automates EUDR due diligence for timber, coffee, cocoa and 4 more commodities.",
+	"body": [
+		{
+			"component": "hero",
+			"badge": "Regulation (EU) 2023/1115 — in force since 30 Dec 2025",
+			"headline": "Prove your EUDR compliance, from plot to importer",
+			"subheadline": "ClearOrigin brings together plot geolocation, legality documents and satellite deforestation analysis — so every batch of timber, coffee, cocoa or rubber enters Europe with complete due diligence.",
+			"cta_label": "Request a demo",
+			"cta_link": "#cta",
+			"cta_secondary_label": "See how it works",
+			"cta_secondary_link": "#how",
+			"image": "__ASSET__:webapp-traceability-map.png",
+			"image_caption": "Batch traceability — WHISP analysis (FAO) · 4.3517° S, 15.2663° E"
+		},
+		{
+			"component": "benefits",
+			"eyebrow": "Why",
+			"title": "Due diligence shouldn't be a full-time job",
+			"intro": "Since 30 December 2025, every batch imported into the EU must prove it doesn't come from deforested land. Without a dedicated tool, that means spreadsheets, lost scans and weeks of delay on every shipment.",
+			"items": [
+				{
+					"component": "benefit_item",
+					"icon": "map-pin",
+					"title": "Geolocated plots, not declarations on trust",
+					"text": "Every plot is a GPS polygon drawn on a satellite map, linked to its producer and its legality documents."
+				},
+				{
+					"component": "benefit_item",
+					"icon": "satellite",
+					"title": "Deforestation analysis on autopilot",
+					"text": "Every time a batch is created, the FAO's WHISP tool assesses the deforestation risk of each plot. Standardised result: Low, Medium, High."
+				},
+				{
+					"component": "benefit_item",
+					"icon": "file-check",
+					"title": "A documentation workload cut down to size",
+					"text": "Legality grids per country and product tell you exactly which documents to collect — with their status at a glance."
+				},
+				{
+					"component": "benefit_item",
+					"icon": "share",
+					"title": "A chain with no missing link",
+					"text": "Producers without a smartphone? Your cooperative represents them in the tool. Traceability stays complete, from field to port."
+				}
+			]
+		},
+		{
+			"component": "steps",
+			"eyebrow": "How",
+			"title": "Four steps, one irrefutable proof",
+			"intro": "",
+			"items": [
+				{
+					"component": "step_item",
+					"title": "Geolocate the plots",
+					"text": "The producer draws their plots on a satellite basemap from their phone — or the cooperative does it for them.",
+					"image": "__ASSET__:pwa-parcels.png"
+				},
+				{
+					"component": "step_item",
+					"title": "Collect the legality documents",
+					"text": "Photos taken in the field, up to 10 files per document, validity tracking — guided by the legality grid for your country and product.",
+					"image": "__ASSET__:pwa-documents.png"
+				},
+				{
+					"component": "step_item",
+					"title": "Create the batch — the analysis starts on its own",
+					"text": "WHISP (FAO) automatically assesses every plot in the batch and freezes an immutable, timestamped, defensible deforestation audit.",
+					"image": "__ASSET__:webapp-lots.png"
+				},
+				{
+					"component": "step_item",
+					"title": "Share the proof with the importer",
+					"text": "A public link and a QR code give your European client the full picture: map, supply chain, documents, risk level. No account needed.",
+					"image": "__ASSET__:webapp-public-importer.png"
+				}
+			]
+		},
+		{
+			"component": "features_grid",
+			"eyebrow": "The platform",
+			"title": "A web app for the office, a mobile app for the field",
+			"intro": "Every actor in the chain gets their own interface — in their own language.",
+			"items": [
+				{
+					"component": "feature_item",
+					"tag": "webApp · cooperatives & exporters",
+					"title": "Unified traceability map",
+					"text": "Plots, actor chain and deforestation analysis brought together on a single interactive map, from field to port of arrival.",
+					"image": "__ASSET__:webapp-traceability-map.png"
+				},
+				{
+					"component": "feature_item",
+					"tag": "PWA · producers",
+					"title": "The mobile app built for the field",
+					"text": "Draw plots on a satellite basemap, photograph documents, create batches — from any smartphone.",
+					"image": "__ASSET__:pwa-parcel-draw.png"
+				},
+				{
+					"component": "feature_item",
+					"tag": "Public view · importers",
+					"title": "Compliance you can verify in one scan",
+					"text": "Your client scans a QR code and checks the batch: origin, documents, deforestation risk. No account required.",
+					"image": "__ASSET__:webapp-public-importer.png"
+				}
+			]
+		},
+		{
+			"component": "social_proof",
+			"eyebrow": "Proof",
+			"title": "Built on international standards",
+			"intro": "ClearOrigin doesn't reinvent verification: it relies on the industry's reference tools.",
+			"stats": [
+				{ "component": "stat_item", "value": "WHISP", "label": "The FAO's deforestation analysis tool, natively integrated" },
+				{ "component": "stat_item", "value": "2023/1115", "label": "The EUDR regulation covered end to end" },
+				{ "component": "stat_item", "value": "7", "label": "Commodities: timber, coffee, cocoa, rubber, palm oil, cattle, soy" },
+				{ "component": "stat_item", "value": "4", "label": "Languages for the whole chain: FR, EN, ES, PT" }
+			],
+			"testimonials": []
+		},
+		{
+			"component": "offer",
+			"eyebrow": "The offer",
+			"title": "Everything you need to pass an inspection. Nothing you don't.",
+			"intro": "",
+			"items": [
+				{ "component": "offer_item", "title": "Geolocation & satellite mapping", "text": "GPS polygons of your plots, drawn in the field or at the office." },
+				{ "component": "offer_item", "title": "Legality grids per country and product", "text": "The exact list of required documents, customisable by your organisation." },
+				{ "component": "offer_item", "title": "Deforestation analysis on every batch", "text": "WHISP (FAO) running in the background, immutable audit frozen on the batch." },
+				{ "component": "offer_item", "title": "Public link & importer QR code", "text": "Up to 10 recipients per batch, approvals and rejections fully tracked." },
+				{ "component": "offer_item", "title": "Supplier management and connections", "text": "Invitations, represented producers, complete upstream-to-downstream chain." }
+			],
+			"bonus_title": "Onboarding support",
+			"bonus_text": "BF Consult sets up your legality grids with you and onboards your first producers — so your first compliant batch ships in days, not months."
+		},
+		{
+			"component": "pricing",
+			"eyebrow": "Pricing",
+			"title": "A plan for every supply chain size",
+			"intro": "Start for free, upgrade as your volumes grow.",
+			"plans": [
+				{
+					"component": "pricing_plan",
+					"name": "Free",
+					"price": "0 €",
+					"period": "month",
+					"description": "To discover the platform.",
+					"features": "Limited volume of plots and batches\nWHISP deforestation analysis\nPublic importer link",
+					"highlight": false,
+					"cta_label": "Create an account",
+					"cta_link": "#cta"
+				},
+				{
+					"component": "pricing_plan",
+					"name": "Plus",
+					"price": "29 €",
+					"period": "month",
+					"description": "For small cooperatives.",
+					"features": "Extended volumes\nCustom legality grids\nEmail support",
+					"highlight": false,
+					"cta_label": "Choose Plus",
+					"cta_link": "#cta"
+				},
+				{
+					"component": "pricing_plan",
+					"name": "Pro",
+					"price": "99 €",
+					"period": "month",
+					"description": "For active exporters.",
+					"features": "Professional volumes\nMulti-user\nPriority support",
+					"highlight": true,
+					"highlight_label": "Most popular",
+					"cta_label": "Choose Pro",
+					"cta_link": "#cta"
+				},
+				{
+					"component": "pricing_plan",
+					"name": "Max",
+					"price": "249 €",
+					"period": "month",
+					"description": "For high-volume chains.",
+					"features": "Unlimited volumes\nDedicated guidance\nPriority support",
+					"highlight": false,
+					"cta_label": "Choose Max",
+					"cta_link": "#cta"
+				}
+			],
+			"note": "No commitment — switch plans anytime from the billing portal."
+		},
+		{
+			"component": "guarantees",
+			"eyebrow": "Guarantees",
+			"title": "Your data, your proof, your rules",
+			"intro": "",
+			"items": [
+				{
+					"component": "guarantee_item",
+					"title": "Immutable audit",
+					"text": "Every batch freezes a timestamped copy of its deforestation reports: a later re-analysis never rewrites the history."
+				},
+				{
+					"component": "guarantee_item",
+					"title": "Your data stays yours",
+					"text": "European hosting (Azure), export your data at any time."
+				},
+				{
+					"component": "guarantee_item",
+					"title": "No commitment",
+					"text": "Monthly plans — switch or cancel in one click from the billing portal."
+				}
+			]
+		},
+		{
+			"component": "faq",
+			"eyebrow": "FAQ",
+			"title": "The questions we get asked",
+			"intro": "",
+			"items": [
+				{
+					"component": "faq_item",
+					"question": "My producers don't have smartphones. Is that a blocker?",
+					"answer": "No. Your cooperative creates “represented” producers and enters their plots, documents and batches on their behalf. The traceability chain stays complete."
+				},
+				{
+					"component": "faq_item",
+					"question": "Where does the deforestation analysis come from?",
+					"answer": "From WHISP, the FAO's analysis tool: every plot polygon is assessed and the result is standardised into risk levels (Low, Medium, High). The analysis runs automatically when the batch is created."
+				},
+				{
+					"component": "faq_item",
+					"question": "Does my importing client need to create an account?",
+					"answer": "No. They receive a public link (or scan a QR code) and view the batch's full traceability in read-only mode: map, documents, risk levels."
+				},
+				{
+					"component": "faq_item",
+					"question": "Which commodities are covered?",
+					"answer": "The seven EUDR commodities: timber, coffee, cocoa, rubber, palm oil, cattle and soy."
+				},
+				{
+					"component": "faq_item",
+					"question": "Which languages is the platform available in?",
+					"answer": "French, English, Spanish and Portuguese — so every link in the chain works in its own language."
+				},
+				{
+					"component": "faq_item",
+					"question": "How do I get started?",
+					"answer": "Request a demo: we walk through your supply chain together and set up your workspace. Your first traced batch can ship that same week."
+				}
+			]
+		},
+		{
+			"component": "cta_final",
+			"title": "Your next batch can enter Europe with peace of mind",
+			"subtitle": "Show us your supply chain — we'll show you the due diligence to match.",
+			"cta_label": "Request a demo",
+			"cta_link": "mailto:info@bfconsult.be?subject=ClearOrigin%20demo",
+			"note": "Reply within 48 hours — BF Consult"
+		}
+	]
+}

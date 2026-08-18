@@ -1,0 +1,263 @@
+{
+	"component": "landing_page",
+	"seo_title": "ClearOrigin — Rastreabilidade e conformidade EUDR, da parcela ao importador",
+	"seo_description": "Geolocalização de parcelas, documentos de legalidade, análise de desmatamento por satélite (WHISP/FAO): a ClearOrigin automatiza a devida diligência EUDR para madeira, café, cacau e outras 4 matérias-primas.",
+	"body": [
+		{
+			"component": "hero",
+			"badge": "Regulamento (UE) 2023/1115 — em vigor desde 30 de dez. de 2025",
+			"headline": "Comprove sua conformidade EUDR, da parcela ao importador",
+			"subheadline": "A ClearOrigin centraliza geolocalização de parcelas, documentos de legalidade e análise de desmatamento por satélite — para que cada lote de madeira, café, cacau ou borracha entre na Europa com uma devida diligência completa.",
+			"cta_label": "Solicitar uma demo",
+			"cta_link": "#cta",
+			"cta_secondary_label": "Ver como funciona",
+			"cta_secondary_link": "#how",
+			"image": "__ASSET__:webapp-traceability-map.png",
+			"image_caption": "Rastreabilidade de um lote — análise WHISP (FAO) · 4.3517° S, 15.2663° E"
+		},
+		{
+			"component": "benefits",
+			"eyebrow": "Por quê",
+			"title": "A devida diligência não deveria ser um trabalho em tempo integral",
+			"intro": "Desde 30 de dezembro de 2025, cada lote importado na UE precisa comprovar que não vem de terra desmatada. Sem uma ferramenta dedicada, são planilhas, digitalizações perdidas e semanas de atraso a cada embarque.",
+			"items": [
+				{
+					"component": "benefit_item",
+					"icon": "map-pin",
+					"title": "Parcelas geolocalizadas, não declarações de boa-fé",
+					"text": "Cada parcela é um polígono GPS desenhado sobre o mapa de satélite, vinculado ao seu produtor e aos seus documentos de legalidade."
+				},
+				{
+					"component": "benefit_item",
+					"icon": "satellite",
+					"title": "A análise de desmatamento no automático",
+					"text": "A cada criação de lote, a ferramenta WHISP da FAO avalia o risco de desmatamento de cada parcela. Resultado padronizado: Low, Medium, High."
+				},
+				{
+					"component": "benefit_item",
+					"icon": "file-check",
+					"title": "Uma carga documental dividida",
+					"text": "As grades de legalidade por país e por produto dizem exatamente quais documentos coletar — com o status de cada um num relance."
+				},
+				{
+					"component": "benefit_item",
+					"icon": "share",
+					"title": "Uma cadeia sem elo faltando",
+					"text": "Produtores sem smartphone? Sua cooperativa os representa na ferramenta. A rastreabilidade continua completa, do campo ao porto."
+				}
+			]
+		},
+		{
+			"component": "steps",
+			"eyebrow": "Como",
+			"title": "Quatro etapas, uma prova irrefutável",
+			"intro": "",
+			"items": [
+				{
+					"component": "step_item",
+					"title": "Geolocalize as parcelas",
+					"text": "O produtor desenha suas parcelas sobre fundo de satélite pelo celular — ou a cooperativa faz por ele.",
+					"image": "__ASSET__:pwa-parcels.png"
+				},
+				{
+					"component": "step_item",
+					"title": "Colete os documentos de legalidade",
+					"text": "Fotos tiradas no campo, até 10 arquivos por documento, acompanhamento da validade — guiado pela grade de legalidade do seu país e do seu produto.",
+					"image": "__ASSET__:pwa-documents.png"
+				},
+				{
+					"component": "step_item",
+					"title": "Crie o lote — a análise começa sozinha",
+					"text": "O WHISP (FAO) avalia automaticamente cada parcela do lote e congela uma auditoria de desmatamento imutável, com data e hora, com valor probatório.",
+					"image": "__ASSET__:webapp-lots.png"
+				},
+				{
+					"component": "step_item",
+					"title": "Compartilhe a prova com o importador",
+					"text": "Um link público e um QR code dão ao seu cliente europeu a visão completa: mapa, cadeia de suprimentos, documentos, nível de risco. Sem criar conta.",
+					"image": "__ASSET__:webapp-public-importer.png"
+				}
+			]
+		},
+		{
+			"component": "features_grid",
+			"eyebrow": "A plataforma",
+			"title": "Uma webApp para o escritório, um app móvel para o campo",
+			"intro": "Cada ator da cadeia tem sua interface — no seu idioma.",
+			"items": [
+				{
+					"component": "feature_item",
+					"tag": "webApp · cooperativas e exportadores",
+					"title": "Mapa de rastreabilidade unificado",
+					"text": "Parcelas, cadeia de atores e análise de desmatamento reunidos em um único mapa interativo, do campo ao porto de chegada.",
+					"image": "__ASSET__:webapp-traceability-map.png"
+				},
+				{
+					"component": "feature_item",
+					"tag": "PWA · produtores",
+					"title": "O app móvel pensado para o campo",
+					"text": "Desenho de parcelas sobre fundo de satélite, foto dos documentos, criação de lotes — de qualquer smartphone.",
+					"image": "__ASSET__:pwa-parcel-draw.png"
+				},
+				{
+					"component": "feature_item",
+					"tag": "Visão pública · importadores",
+					"title": "A conformidade verificável em um scan",
+					"text": "Seu cliente escaneia um QR code e verifica o lote: origem, documentos, risco de desmatamento. Nenhuma conta necessária.",
+					"image": "__ASSET__:webapp-public-importer.png"
+				}
+			]
+		},
+		{
+			"component": "social_proof",
+			"eyebrow": "Provas",
+			"title": "Apoiado nos padrões internacionais",
+			"intro": "A ClearOrigin não reinventa a verificação: ela se apoia nas ferramentas de referência do setor.",
+			"stats": [
+				{ "component": "stat_item", "value": "WHISP", "label": "A ferramenta de análise de desmatamento da FAO, integrada nativamente" },
+				{ "component": "stat_item", "value": "2023/1115", "label": "O regulamento EUDR coberto de ponta a ponta" },
+				{ "component": "stat_item", "value": "7", "label": "Matérias-primas: madeira, café, cacau, borracha, óleo de palma, carne bovina, soja" },
+				{ "component": "stat_item", "value": "4", "label": "Idiomas para toda a cadeia: FR, EN, ES, PT" }
+			],
+			"testimonials": []
+		},
+		{
+			"component": "offer",
+			"eyebrow": "A oferta",
+			"title": "Tudo o que é preciso para passar em uma fiscalização. Nada supérfluo.",
+			"intro": "",
+			"items": [
+				{ "component": "offer_item", "title": "Geolocalização e cartografia por satélite", "text": "Polígonos GPS das parcelas, desenhados no campo ou no escritório." },
+				{ "component": "offer_item", "title": "Grades de legalidade por país e produto", "text": "A lista exata dos documentos exigidos, personalizável pela sua organização." },
+				{ "component": "offer_item", "title": "Análise de desmatamento a cada lote", "text": "WHISP (FAO) em segundo plano, auditoria imutável congelada no lote." },
+				{ "component": "offer_item", "title": "Link público e QR code para o importador", "text": "Até 10 destinatários por lote, aprovações e recusas registradas." },
+				{ "component": "offer_item", "title": "Gestão de fornecedores e vínculos", "text": "Convites, produtores representados, cadeia completa a montante e a jusante." }
+			],
+			"bonus_title": "Acompanhamento na implantação",
+			"bonus_text": "A BF Consult configura suas grades de legalidade com você e integra seus primeiros produtores — para que seu primeiro lote conforme saia em dias, não em meses."
+		},
+		{
+			"component": "pricing",
+			"eyebrow": "Preços",
+			"title": "Um plano para cada tamanho de cadeia de suprimentos",
+			"intro": "Comece grátis e evolua quando seus volumes acompanharem.",
+			"plans": [
+				{
+					"component": "pricing_plan",
+					"name": "Grátis",
+					"price": "0 €",
+					"period": "mês",
+					"description": "Para descobrir a plataforma.",
+					"features": "Parcelas e lotes em volume limitado\nAnálise de desmatamento WHISP\nLink público para o importador",
+					"highlight": false,
+					"cta_label": "Criar uma conta",
+					"cta_link": "#cta"
+				},
+				{
+					"component": "pricing_plan",
+					"name": "Plus",
+					"price": "29 €",
+					"period": "mês",
+					"description": "Para pequenas cooperativas.",
+					"features": "Volumes ampliados\nGrades de legalidade personalizadas\nSuporte por e-mail",
+					"highlight": false,
+					"cta_label": "Escolher o Plus",
+					"cta_link": "#cta"
+				},
+				{
+					"component": "pricing_plan",
+					"name": "Pro",
+					"price": "99 €",
+					"period": "mês",
+					"description": "Para exportadores ativos.",
+					"features": "Volumes profissionais\nMultiusuário\nSuporte prioritário",
+					"highlight": true,
+					"highlight_label": "O mais escolhido",
+					"cta_label": "Escolher o Pro",
+					"cta_link": "#cta"
+				},
+				{
+					"component": "pricing_plan",
+					"name": "Max",
+					"price": "249 €",
+					"period": "mês",
+					"description": "Para cadeias de alto volume.",
+					"features": "Volumes ilimitados\nAcompanhamento dedicado\nSuporte prioritário",
+					"highlight": false,
+					"cta_label": "Escolher o Max",
+					"cta_link": "#cta"
+				}
+			],
+			"note": "Sem fidelidade — mude de plano a qualquer momento pelo portal de faturamento."
+		},
+		{
+			"component": "guarantees",
+			"eyebrow": "Garantias",
+			"title": "Seus dados, suas provas, suas regras",
+			"intro": "",
+			"items": [
+				{
+					"component": "guarantee_item",
+					"title": "Auditoria imutável",
+					"text": "Cada lote congela uma cópia datada dos seus relatórios de desmatamento: uma nova análise posterior nunca reescreve o histórico."
+				},
+				{
+					"component": "guarantee_item",
+					"title": "Seus dados continuam seus",
+					"text": "Hospedagem europeia (Azure), exportação dos seus dados a qualquer momento."
+				},
+				{
+					"component": "guarantee_item",
+					"title": "Sem fidelidade",
+					"text": "Planos mensais, troca ou cancelamento em um clique pelo portal de faturamento."
+				}
+			]
+		},
+		{
+			"component": "faq",
+			"eyebrow": "FAQ",
+			"title": "As perguntas que nos fazem",
+			"intro": "",
+			"items": [
+				{
+					"component": "faq_item",
+					"question": "Meus produtores não têm smartphone. Isso é um impeditivo?",
+					"answer": "Não. Sua cooperativa cria produtores “representados” e registra as parcelas, os documentos e os lotes no lugar deles. A cadeia de rastreabilidade continua completa."
+				},
+				{
+					"component": "faq_item",
+					"question": "De onde vem a análise de desmatamento?",
+					"answer": "Do WHISP, a ferramenta de análise da FAO: cada polígono de parcela é avaliado e o resultado é padronizado em níveis de risco (Low, Medium, High). A análise é iniciada automaticamente na criação do lote."
+				},
+				{
+					"component": "faq_item",
+					"question": "Meu cliente importador precisa criar uma conta?",
+					"answer": "Não. Ele recebe um link público (ou escaneia um QR code) e consulta a rastreabilidade completa do lote em modo somente leitura: mapa, documentos, níveis de risco."
+				},
+				{
+					"component": "faq_item",
+					"question": "Quais matérias-primas são cobertas?",
+					"answer": "As sete do regulamento EUDR: madeira, café, cacau, borracha, óleo de palma, carne bovina e soja."
+				},
+				{
+					"component": "faq_item",
+					"question": "Em quais idiomas a plataforma está disponível?",
+					"answer": "Francês, inglês, espanhol e português — para que cada elo da cadeia trabalhe no seu idioma."
+				},
+				{
+					"component": "faq_item",
+					"question": "Como começar?",
+					"answer": "Solicite uma demo: percorremos juntos a sua cadeia de suprimentos e configuramos o seu espaço. Seu primeiro lote rastreado pode sair na mesma semana."
+				}
+			]
+		},
+		{
+			"component": "cta_final",
+			"title": "Seu próximo lote pode entrar na Europa com tranquilidade",
+			"subtitle": "Mostre-nos sua cadeia de suprimentos — nós mostramos a devida diligência que vem junto.",
+			"cta_label": "Solicitar uma demo",
+			"cta_link": "mailto:info@bfconsult.be?subject=Demo%20ClearOrigin",
+			"note": "Resposta em 48 h — BF Consult"
+		}
+	]
+}
