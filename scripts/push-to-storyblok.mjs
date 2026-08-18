@@ -188,13 +188,28 @@ function mergeTranslations(frNode, langNode, lang, translatable) {
 	}
 }
 
+/** Champs de type asset par composant (d'après le schéma), pour normaliser les valeurs. */
+function buildAssetFieldMap(defs) {
+	const map = new Map();
+	for (const def of defs) {
+		const fields = new Set(
+			Object.entries(def.schema)
+				.filter(([, field]) => field.type === 'asset')
+				.map(([name]) => name)
+		);
+		map.set(def.name, fields);
+	}
+	return map;
+}
+
 /** Remplace les placeholders __ASSET__:<nom> par de vrais objets asset Storyblok. */
-function resolveAssets(node, assets, missing) {
+function resolveAssets(node, assets, missing, assetFields) {
 	if (Array.isArray(node)) {
-		node.forEach((child) => resolveAssets(child, assets, missing));
+		node.forEach((child) => resolveAssets(child, assets, missing, assetFields));
 		return;
 	}
 	if (!node || typeof node !== 'object') return;
+	const nodeAssetFields = assetFields.get(node.component) || new Set();
 	for (const [key, value] of Object.entries(node)) {
 		if (typeof value === 'string' && value.startsWith('__ASSET__:')) {
 			const name = value.slice('__ASSET__:'.length);
@@ -214,8 +229,11 @@ function resolveAssets(node, assets, missing) {
 				missing.add(name);
 				node[key] = null;
 			}
+		} else if (typeof value === 'string' && nodeAssetFields.has(key)) {
+			// Champ asset laissé en string (ex: "") — la MAPI exige un objet ou null
+			node[key] = null;
 		} else if (value && typeof value === 'object') {
-			resolveAssets(value, assets, missing);
+			resolveAssets(value, assets, missing, assetFields);
 		}
 	}
 }
@@ -268,7 +286,7 @@ for (const { code } of LANGS) {
 	}
 }
 const missing = new Set();
-resolveAssets(content, assets, missing);
+resolveAssets(content, assets, missing, buildAssetFieldMap(defs));
 if (missing.size) {
 	console.warn(`⚠ Assets manquants (champs laissés vides) : ${[...missing].join(', ')}`);
 }
