@@ -17,7 +17,12 @@
 		"is_nestable": true,
 		"schema": {
 			"badge": { "type": "text", "translatable": true, "pos": 0 },
-			"headline": { "type": "text", "translatable": true, "required": true, "pos": 1 },
+			"headline": {
+				"type": "text",
+				"translatable": true,
+				"required": true,
+				"pos": 1
+			},
 			"subheadline": { "type": "textarea", "translatable": true, "pos": 2 },
 			"cta_label": { "type": "text", "translatable": true, "pos": 3 },
 			"cta_link": { "type": "text", "pos": 4 },
@@ -36,7 +41,12 @@
 			"eyebrow": { "type": "text", "translatable": true, "pos": 0 },
 			"title": { "type": "text", "translatable": true, "pos": 1 },
 			"intro": { "type": "textarea", "translatable": true, "pos": 2 },
-			"items": { "type": "bloks", "restrict_components": true, "component_whitelist": ["benefit_item"], "pos": 3 }
+			"items": {
+				"type": "bloks",
+				"restrict_components": true,
+				"component_whitelist": ["benefit_item"],
+				"pos": 3
+			}
 		}
 	},
 	{
@@ -70,7 +80,12 @@
 			"eyebrow": { "type": "text", "translatable": true, "pos": 0 },
 			"title": { "type": "text", "translatable": true, "pos": 1 },
 			"intro": { "type": "textarea", "translatable": true, "pos": 2 },
-			"items": { "type": "bloks", "restrict_components": true, "component_whitelist": ["step_item"], "pos": 3 }
+			"items": {
+				"type": "bloks",
+				"restrict_components": true,
+				"component_whitelist": ["step_item"],
+				"pos": 3
+			}
 		}
 	},
 	{
@@ -93,7 +108,12 @@
 			"eyebrow": { "type": "text", "translatable": true, "pos": 0 },
 			"title": { "type": "text", "translatable": true, "pos": 1 },
 			"intro": { "type": "textarea", "translatable": true, "pos": 2 },
-			"items": { "type": "bloks", "restrict_components": true, "component_whitelist": ["feature_item"], "pos": 3 }
+			"items": {
+				"type": "bloks",
+				"restrict_components": true,
+				"component_whitelist": ["feature_item"],
+				"pos": 3
+			}
 		}
 	},
 	{
@@ -117,8 +137,18 @@
 			"eyebrow": { "type": "text", "translatable": true, "pos": 0 },
 			"title": { "type": "text", "translatable": true, "pos": 1 },
 			"intro": { "type": "textarea", "translatable": true, "pos": 2 },
-			"stats": { "type": "bloks", "restrict_components": true, "component_whitelist": ["stat_item"], "pos": 3 },
-			"testimonials": { "type": "bloks", "restrict_components": true, "component_whitelist": ["testimonial"], "pos": 4 }
+			"stats": {
+				"type": "bloks",
+				"restrict_components": true,
+				"component_whitelist": ["stat_item"],
+				"pos": 3
+			},
+			"testimonials": {
+				"type": "bloks",
+				"restrict_components": true,
+				"component_whitelist": ["testimonial"],
+				"pos": 4
+			}
 		}
 	},
 	{
@@ -151,7 +181,12 @@
 			"eyebrow": { "type": "text", "translatable": true, "pos": 0 },
 			"title": { "type": "text", "translatable": true, "pos": 1 },
 			"intro": { "type": "textarea", "translatable": true, "pos": 2 },
-			"items": { "type": "bloks", "restrict_components": true, "component_whitelist": ["offer_item"], "pos": 3 },
+			"items": {
+				"type": "bloks",
+				"restrict_components": true,
+				"component_whitelist": ["offer_item"],
+				"pos": 3
+			},
 			"bonus_title": { "type": "text", "translatable": true, "pos": 4 },
 			"bonus_text": { "type": "textarea", "translatable": true, "pos": 5 }
 		}
@@ -167,45 +202,20 @@
 		}
 	},
 	{
-		"name": "pricing",
-		"display_name": "6 — Pricing",
-		"is_root": false,
-		"is_nestable": true,
-		"schema": {
-			"eyebrow": { "type": "text", "translatable": true, "pos": 0 },
-			"title": { "type": "text", "translatable": true, "pos": 1 },
-			"intro": { "type": "textarea", "translatable": true, "pos": 2 },
-			"plans": { "type": "bloks", "restrict_components": true, "component_whitelist": ["pricing_plan"], "pos": 3 },
-			"note": { "type": "text", "translatable": true, "pos": 4 }
-		}
-	},
-	{
-		"name": "pricing_plan",
-		"display_name": "Pricing plan",
-		"is_root": false,
-		"is_nestable": true,
-		"schema": {
-			"name": { "type": "text", "translatable": true, "pos": 0 },
-			"price": { "type": "text", "pos": 1 },
-			"period": { "type": "text", "translatable": true, "pos": 2 },
-			"description": { "type": "textarea", "translatable": true, "pos": 3 },
-			"features": { "type": "textarea", "translatable": true, "description": "Une feature par ligne", "pos": 4 },
-			"highlight": { "type": "boolean", "pos": 5 },
-			"highlight_label": { "type": "text", "translatable": true, "pos": 6 },
-			"cta_label": { "type": "text", "translatable": true, "pos": 7 },
-			"cta_link": { "type": "text", "pos": 8 }
-		}
-	},
-	{
 		"name": "guarantees",
-		"display_name": "7 — Guarantees",
+		"display_name": "6 — Guarantees",
 		"is_root": false,
 		"is_nestable": true,
 		"schema": {
 			"eyebrow": { "type": "text", "translatable": true, "pos": 0 },
 			"title": { "type": "text", "translatable": true, "pos": 1 },
 			"intro": { "type": "textarea", "translatable": true, "pos": 2 },
-			"items": { "type": "bloks", "restrict_components": true, "component_whitelist": ["guarantee_item"], "pos": 3 }
+			"items": {
+				"type": "bloks",
+				"restrict_components": true,
+				"component_whitelist": ["guarantee_item"],
+				"pos": 3
+			}
 		}
 	},
 	{
@@ -220,14 +230,19 @@
 	},
 	{
 		"name": "faq",
-		"display_name": "8 — FAQ",
+		"display_name": "7 — FAQ",
 		"is_root": false,
 		"is_nestable": true,
 		"schema": {
 			"eyebrow": { "type": "text", "translatable": true, "pos": 0 },
 			"title": { "type": "text", "translatable": true, "pos": 1 },
 			"intro": { "type": "textarea", "translatable": true, "pos": 2 },
-			"items": { "type": "bloks", "restrict_components": true, "component_whitelist": ["faq_item"], "pos": 3 }
+			"items": {
+				"type": "bloks",
+				"restrict_components": true,
+				"component_whitelist": ["faq_item"],
+				"pos": 3
+			}
 		}
 	},
 	{
@@ -242,15 +257,26 @@
 	},
 	{
 		"name": "cta_final",
-		"display_name": "9 — Final CTA",
+		"display_name": "8 — Final CTA",
 		"is_root": false,
 		"is_nestable": true,
 		"schema": {
-			"title": { "type": "text", "translatable": true, "pos": 0 },
-			"subtitle": { "type": "textarea", "translatable": true, "pos": 1 },
-			"cta_label": { "type": "text", "translatable": true, "pos": 2 },
-			"cta_link": { "type": "text", "pos": 3 },
-			"note": { "type": "text", "translatable": true, "pos": 4 }
+			"flag": { "type": "text", "translatable": true, "pos": 0 },
+			"title": { "type": "text", "translatable": true, "pos": 1 },
+			"subtitle": { "type": "textarea", "translatable": true, "pos": 2 },
+			"bullets": {
+				"type": "textarea",
+				"translatable": true,
+				"description": "Un argument par ligne",
+				"pos": 3
+			},
+			"cta_label": { "type": "text", "translatable": true, "pos": 4 },
+			"cta_link": { "type": "text", "translatable": true, "pos": 5 },
+			"secondary_label": { "type": "text", "translatable": true, "pos": 6 },
+			"secondary_link": { "type": "text", "pos": 7 },
+			"image": { "type": "asset", "filetypes": ["images"], "pos": 8 },
+			"image_caption": { "type": "text", "translatable": true, "pos": 9 },
+			"note": { "type": "text", "translatable": true, "pos": 10 }
 		}
 	}
 ]

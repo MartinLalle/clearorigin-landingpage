@@ -1,7 +1,6 @@
 .cta-final {
 	position: relative;
 	overflow: hidden;
-	text-align: center;
 }
 
 .cta-final__motif {
@@ -12,9 +11,24 @@
 
 .cta-final__inner {
 	position: relative;
-	display: flex;
-	flex-direction: column;
+	display: grid;
+	grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+	gap: 56px;
 	align-items: center;
+}
+
+.cta-final__flag {
+	display: inline-block;
+	font-family: var(--font-mono);
+	font-size: 0.7rem;
+	font-weight: 500;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	background: var(--orange);
+	color: var(--navy-deep);
+	padding: 5px 14px;
+	border-radius: 999px;
+	margin-bottom: 20px;
 }
 
 .cta-final__title {
@@ -22,21 +36,80 @@
 	font-weight: 700;
 	line-height: 1.15;
 	letter-spacing: -0.015em;
-	max-width: 24ch;
+	max-width: 20ch;
 }
 
 .cta-final__sub {
 	margin-top: 16px;
 	color: var(--text-inverse-muted);
 	font-size: 1.08rem;
-	max-width: 54ch;
+	max-width: 48ch;
+}
+
+.cta-final__points {
+	list-style: none;
+	margin-top: 24px;
+	display: grid;
+	gap: 12px;
+	font-size: 0.97rem;
+}
+
+.cta-final__points li {
+	padding-left: 26px;
+	position: relative;
+}
+
+.cta-final__points li::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 7px;
+	width: 12px;
+	height: 7px;
+	border-left: 2px solid color-mix(in srgb, var(--forest) 45%, #fff);
+	border-bottom: 2px solid color-mix(in srgb, var(--forest) 45%, #fff);
+	transform: rotate(-45deg);
 }
 
 .cta-final__actions {
-	margin-top: 34px;
+	margin-top: 32px;
+	display: flex;
+	gap: 14px;
+	flex-wrap: wrap;
 }
 
 .cta-final__note {
 	margin-top: 18px;
 	color: var(--text-inverse-muted);
+}
+
+.cta-final__proof {
+	margin: 0;
+	transform: rotate(-1.2deg);
+}
+
+.cta-final__proof img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: var(--radius);
+	border: 1px solid var(--navy-soft);
+	box-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.55);
+}
+
+.cta-final__proof figcaption {
+	margin-top: 14px;
+	color: var(--text-inverse-muted);
+	text-align: right;
+}
+
+@media (max-width: 900px) {
+	.cta-final__inner {
+		grid-template-columns: 1fr;
+		gap: 44px;
+	}
+
+	.cta-final__proof {
+		transform: none;
+	}
 }

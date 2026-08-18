@@ -1,5 +1,6 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
 import type { Blok, SbAsset } from '@/lib/types';
+import { sbDims, sbSrc } from '@/lib/sb-image';
 import './feature-item.css';
 
 type FeatureItemBlok = Blok<{
@@ -11,12 +12,22 @@ type FeatureItemBlok = Blok<{
 }>;
 
 export default function FeatureItem({ blok }: { blok: FeatureItemBlok }) {
+	const dims = blok.image?.filename ? sbDims(blok.image.filename) : undefined;
+	const isPortrait = !!dims && dims.height > dims.width;
+
 	return (
 		<article className="card feature reveal" {...storyblokEditable(blok)}>
 			{blok.image?.filename && (
-				<div className="feature__media">
+				<div
+					className={
+						isPortrait
+							? 'feature__media feature__media--phone'
+							: 'feature__media'
+					}
+				>
 					<img
-						src={blok.image.filename}
+						src={sbSrc(blok.image.filename, isPortrait ? 390 : 800)}
+						{...dims}
 						alt={blok.image.alt || blok.image_alt || ''}
 						loading="lazy"
 					/>

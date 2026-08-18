@@ -12,8 +12,8 @@
 			"cta_link": "#cta",
 			"cta_secondary_label": "Ver cómo funciona",
 			"cta_secondary_link": "#how",
-			"image": "__ASSET__:pwa-parcels.png",
-			"image_caption": "Parcela geolocalizada sobre imagen satelital — 4,54 ha · PWA productor"
+			"image": "__ASSET__:demo-importer-2x.png",
+			"image_caption": "Vista del importador — decisión, trazabilidad, riesgo de deforestación"
 		},
 		{
 			"component": "benefits",
@@ -75,7 +75,7 @@
 					"component": "step_item",
 					"title": "Comparta la prueba con el importador",
 					"text": "Un enlace público y un código QR ofrecen a su cliente europeo la vista completa: mapa, cadena de suministro, documentos, nivel de riesgo. Sin crear una cuenta.",
-					"image": ""
+					"image": "__ASSET__:demo-map-2x.png"
 				}
 			]
 		},
@@ -173,60 +173,6 @@
 			"bonus_text": "BF Consult configura sus matrices de legalidad con usted e incorpora a sus primeros productores — para que su primer lote conforme salga en días, no en meses."
 		},
 		{
-			"component": "pricing",
-			"eyebrow": "Tarifas",
-			"title": "Un plan para cada tamaño de cadena de suministro",
-			"intro": "Empiece gratis y suba de plan cuando sus volúmenes lo pidan.",
-			"plans": [
-				{
-					"component": "pricing_plan",
-					"name": "Gratis",
-					"price": "0 €",
-					"period": "mes",
-					"description": "Para descubrir la plataforma.",
-					"features": "Parcelas y lotes en volumen limitado\nAnálisis de deforestación WHISP\nEnlace público para el importador",
-					"highlight": false,
-					"cta_label": "Crear una cuenta",
-					"cta_link": "#cta"
-				},
-				{
-					"component": "pricing_plan",
-					"name": "Plus",
-					"price": "29 €",
-					"period": "mes",
-					"description": "Para las pequeñas cooperativas.",
-					"features": "Volúmenes ampliados\nMatrices de legalidad personalizadas\nSoporte por email",
-					"highlight": false,
-					"cta_label": "Elegir Plus",
-					"cta_link": "#cta"
-				},
-				{
-					"component": "pricing_plan",
-					"name": "Pro",
-					"price": "99 €",
-					"period": "mes",
-					"description": "Para los exportadores activos.",
-					"features": "Volúmenes profesionales\nMultiusuario\nSoporte prioritario",
-					"highlight": true,
-					"highlight_label": "El más elegido",
-					"cta_label": "Elegir Pro",
-					"cta_link": "#cta"
-				},
-				{
-					"component": "pricing_plan",
-					"name": "Max",
-					"price": "249 €",
-					"period": "mes",
-					"description": "Para las cadenas de gran volumen.",
-					"features": "Volúmenes ilimitados\nAcompañamiento dedicado\nSoporte prioritario",
-					"highlight": false,
-					"cta_label": "Elegir Max",
-					"cta_link": "#cta"
-				}
-			],
-			"note": "Sin permanencia — cambie de plan en cualquier momento desde el portal de facturación."
-		},
-		{
 			"component": "guarantees",
 			"eyebrow": "Garantías",
 			"title": "Sus datos, sus pruebas, sus reglas",
@@ -245,7 +191,7 @@
 				{
 					"component": "guarantee_item",
 					"title": "Sin permanencia",
-					"text": "Planes mensuales, cambio o cancelación en un clic desde el portal de facturación."
+					"text": "Una demo, luego un piloto con sus datos reales. Deje de usarlo cuando quiera — sus datos siguen siendo exportables en todo momento."
 				}
 			]
 		},
@@ -289,10 +235,16 @@
 		},
 		{
 			"component": "cta_final",
+			"flag": "Demo en vivo · 30 min · sin compromiso",
 			"title": "Su próximo lote puede entrar en Europa con total tranquilidad",
-			"subtitle": "Muéstrenos su cadena de suministro — nosotros le mostramos la diligencia debida que la acompaña.",
+			"subtitle": "Muéstrenos su cadena de suministro — nosotros le mostramos la diligencia debida que la acompaña, para sus materias primas y sus países.",
+			"bullets": "Una demo con casos reales: sus productos, sus países de origen\nLa vista del importador en directo — decisión, mapa, niveles de riesgo\nUn piloto posible desde la semana siguiente",
 			"cta_label": "Solicitar una demo",
-			"cta_link": "mailto:info@bfconsult.be?subject=Demo%20ClearOrigin",
+			"cta_link": "mailto:info@bfconsult.be?subject=Demo%20ClearOrigin&body=Hola%2C%0D%0A%0D%0AMe%20gustar%C3%ADa%20una%20demo%20de%20ClearOrigin.%0D%0A%0D%0AEmpresa%3A%20%0D%0ARol%20(exportador%2C%20cooperativa%2C%20importador)%3A%20%0D%0AMaterias%20primas%3A%20%0D%0APa%C3%ADses%20de%20origen%3A%20",
+			"secondary_label": "Explorar la vista del importador — sin cuenta",
+			"secondary_link": "https://clear-origin-demo-bcdbhjdpasbadmht.belgiumcentral-01.azurewebsites.net/webApp/lots/public/01a014f9-6589-73e4-97ab-1f24100e194c",
+			"image": "__ASSET__:demo-map-2x.png",
+			"image_caption": "Trazabilidad completa — Costa de Marfil → Europa · riesgo bajo",
 			"note": "Respuesta en 48 h — BF Consult"
 		}
 	]

@@ -1,5 +1,6 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
 import type { Blok, SbAsset } from '@/lib/types';
+import { sbDims, sbSrc, sbSrcSet } from '@/lib/sb-image';
 import './hero.css';
 
 type HeroBlok = Blok<{
@@ -64,7 +65,10 @@ export default function Hero({ blok }: { blok: HeroBlok }) {
 								<i />
 							</div>
 							<img
-								src={blok.image.filename}
+								src={sbSrc(blok.image.filename, 1104)}
+								srcSet={sbSrcSet(blok.image.filename, [640, 1104, 1600])}
+								sizes="(max-width: 900px) 100vw, 552px"
+								{...sbDims(blok.image.filename)}
 								alt={blok.image.alt || blok.image_alt || ''}
 								loading="eager"
 								fetchPriority="high"

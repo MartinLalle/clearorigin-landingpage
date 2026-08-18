@@ -19,7 +19,7 @@ Routes : `/` (FR), `/en/`, `/es/`, `/pt/`.
 
 En dev, la page rend la version **draft** de la story (avec les attributs d'édition du Visual Editor) ; en build (`npm run build`), la version **publiée**.
 
-## Structure du contenu (théorie des 9 sections)
+## Structure du contenu (8 sections)
 
 La story `home` est un `landing_page` dont le champ `body` empile les bloks :
 
@@ -29,9 +29,8 @@ La story `home` est un `landing_page` dont le champ `body` empile les bloks :
 4. `features_grid` — la plateforme (webApp / PWA / vue importateur)
 5. `social_proof` — preuves (stats, standards, témoignages)
 6. `offer` — l'offre + bonus
-7. `pricing` — les 4 plans
-8. `guarantees` — garanties
-9. `faq` + `cta_final` — FAQ et appel à l'action final
+7. `guarantees` — garanties
+8. `faq` + `cta_final` — FAQ et appel à l'action final (demande de démo)
 
 Chaque blok a son composant React dans `src/components/storyblok/` (mapping dans `src/lib/storyblok.ts`) et sa définition de schéma dans `storyblok/components.json`.
 

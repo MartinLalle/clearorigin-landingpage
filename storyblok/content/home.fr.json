@@ -12,8 +12,8 @@
 			"cta_link": "#cta",
 			"cta_secondary_label": "Voir comment ça marche",
 			"cta_secondary_link": "#how",
-			"image": "__ASSET__:pwa-parcels.png",
-			"image_caption": "Parcelle géolocalisée sur fond satellite — 4,54 ha · PWA producteur"
+			"image": "__ASSET__:demo-importer-2x.png",
+			"image_caption": "Vue importateur — décision, traçabilité, risque de déforestation"
 		},
 		{
 			"component": "benefits",
@@ -75,7 +75,7 @@
 					"component": "step_item",
 					"title": "Partagez la preuve à l'importateur",
 					"text": "Un lien public et un QR code donnent à votre client européen la vue complète : carte, chaîne d'approvisionnement, documents, niveau de risque. Sans créer de compte.",
-					"image": ""
+					"image": "__ASSET__:demo-map-2x.png"
 				}
 			]
 		},
@@ -173,60 +173,6 @@
 			"bonus_text": "BF Consult paramètre vos grilles de légalité avec vous et embarque vos premiers producteurs — pour que votre premier lot conforme sorte en jours, pas en mois."
 		},
 		{
-			"component": "pricing",
-			"eyebrow": "Tarifs",
-			"title": "Un plan par taille de chaîne d'approvisionnement",
-			"intro": "Commencez gratuitement, montez en gamme quand vos volumes suivent.",
-			"plans": [
-				{
-					"component": "pricing_plan",
-					"name": "Gratuit",
-					"price": "0 €",
-					"period": "mois",
-					"description": "Pour découvrir la plateforme.",
-					"features": "Parcelles et lots en volume limité\nAnalyse de déforestation WHISP\nLien public importateur",
-					"highlight": false,
-					"cta_label": "Créer un compte",
-					"cta_link": "#cta"
-				},
-				{
-					"component": "pricing_plan",
-					"name": "Plus",
-					"price": "29 €",
-					"period": "mois",
-					"description": "Pour les petites coopératives.",
-					"features": "Volumes étendus\nGrilles de légalité personnalisées\nSupport par email",
-					"highlight": false,
-					"cta_label": "Choisir Plus",
-					"cta_link": "#cta"
-				},
-				{
-					"component": "pricing_plan",
-					"name": "Pro",
-					"price": "99 €",
-					"period": "mois",
-					"description": "Pour les exportateurs actifs.",
-					"features": "Volumes professionnels\nMulti-utilisateurs\nSupport prioritaire",
-					"highlight": true,
-					"highlight_label": "Le plus choisi",
-					"cta_label": "Choisir Pro",
-					"cta_link": "#cta"
-				},
-				{
-					"component": "pricing_plan",
-					"name": "Max",
-					"price": "249 €",
-					"period": "mois",
-					"description": "Pour les chaînes à fort volume.",
-					"features": "Volumes illimités\nAccompagnement dédié\nSupport prioritaire",
-					"highlight": false,
-					"cta_label": "Choisir Max",
-					"cta_link": "#cta"
-				}
-			],
-			"note": "Sans engagement — changez de plan à tout moment via le portail de facturation."
-		},
-		{
 			"component": "guarantees",
 			"eyebrow": "Garanties",
 			"title": "Vos données, vos preuves, vos règles",
@@ -245,7 +191,7 @@
 				{
 					"component": "guarantee_item",
 					"title": "Sans engagement",
-					"text": "Plans mensuels, changement ou annulation en un clic depuis le portail de facturation."
+					"text": "Une démo, puis un pilote sur vos données réelles. Vous arrêtez quand vous voulez — vos données restent exportables à tout moment."
 				}
 			]
 		},
@@ -289,10 +235,16 @@
 		},
 		{
 			"component": "cta_final",
+			"flag": "Démo live · 30 min · sans engagement",
 			"title": "Votre prochain lot peut entrer en Europe l'esprit tranquille",
-			"subtitle": "Montrez-nous votre chaîne d'approvisionnement — on vous montre la diligence raisonnée qui va avec.",
+			"subtitle": "Montrez-nous votre chaîne d'approvisionnement — on vous montre la diligence raisonnée qui va avec, sur vos filières et vos pays.",
+			"bullets": "Une démo sur des cas réels : vos produits, vos pays d'origine\nLa vue importateur en direct — décision, carte, niveaux de risque\nUn pilote possible dès la semaine suivante",
 			"cta_label": "Demander une démo",
-			"cta_link": "mailto:info@bfconsult.be?subject=D%C3%A9mo%20ClearOrigin",
+			"cta_link": "mailto:info@bfconsult.be?subject=D%C3%A9mo%20ClearOrigin&body=Bonjour%2C%0D%0A%0D%0AJe%20souhaite%20une%20d%C3%A9mo%20de%20ClearOrigin.%0D%0A%0D%0AEntreprise%20%3A%20%0D%0AR%C3%B4le%20(exportateur%2C%20coop%C3%A9rative%2C%20importateur)%20%3A%20%0D%0AMati%C3%A8res%20premi%C3%A8res%20%3A%20%0D%0APays%20d%27origine%20%3A%20",
+			"secondary_label": "Explorer la vue importateur — sans compte",
+			"secondary_link": "https://clear-origin-demo-bcdbhjdpasbadmht.belgiumcentral-01.azurewebsites.net/webApp/lots/public/01a014f9-6589-73e4-97ab-1f24100e194c",
+			"image": "__ASSET__:demo-map-2x.png",
+			"image_caption": "Traçabilité complète — Côte d'Ivoire → Europe · risque faible",
 			"note": "Réponse sous 48 h — BF Consult"
 		}
 	]

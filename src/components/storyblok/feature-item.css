@@ -8,13 +8,32 @@
 .feature__media {
 	border-bottom: 1px solid var(--line);
 	background: var(--mist);
+	height: 240px;
+	overflow: hidden;
 }
 
 .feature__media img {
+	display: block;
 	width: 100%;
-	aspect-ratio: 16 / 10;
+	height: 100%;
 	object-fit: cover;
 	object-position: top;
+}
+
+/* Screenshots téléphone (portrait) : jamais d'upscale au-delà du 390 natif */
+.feature__media--phone {
+	display: flex;
+	justify-content: center;
+	padding: 22px 22px 0;
+}
+
+.feature__media--phone img {
+	width: min(100%, 280px);
+	height: auto;
+	border-radius: 14px 14px 0 0;
+	border: 1px solid var(--line);
+	border-bottom: none;
+	box-shadow: var(--shadow-card);
 }
 
 .feature__body {

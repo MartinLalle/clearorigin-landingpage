@@ -12,8 +12,8 @@
 			"cta_link": "#cta",
 			"cta_secondary_label": "See how it works",
 			"cta_secondary_link": "#how",
-			"image": "__ASSET__:pwa-parcels.png",
-			"image_caption": "Geolocated plot on satellite imagery — 4.54 ha · producer PWA"
+			"image": "__ASSET__:demo-importer-2x.png",
+			"image_caption": "Importer view — decision, traceability, deforestation risk"
 		},
 		{
 			"component": "benefits",
@@ -75,7 +75,7 @@
 					"component": "step_item",
 					"title": "Share the proof with the importer",
 					"text": "A public link and a QR code give your European client the full picture: map, supply chain, documents, risk level. No account needed.",
-					"image": ""
+					"image": "__ASSET__:demo-map-2x.png"
 				}
 			]
 		},
@@ -173,60 +173,6 @@
 			"bonus_text": "BF Consult sets up your legality grids with you and onboards your first producers — so your first compliant batch ships in days, not months."
 		},
 		{
-			"component": "pricing",
-			"eyebrow": "Pricing",
-			"title": "A plan for every supply chain size",
-			"intro": "Start for free, upgrade as your volumes grow.",
-			"plans": [
-				{
-					"component": "pricing_plan",
-					"name": "Free",
-					"price": "0 €",
-					"period": "month",
-					"description": "To discover the platform.",
-					"features": "Limited volume of plots and batches\nWHISP deforestation analysis\nPublic importer link",
-					"highlight": false,
-					"cta_label": "Create an account",
-					"cta_link": "#cta"
-				},
-				{
-					"component": "pricing_plan",
-					"name": "Plus",
-					"price": "29 €",
-					"period": "month",
-					"description": "For small cooperatives.",
-					"features": "Extended volumes\nCustom legality grids\nEmail support",
-					"highlight": false,
-					"cta_label": "Choose Plus",
-					"cta_link": "#cta"
-				},
-				{
-					"component": "pricing_plan",
-					"name": "Pro",
-					"price": "99 €",
-					"period": "month",
-					"description": "For active exporters.",
-					"features": "Professional volumes\nMulti-user\nPriority support",
-					"highlight": true,
-					"highlight_label": "Most popular",
-					"cta_label": "Choose Pro",
-					"cta_link": "#cta"
-				},
-				{
-					"component": "pricing_plan",
-					"name": "Max",
-					"price": "249 €",
-					"period": "month",
-					"description": "For high-volume chains.",
-					"features": "Unlimited volumes\nDedicated guidance\nPriority support",
-					"highlight": false,
-					"cta_label": "Choose Max",
-					"cta_link": "#cta"
-				}
-			],
-			"note": "No commitment — switch plans anytime from the billing portal."
-		},
-		{
 			"component": "guarantees",
 			"eyebrow": "Guarantees",
 			"title": "Your data, your proof, your rules",
@@ -245,7 +191,7 @@
 				{
 					"component": "guarantee_item",
 					"title": "No commitment",
-					"text": "Monthly plans — switch or cancel in one click from the billing portal."
+					"text": "A demo, then a pilot on your real data. Stop whenever you want — your data stays exportable at any time."
 				}
 			]
 		},
@@ -289,10 +235,16 @@
 		},
 		{
 			"component": "cta_final",
+			"flag": "Live demo · 30 min · no commitment",
 			"title": "Your next batch can enter Europe with peace of mind",
-			"subtitle": "Show us your supply chain — we'll show you the due diligence to match.",
+			"subtitle": "Show us your supply chain — we'll show you the due diligence to match, for your commodities and your countries.",
+			"bullets": "A demo built on real cases: your products, your countries of origin\nThe importer view, live — decision, map, risk levels\nA pilot possible as early as the following week",
 			"cta_label": "Request a demo",
-			"cta_link": "mailto:info@bfconsult.be?subject=ClearOrigin%20demo",
+			"cta_link": "mailto:info@bfconsult.be?subject=ClearOrigin%20demo&body=Hello%2C%0D%0A%0D%0AI%27d%20like%20a%20demo%20of%20ClearOrigin.%0D%0A%0D%0ACompany%3A%20%0D%0ARole%20(exporter%2C%20cooperative%2C%20importer)%3A%20%0D%0ACommodities%3A%20%0D%0ACountries%20of%20origin%3A%20",
+			"secondary_label": "Explore the importer view — no account needed",
+			"secondary_link": "https://clear-origin-demo-bcdbhjdpasbadmht.belgiumcentral-01.azurewebsites.net/webApp/lots/public/01a014f9-6589-73e4-97ab-1f24100e194c",
+			"image": "__ASSET__:demo-map-2x.png",
+			"image_caption": "Full traceability — Côte d'Ivoire → Europe · low risk",
 			"note": "Reply within 48 hours — BF Consult"
 		}
 	]

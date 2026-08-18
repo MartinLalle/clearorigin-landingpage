@@ -12,8 +12,6 @@ import SocialProof from '@/components/storyblok/SocialProof';
 import Testimonial from '@/components/storyblok/Testimonial';
 import Offer from '@/components/storyblok/Offer';
 import OfferItem from '@/components/storyblok/OfferItem';
-import Pricing from '@/components/storyblok/Pricing';
-import PricingPlan from '@/components/storyblok/PricingPlan';
 import Guarantees from '@/components/storyblok/Guarantees';
 import GuaranteeItem from '@/components/storyblok/GuaranteeItem';
 import Faq from '@/components/storyblok/Faq';
@@ -42,8 +40,6 @@ export const getStoryblokApi = storyblokInit({
 		testimonial: Testimonial,
 		offer: Offer,
 		offer_item: OfferItem,
-		pricing: Pricing,
-		pricing_plan: PricingPlan,
 		guarantees: Guarantees,
 		guarantee_item: GuaranteeItem,
 		faq: Faq,

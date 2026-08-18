@@ -27,7 +27,7 @@ export const CHROME: Record<
 		legal: 'Todos los derechos reservados',
 	},
 	pt: {
-		cta: 'Pedir uma demo',
+		cta: 'Solicitar uma demo',
 		developedBy: 'Uma solução por',
 		legal: 'Todos os direitos reservados',
 	},

@@ -58,7 +58,29 @@
 }
 
 @media (max-width: 720px) {
+	.site-header__inner {
+		gap: 10px;
+	}
+
+	.site-header__brand img {
+		height: 21px;
+	}
+
+	.site-header__nav {
+		gap: 8px;
+	}
+
 	.site-header__cta {
-		display: none;
+		padding: 8px 12px;
+		font-size: 0.78rem;
+		white-space: nowrap;
+	}
+
+	.lang-switch {
+		gap: 0;
+	}
+
+	.lang-switch a {
+		padding: 4px 5px;
 	}
 }
