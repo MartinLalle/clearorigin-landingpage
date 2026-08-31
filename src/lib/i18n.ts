@@ -38,3 +38,14 @@ export function resolveLang(segments?: string[]): LangCode {
 	const code = segments?.[0];
 	return code === 'en' || code === 'es' || code === 'pt' ? code : 'fr';
 }
+
+// `resolveLang` retombe sur `fr` pour n'importe quel segment. En rendu
+// dynamique, `dynamicParams = false` ne garantit plus le 404 : sans ce garde,
+// /nimportequoi/ servirait la page FR en 200 (contenu dupliqué à l'infini).
+export function isKnownLangPath(segments?: string[]): boolean {
+	if (!segments || segments.length === 0) return true; // '/' → fr
+	return (
+		segments.length === 1 &&
+		(segments[0] === 'en' || segments[0] === 'es' || segments[0] === 'pt')
+	);
+}

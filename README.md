@@ -55,70 +55,42 @@ Les screenshots de l'app vont dans `screenshots/` (non versionné) ; le contenu 
 
 ## Déploiement
 
-`npm run build` prérend les 4 routes en statique (fetch de la story **publiée**). Aucune publication Storyblok ne nécessite de redéploiement :
+La page est en **rendu dynamique** (`export const dynamic = 'force-dynamic'` dans `page.tsx`) : chaque requête relit Storyblok. Une publication est donc visible **au rechargement suivant**, sans redéploiement, sans purge à déclencher, et sans délai.
 
-- **Instantané — webhook** : Storyblok appelle `POST /api/revalidate/?secret=...` à chaque publication, ce qui purge le tag de cache `storyblok` et les 4 routes prérendues. La page suivante servie est régénérée avec le contenu à jour.
-- **Filet de sécurité — ISR** : la page porte `revalidate = 60` et le fetch de la story `STORYBLOK_CACHE_TTL = 15`. Si le webhook échoue, la publication remonte quand même au plus tard 1 minute après.
+### Pourquoi pas d'ISR
 
-### Configurer le webhook (une fois)
+Le projet est passé par l'ISR (`revalidate` + purge à la demande via webhook) et ça n'a pas tenu : en production, l'entrée prérendue de `/` finissait par se figer — elle n'était plus régénérée alors que `/en/`, `/es/` et `/pt/` tournaient normalement, et alors que la donnée fraîche était bien disponible côté serveur (`revalidateTag` et `revalidatePath` répondaient sans effet). Le rendu dynamique supprime la classe entière de problème : il n'y a plus aucune entrée susceptible de rester coincée.
 
-1. Générer un secret : `openssl rand -hex 20`.
-2. L'ajouter dans Vercel → Settings → Environment Variables, sous le nom `STORYBLOK_REVALIDATE_SECRET` (Production + Preview), puis redéployer une dernière fois.
-3. Dans Storyblok → **Settings → Webhooks → New webhook** :
-   - Endpoint : `https://<domaine-de-prod>/api/revalidate/?secret=<le-secret>` (garder le `/` final, le projet est en `trailingSlash: true`)
-   - Triggers : `story.published`, `story.unpublished`, `story.deleted`
-4. Vérifier : publier la story `home`, recharger la page en navigation privée. Un appel manuel fonctionne aussi :
+Le prix : une requête à l'API Storyblok par affichage de page, et un TTFB un peu plus élevé. Acceptable pour une landing page. Si le volume l'exige un jour, la bonne étape suivante est un cache CDN court et explicite (`s-maxage`) — **pas** un retour à l'ISR sans avoir compris le blocage ci-dessus.
 
-```bash
-curl -X POST "https://<domaine-de-prod>/api/revalidate/?secret=<le-secret>"
-# {"revalidated":true,"now":...}
-```
+### Le webhook Storyblok
 
-### Diagnostiquer quand une publication ne remonte pas
+Il n'est plus nécessaire au fonctionnement, mais l'endpoint `POST /api/revalidate/?secret=...` est conservé : il répond `200` (Storyblok désactive un webhook qui échoue en boucle) et il porte le mode diagnostic.
 
-La route est auto-diagnosticable : un seul appel dit où ça coince.
+Configuration, si le webhook doit être (re)créé :
 
-```bash
-curl -i "https://<domaine-de-prod>/api/revalidate/?secret=<le-secret>"
-```
+1. Générer un secret : `openssl rand -hex 20` — **hexadécimal**, pour éviter les caractères (`!`, `^`, `*`) qui cassent dans une URL ou un shell.
+2. Vercel → Settings → Environment Variables → `STORYBLOK_REVALIDATE_SECRET` (Production + Preview), puis redéployer.
+3. Storyblok → Settings → Webhooks : endpoint `https://<domaine>/api/revalidate/?secret=<le-secret>`, triggers `story.published` / `story.unpublished` / `story.deleted`.
 
-| Réponse | Cause | Correctif |
-| --- | --- | --- |
-| `200 {"revalidated":true}` | La route marche. Le problème est en amont : le webhook Storyblok. | Storyblok → Settings → Webhooks : vérifier qu'il est encore `activated` (Storyblok le désactive après des échecs répétés) et lire le log de livraison. |
-| `401 {"reason":"Secret fourni mais différent..."}` | Le secret du webhook ≠ celui de Vercel. | Réaligner les deux. |
-| `503 {"reason":"STORYBLOK_REVALIDATE_SECRET absent..."}` | La variable n'existe pas dans cet environnement Vercel. | L'ajouter en **Production**, puis redéployer (une variable n'est prise en compte qu'au déploiement suivant). |
-| `308 Permanent Redirect` | Le `/` final manque dans l'URL. | Voir ci-dessous. |
-
-**Piège n°1 — le `/` final.** Le projet est en `trailingSlash: true`. `POST /api/revalidate?secret=...` renvoie un **308** vers `/api/revalidate/?secret=...`, et un émetteur de webhook ne suit pas forcément une redirection en POST : la purge n'a alors jamais lieu, sans erreur visible. L'URL du webhook doit être `…/api/revalidate/?secret=…`.
-
-**Piège n°2 — ISR vs webhook.** Si le webhook ne part pas, la page remonte quand même, mais en 1 min et en *stale-while-revalidate* : le premier rechargement après expiration sert encore l'ancienne version et déclenche la régénération en tâche de fond ; c'est le **deuxième** rechargement qui montre le nouveau contenu. D'où l'impression que « ça marche une fois sur deux ».
-
-**Piège n°3 — le TTL n'est qu'un repli, la purge est le vrai mécanisme.** Contrairement à ce qu'on pourrait croire, il n'y a pas deux fenêtres de cache indépendantes : **Next prend le MINIMUM** entre `STORYBLOK_CACHE_TTL` (`lib/getLandingStory.ts`) et le `revalidate` de `page.tsx`. Vérifiable dans `.next/prerender-manifest.json` :
-
-```
-$ node -e "const m=require('./.next/prerender-manifest.json');   for(const [k,v] of Object.entries(m.routes)) console.log(k, v.initialRevalidateSeconds)"
-/    15        # page.tsx dit 60, le fetch dit 15 → c'est 15 qui gagne
-/en  15
-```
-
-Ne comptez donc pas sur un « écart » entre les deux valeurs pour garantir la fraîcheur. Le mécanisme fiable est la **purge à la demande** par le webhook, qui invalide explicitement les deux couches.
-
-**Piège n°4 — purger le motif de route ne purge pas la racine.** `revalidatePath` construit le tag `_N_T_` + le chemin (voir `next/dist/server/web/spec-extension/revalidate.js`). Un appel sur le motif `'/[[...lang]]'` produit `_N_T_/[[...lang]]/page`, que l'entrée prérendue de `/` ne porte pas — elle porte `_N_T_/` (et `_N_T_/index`, cas spécial dans la source). Il faut donc purger les **chemins littéraux** réellement prérendus :
-
-```ts
-for (const path of ['/', '/en', '/es', '/pt']) revalidatePath(path);
-```
-
-C'est ce que fait `PRERENDERED_PATHS` dans la route. Symptôme quand ça manque : `/en/`, `/es/` et `/pt/` se rafraîchissent, mais `/` reste bloquée.
+**Le `/` avant le `?` est obligatoire.** Le projet est en `trailingSlash: true` : sans lui, la requête reçoit un `308` que l'émetteur ne suit pas forcément en POST.
 
 ### Mode diagnostic
 
-Quand un doute persiste sur ce qui tourne réellement en prod, l'endpoint sait se décrire lui-même — sans rien purger :
+Quand un doute existe sur ce qui tourne réellement en prod, l'endpoint sait se décrire lui-même :
 
 ```bash
 curl -s "https://<domaine>/api/revalidate/?secret=<le-secret>&debug=1"
 ```
 
-Il renvoie le `commit` déployé (`VERCEL_GIT_COMMIT_SHA`), le `fetchTtl` réellement compilé, et surtout `live` vs `cached` : le `cta_label` lu directement chez Storyblok face à celui que sert le Data Cache. Si `dataCacheStale` est `true`, le Data Cache est le coupable — plus besoin de déduire quoi que ce soit depuis l'extérieur.
+Il renvoie le `commit` déployé (`VERCEL_GIT_COMMIT_SHA`), le `mode` de rendu, et surtout `live` vs `rendered` : le `cta_label` lu en contournant tout cache face à celui que renvoie le chemin de rendu normal. Si `mismatch` est `true`, un cache s'est réintroduit quelque part.
 
-Chaque appel est tracé dans **Vercel → Logs** (`[revalidate] ok` / `[revalidate] rejeté`) : c'est la preuve directe que Storyblok appelle bien, ou non.
+Sous PowerShell, `curl` est un alias d'`Invoke-WebRequest` qui ne connaît pas `-s` et tronque la sortie. Utiliser :
+
+```powershell
+(Invoke-RestMethod "https://<domaine>/api/revalidate/?secret=<le-secret>&debug=1").debug | ConvertTo-Json -Depth 5
+```
+
+### Piège de mesure
+
+`src/lib/i18n.ts` contient `cta: 'Demander une démo'` **en dur** pour le bouton du header et du footer. Un `grep "Demander une démo"` sur le HTML de prod matche donc cette chaîne, pas le `cta_label` venant de Storyblok. Pour vérifier qu'une publication est bien remontée, comparer avec la valeur **exacte** renvoyée par l'API Storyblok, pas avec un préfixe.

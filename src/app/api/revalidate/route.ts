@@ -1,28 +1,20 @@
-import { revalidatePath, revalidateTag } from 'next/cache';
 import type { NextRequest } from 'next/server';
 import { getStoryblokApi } from '@/lib/storyblok';
-import {
-	getLandingStory,
-	STORYBLOK_CACHE_TAG,
-	STORYBLOK_CACHE_TTL,
-} from '@/lib/getLandingStory';
+import { getLandingStory } from '@/lib/getLandingStory';
 
-// Webhook Storyblok (story.published / story.unpublished / story.deleted) :
+// Endpoint appelé par le webhook Storyblok :
 // POST https://<domaine>/api/revalidate/?secret=<STORYBLOK_REVALIDATE_SECRET>
 //
 // ⚠️ Le `/` final avant le `?` est OBLIGATOIRE : le projet est en
 // `trailingSlash: true`, donc `/api/revalidate?secret=...` renvoie un 308 que
-// l'émetteur du webhook ne suit pas forcément en POST — la purge n'a alors
-// jamais lieu, silencieusement.
+// l'émetteur du webhook ne suit pas forcément en POST.
 //
-// Diagnostic (ne purge rien) : GET /api/revalidate/?secret=...&debug=1
-
-// Chemins RÉELLEMENT prérendus (cf. generateStaticParams dans layout.tsx).
-// On purge les chemins littéraux et pas seulement le motif de route : Next
-// associe l'entrée prérendue au tag de son chemin réel (`_N_T_/`, avec un cas
-// spécial `_N_T_/index` pour la racine), pas à `_N_T_/[[...lang]]/page`. Purger
-// uniquement le motif laissait `/` intacte — c'était le bug.
-const PRERENDERED_PATHS = ['/', '/en', '/es', '/pt'];
+// Depuis le passage de la page en `force-dynamic`, il n'y a PLUS RIEN à purger :
+// chaque requête relit Storyblok. L'endpoint est conservé parce qu'il répond
+// 200 au webhook (Storyblok désactive un webhook qui échoue en boucle) et
+// surtout parce qu'il porte le mode diagnostic ci-dessous.
+//
+// Diagnostic : GET /api/revalidate/?secret=...&debug=1
 
 type AuthResult = { ok: true } | { ok: false; status: number; reason: string };
 
@@ -55,8 +47,9 @@ function authorize(request: NextRequest): AuthResult {
 	return { ok: true };
 }
 
-// Lit la story en contournant tous les caches, pour la comparer à ce que sert
-// le Data Cache. Si les deux diffèrent, le coupable est identifié sans deviner.
+// Lit la story en contournant explicitement tout cache, pour la comparer à ce
+// que renvoie le chemin de rendu normal. Si les deux diffèrent, un cache s'est
+// réintroduit quelque part.
 async function readLive() {
 	const { data } = await getStoryblokApi().get(
 		'cdn/stories/home',
@@ -67,7 +60,7 @@ async function readLive() {
 }
 
 async function debugReport() {
-	const [live, cached] = await Promise.all([
+	const [live, rendered] = await Promise.all([
 		readLive().catch((e) => ({ error: String(e) })),
 		getLandingStory('fr').catch((e) => ({ error: String(e) })),
 	]);
@@ -78,14 +71,13 @@ async function debugReport() {
 	return {
 		commit: process.env.VERCEL_GIT_COMMIT_SHA ?? null,
 		env: process.env.VERCEL_ENV ?? process.env.NODE_ENV,
-		fetchTtl: STORYBLOK_CACHE_TTL,
-		prerenderedPaths: PRERENDERED_PATHS,
+		mode: 'force-dynamic',
 		live: { cta_label: label(live), published_at: live?.published_at ?? null },
-		cached: {
-			cta_label: label(cached),
-			published_at: cached?.published_at ?? null,
+		rendered: {
+			cta_label: label(rendered),
+			published_at: rendered?.published_at ?? null,
 		},
-		dataCacheStale: label(live) !== label(cached),
+		mismatch: label(live) !== label(rendered),
 	};
 }
 
@@ -108,18 +100,9 @@ async function handle(request: NextRequest) {
 	if (request.nextUrl.searchParams.get('debug') === '1') {
 		const report = await debugReport();
 		console.log('[revalidate] debug', report);
-		return Response.json({ revalidated: false, debug: report });
+		return Response.json({ ok: true, debug: report });
 	}
 
-	// Purger les DEUX couches, dans cet ordre : le Data Cache du fetch d'abord,
-	// sinon une page régénérée relirait la story depuis le cache et serait
-	// reconstruite avec l'ancien contenu.
-	revalidateTag(STORYBLOK_CACHE_TAG, { expire: 0 });
-	for (const path of PRERENDERED_PATHS) revalidatePath(path);
-	// Filet : couvre le cas où l'entrée serait indexée sur le motif de route
-	revalidatePath('/[[...lang]]', 'page');
-
-	// Le payload Storyblok est informatif : la purge est globale de toute façon
 	let action: string | undefined;
 	try {
 		const body = await request.clone().json();
@@ -128,17 +111,16 @@ async function handle(request: NextRequest) {
 		// GET manuel, ou body vide : sans importance
 	}
 
-	console.log('[revalidate] ok', {
+	console.log('[revalidate] webhook reçu', {
 		action,
-		tag: STORYBLOK_CACHE_TAG,
-		paths: PRERENDERED_PATHS,
 		ua: request.headers.get('user-agent'),
 	});
 
 	return Response.json({
-		revalidated: true,
-		tag: STORYBLOK_CACHE_TAG,
-		paths: PRERENDERED_PATHS,
+		ok: true,
+		purgeRequired: false,
+		reason:
+			'La page est en rendu dynamique : chaque requête relit Storyblok, aucune purge nécessaire.',
 		action: action ?? null,
 		now: Date.now(),
 	});
@@ -148,7 +130,6 @@ export async function POST(request: NextRequest) {
 	return handle(request);
 }
 
-// Pratique pour déclencher/diagnostiquer une purge à la main (curl, navigateur)
 export async function GET(request: NextRequest) {
 	return handle(request);
 }
