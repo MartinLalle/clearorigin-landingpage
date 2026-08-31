@@ -3,8 +3,10 @@ import { StoryblokStory } from '@storyblok/react/rsc';
 import { getLandingStory } from '@/lib/getLandingStory';
 import { resolveLang } from '@/lib/i18n';
 
-// En prod, une publication Storyblok se reflète sans redéploiement
-export const revalidate = 300;
+// Repli si le webhook Storyblok ne part pas : la page se régénère au plus tard
+// après ce délai. Doit rester STRICTEMENT SUPÉRIEUR à STORYBLOK_CACHE_TTL
+// (cf. lib/getLandingStory.ts), sinon la page se régénère avec un fetch périmé.
+export const revalidate = 60;
 
 type PageProps = { params: Promise<{ lang?: string[] }> };
 
