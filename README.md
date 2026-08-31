@@ -55,4 +55,23 @@ Les screenshots de l'app vont dans `screenshots/` (non versionné) ; le contenu 
 
 ## Déploiement
 
-`npm run build` prérend les 4 routes en statique (fetch de la story **publiée**). La page porte `revalidate = 300` : sur un hébergeur supportant l'ISR (Vercel, Netlify), une publication Storyblok se reflète en prod au plus tard 5 minutes après, sans rebuild.
+`npm run build` prérend les 4 routes en statique (fetch de la story **publiée**). Aucune publication Storyblok ne nécessite de redéploiement :
+
+- **Instantané — webhook** : Storyblok appelle `POST /api/revalidate/?secret=...` à chaque publication, ce qui purge le tag de cache `storyblok` et les 4 routes prérendues. La page suivante servie est régénérée avec le contenu à jour.
+- **Filet de sécurité — ISR** : le fetch de la story et la page portent `revalidate = 300`. Si le webhook échoue, la publication remonte quand même au plus tard 5 minutes après.
+
+### Configurer le webhook (une fois)
+
+1. Générer un secret : `openssl rand -hex 20`.
+2. L'ajouter dans Vercel → Settings → Environment Variables, sous le nom `STORYBLOK_REVALIDATE_SECRET` (Production + Preview), puis redéployer une dernière fois.
+3. Dans Storyblok → **Settings → Webhooks → New webhook** :
+   - Endpoint : `https://<domaine-de-prod>/api/revalidate/?secret=<le-secret>` (garder le `/` final, le projet est en `trailingSlash: true`)
+   - Triggers : `story.published`, `story.unpublished`, `story.deleted`
+4. Vérifier : publier la story `home`, recharger la page en navigation privée. Un appel manuel fonctionne aussi :
+
+```bash
+curl -X POST "https://<domaine-de-prod>/api/revalidate/?secret=<le-secret>"
+# {"revalidated":true,"now":...}
+```
+
+Sans `STORYBLOK_REVALIDATE_SECRET` en environnement, la route répond `401` et seul l'ISR 5 minutes s'applique.
