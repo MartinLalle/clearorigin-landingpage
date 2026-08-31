@@ -74,4 +74,32 @@ curl -X POST "https://<domaine-de-prod>/api/revalidate/?secret=<le-secret>"
 # {"revalidated":true,"now":...}
 ```
 
-Sans `STORYBLOK_REVALIDATE_SECRET` en environnement, la route répond `401` et seul l'ISR 5 minutes s'applique.
+### Diagnostiquer quand une publication ne remonte pas
+
+La route est auto-diagnosticable : un seul appel dit où ça coince.
+
+```bash
+curl -i "https://<domaine-de-prod>/api/revalidate/?secret=<le-secret>"
+```
+
+| Réponse | Cause | Correctif |
+| --- | --- | --- |
+| `200 {"revalidated":true}` | La route marche. Le problème est en amont : le webhook Storyblok. | Storyblok → Settings → Webhooks : vérifier qu'il est encore `activated` (Storyblok le désactive après des échecs répétés) et lire le log de livraison. |
+| `401 {"reason":"Secret fourni mais différent..."}` | Le secret du webhook ≠ celui de Vercel. | Réaligner les deux. |
+| `503 {"reason":"STORYBLOK_REVALIDATE_SECRET absent..."}` | La variable n'existe pas dans cet environnement Vercel. | L'ajouter en **Production**, puis redéployer (une variable n'est prise en compte qu'au déploiement suivant). |
+| `308 Permanent Redirect` | Le `/` final manque dans l'URL. | Voir ci-dessous. |
+
+**Piège n°1 — le `/` final.** Le projet est en `trailingSlash: true`. `POST /api/revalidate?secret=...` renvoie un **308** vers `/api/revalidate/?secret=...`, et un émetteur de webhook ne suit pas forcément une redirection en POST : la purge n'a alors jamais lieu, sans erreur visible. L'URL du webhook doit être `…/api/revalidate/?secret=…`.
+
+**Piège n°2 — ISR vs webhook.** Si le webhook ne part pas, la page remonte quand même, mais en 5 min et en *stale-while-revalidate* : le premier rechargement après expiration sert encore l'ancienne version et déclenche la régénération en tâche de fond ; c'est le **deuxième** rechargement qui montre le nouveau contenu. D'où l'impression que « ça marche une fois sur deux ».
+
+**Piège n°3 — les deux caches empilés.** Il y en a deux : l'entrée ISR de la page (`revalidate = 300` dans `page.tsx`) et le Data Cache du fetch Storyblok (`STORYBLOK_CACHE_TTL` dans `lib/getLandingStory.ts`). S'ils ont le **même TTL**, ils expirent ensemble et la page peut se régénérer en relisant un fetch encore considéré comme frais : le HTML est reconstruit avec l'ancien contenu, `Age` repart à zéro, et la publication ne remonte jamais. Symptôme observé en prod :
+
+```
+age=304  cache=STALE   nouveau texte : non
+age=14   cache=HIT     nouveau texte : non   ← page régénérée, contenu périmé
+```
+
+D'où la règle : **`STORYBLOK_CACHE_TTL` (60) doit rester strictement inférieur au `revalidate` de la page (300)**, pour que le fetch soit toujours périmé au moment où la page se régénère. Et le webhook purge **les deux** couches, le tag avant la page.
+
+Chaque appel est tracé dans **Vercel → Logs** (`[revalidate] ok` / `[revalidate] rejeté`) : c'est la preuve directe que Storyblok appelle bien, ou non.
