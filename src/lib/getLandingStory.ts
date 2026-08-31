@@ -5,14 +5,17 @@ import { getStoryblokApi } from '@/lib/storyblok';
 // qui purge ce tag ET la page : la publication remonte en quelques secondes.
 export const STORYBLOK_CACHE_TAG = 'storyblok';
 
-// ⚠️ Doit rester STRICTEMENT INFÉRIEUR au `revalidate` exporté par page.tsx (60).
+// TTL du Data Cache du fetch Storyblok.
 //
-// Il y a deux caches empilés : celui de la page (ISR) et le Data Cache du fetch.
-// S'ils ont le même TTL, ils expirent en même temps et la page peut se régénérer
-// en relisant le fetch encore considéré comme frais — elle est alors reconstruite
-// avec l'ancien contenu, `Age` repart à zéro, et le contenu publié ne remonte
-// jamais. Avec un TTL plus court, le fetch est toujours périmé quand la page se
-// régénère, donc chaque régénération relit vraiment Storyblok.
+// ⚠️ Next NE garde PAS deux fenêtres distinctes : le `revalidate` effectif de la
+// route est le MINIMUM entre ce TTL et le `revalidate` exporté par page.tsx.
+// Vérifiable dans `.next/prerender-manifest.json` (`initialRevalidateSeconds`).
+// Avec 15 ici et 60 dans page.tsx, la route revalide donc toutes les 15 s.
+//
+// On le garde volontairement plus court que celui de la page pour que le Data
+// Cache ne soit jamais la couche périmée. Mais le mécanisme FIABLE reste la
+// purge à la demande par le webhook (/api/revalidate/) : ce TTL n'est qu'un
+// repli si le webhook ne part pas.
 export const STORYBLOK_CACHE_TTL = 15;
 
 // cache() : la story est fetchée une seule fois par requête (generateMetadata + page)

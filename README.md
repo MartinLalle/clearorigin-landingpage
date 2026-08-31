@@ -93,15 +93,32 @@ curl -i "https://<domaine-de-prod>/api/revalidate/?secret=<le-secret>"
 
 **Piège n°2 — ISR vs webhook.** Si le webhook ne part pas, la page remonte quand même, mais en 1 min et en *stale-while-revalidate* : le premier rechargement après expiration sert encore l'ancienne version et déclenche la régénération en tâche de fond ; c'est le **deuxième** rechargement qui montre le nouveau contenu. D'où l'impression que « ça marche une fois sur deux ».
 
-**Piège n°3 — les deux caches empilés.** Il y en a deux : l'entrée ISR de la page (`revalidate` dans `page.tsx`) et le Data Cache du fetch Storyblok (`STORYBLOK_CACHE_TTL` dans `lib/getLandingStory.ts`). S'ils ont le **même TTL**, ils expirent ensemble et la page peut se régénérer en relisant un fetch encore considéré comme frais : le HTML est reconstruit avec l'ancien contenu, `Age` repart à zéro, et la publication ne remonte jamais. Symptôme observé en prod :
+**Piège n°3 — le TTL n'est qu'un repli, la purge est le vrai mécanisme.** Contrairement à ce qu'on pourrait croire, il n'y a pas deux fenêtres de cache indépendantes : **Next prend le MINIMUM** entre `STORYBLOK_CACHE_TTL` (`lib/getLandingStory.ts`) et le `revalidate` de `page.tsx`. Vérifiable dans `.next/prerender-manifest.json` :
 
 ```
-age=304  cache=STALE   nouveau texte : non
-age=14   cache=HIT     nouveau texte : non   ← page régénérée, contenu périmé
+$ node -e "const m=require('./.next/prerender-manifest.json');   for(const [k,v] of Object.entries(m.routes)) console.log(k, v.initialRevalidateSeconds)"
+/    15        # page.tsx dit 60, le fetch dit 15 → c'est 15 qui gagne
+/en  15
 ```
 
-D'où la règle : **`STORYBLOK_CACHE_TTL` (15) doit rester strictement inférieur au `revalidate` de la page (60)**, pour que le fetch soit toujours périmé au moment où la page se régénère. Et le webhook purge **les deux** couches, le tag avant la page.
+Ne comptez donc pas sur un « écart » entre les deux valeurs pour garantir la fraîcheur. Le mécanisme fiable est la **purge à la demande** par le webhook, qui invalide explicitement les deux couches.
 
-Ne pas essayer de supprimer le cache du fetch pour régler ça : `cache: 'no-store'` casse le prérendu statique et le build refuse — `Route /[[...lang]] couldn't be rendered statically because it used revalidate: 0 fetch`.
+**Piège n°4 — purger le motif de route ne purge pas la racine.** `revalidatePath` construit le tag `_N_T_` + le chemin (voir `next/dist/server/web/spec-extension/revalidate.js`). Un appel sur le motif `'/[[...lang]]'` produit `_N_T_/[[...lang]]/page`, que l'entrée prérendue de `/` ne porte pas — elle porte `_N_T_/` (et `_N_T_/index`, cas spécial dans la source). Il faut donc purger les **chemins littéraux** réellement prérendus :
+
+```ts
+for (const path of ['/', '/en', '/es', '/pt']) revalidatePath(path);
+```
+
+C'est ce que fait `PRERENDERED_PATHS` dans la route. Symptôme quand ça manque : `/en/`, `/es/` et `/pt/` se rafraîchissent, mais `/` reste bloquée.
+
+### Mode diagnostic
+
+Quand un doute persiste sur ce qui tourne réellement en prod, l'endpoint sait se décrire lui-même — sans rien purger :
+
+```bash
+curl -s "https://<domaine>/api/revalidate/?secret=<le-secret>&debug=1"
+```
+
+Il renvoie le `commit` déployé (`VERCEL_GIT_COMMIT_SHA`), le `fetchTtl` réellement compilé, et surtout `live` vs `cached` : le `cta_label` lu directement chez Storyblok face à celui que sert le Data Cache. Si `dataCacheStale` est `true`, le Data Cache est le coupable — plus besoin de déduire quoi que ce soit depuis l'extérieur.
 
 Chaque appel est tracé dans **Vercel → Logs** (`[revalidate] ok` / `[revalidate] rejeté`) : c'est la preuve directe que Storyblok appelle bien, ou non.
