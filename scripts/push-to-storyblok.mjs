@@ -19,7 +19,17 @@ import os from 'node:os';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const SPACE_ID = process.env.STORYBLOK_SPACE_ID || '294620695570259';
+
+// Charge .env (les scripts Node ne passent pas par le loader d'env de Next)
+loadDotEnv(path.join(ROOT, '.env'));
+
+const SPACE_ID = process.env.STORYBLOK_SPACE_ID;
+if (!SPACE_ID) {
+	console.error(
+		'STORYBLOK_SPACE_ID manquant. Ajoute-le dans .env (Storyblok > Settings > General > Space ID).'
+	);
+	process.exit(1);
+}
 const MAPI = 'https://mapi.storyblok.com/v1';
 const PREVIEW_URL = 'https://localhost:3000/';
 const SCREENSHOTS_DIR = process.env.SCREENSHOTS_DIR || path.join(ROOT, 'screenshots');
@@ -28,6 +38,19 @@ const LANGS = [
 	{ code: 'es', name: 'Español' },
 	{ code: 'pt', name: 'Português' },
 ];
+
+function loadDotEnv(file) {
+	if (!fs.existsSync(file)) return;
+	for (const line of fs.readFileSync(file, 'utf8').split(/\r?\n/)) {
+		const trimmed = line.trim();
+		if (!trimmed || trimmed.startsWith('#')) continue;
+		const eq = trimmed.indexOf('=');
+		if (eq === -1) continue;
+		const key = trimmed.slice(0, eq).trim();
+		if (process.env[key] !== undefined) continue; // l'env réel gagne
+		process.env[key] = trimmed.slice(eq + 1).trim().replace(/^['"]|['"]$/g, '');
+	}
+}
 
 const args = new Set(process.argv.slice(2));
 const skipAssets = args.has('--skip-assets');
