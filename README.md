@@ -57,11 +57,33 @@ Les screenshots de l'app vont dans `screenshots/` (non versionné) ; le contenu 
 
 La page est en **rendu dynamique** (`export const dynamic = 'force-dynamic'` dans `page.tsx`) : chaque requête relit Storyblok. Une publication est donc visible **au rechargement suivant**, sans redéploiement, sans purge à déclencher, et sans délai.
 
-### Pourquoi pas d'ISR
+### La cause racine du contenu figé (à ne jamais réintroduire)
 
-Le projet est passé par l'ISR (`revalidate` + purge à la demande via webhook) et ça n'a pas tenu : en production, l'entrée prérendue de `/` finissait par se figer — elle n'était plus régénérée alors que `/en/`, `/es/` et `/pt/` tournaient normalement, et alors que la donnée fraîche était bien disponible côté serveur (`revalidateTag` et `revalidatePath` répondaient sans effet). Le rendu dynamique supprime la classe entière de problème : il n'y a plus aucune entrée susceptible de rester coincée.
+Pendant longtemps, une publication ne remontait pas en prod et seul un redéploiement Vercel « réparait ». Ce n'était **aucun cache Next**. C'était `storyblok-js-client` :
 
-Le prix : une requête à l'API Storyblok par affichage de page, et un TTFB un peu plus élevé. Acceptable pour une landing page. Si le volume l'exige un jour, la bonne étape suivante est un cache CDN court et explicite (`s-maxage`) — **pas** un retour à l'ISR sans avoir compris le blocage ci-dessus.
+```js
+// storyblok-js-client/dist/index.mjs
+this.cvMode = config.cache?.cv ?? 'auto';                                   // 542
+if (!params.cv && this.cvMode === 'auto') params.cv = cacheVersions[params.token]; // 558
+```
+
+`cacheVersions` est un objet **au niveau du module**, donc partagé par toutes les requêtes d'une même instance serveur. Dès sa première réponse, l'instance mémorise le `cv` (content version) et le réattache à chaque appel suivant : Storyblok lui sert alors éternellement le snapshot de cette version. Le flush n'a lieu qu'avec `clear: 'auto'`, alors que le défaut est `'manual'` — donc jamais.
+
+Le symptôme signait le diagnostic : sur **24 requêtes parallèles, 18 servaient le nouveau contenu et 6 l'ancien**, selon l'instance touchée. Et un redéploiement « corrigeait » le problème simplement en repartant d'instances neuves.
+
+Le correctif est dans `src/lib/storyblok.ts` :
+
+```ts
+apiOptions: {
+	cache: { type: 'none', clear: 'auto', cv: 'manual' },
+}
+```
+
+`cv: 'manual'` est explicitement recommandé par le type `ISbCache` pour « le SSR avec cache edge, où des URLs stables sont requises ». **Ne pas retirer ce bloc.**
+
+### Pourquoi le rendu dynamique
+
+L'ISR a été retiré pendant la recherche de la cause ci-dessus. Maintenant qu'elle est connue et corrigée, il redeviendrait viable — mais le rendu dynamique est conservé pour sa simplicité : aucune couche de cache, donc rien qui puisse diverger. Si le volume l'exige un jour, la bonne étape suivante est un cache CDN court et explicite (`s-maxage`), en gardant le correctif `cv: 'manual'`.
 
 ### Le webhook Storyblok
 
