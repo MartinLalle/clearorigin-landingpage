@@ -16,7 +16,7 @@ export default function SiteFooter({ lang }: { lang: LangCode }) {
 					className="site-footer__logo"
 				/>
 				<p className="site-footer__by">
-					{chrome.developedBy} <strong>BF Consult</strong>
+					{chrome.developedBy} <strong>BFConsult</strong>
 				</p>
 				<p className="geo-tag">
 					© {currentYear} — {chrome.legal}

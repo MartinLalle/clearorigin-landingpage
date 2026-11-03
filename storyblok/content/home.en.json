@@ -57,7 +57,7 @@
 					"component": "step_item",
 					"title": "Geolocate the plots",
 					"text": "The producer draws their plots on a satellite basemap from their phone — or the cooperative does it for them.",
-					"image": "__ASSET__:pwa-home.png"
+					"image": "__ASSET__:pwa-parcel-draw.png"
 				},
 				{
 					"component": "step_item",
@@ -90,7 +90,7 @@
 					"tag": "PWA · producers",
 					"title": "The mobile app built for the field",
 					"text": "Draw plots on satellite imagery, photograph documents, create batches — from any smartphone.",
-					"image": "__ASSET__:pwa-parcel-draw.png"
+					"image": "__ASSET__:pwa-parcels.png"
 				},
 				{
 					"component": "feature_item",
@@ -102,8 +102,8 @@
 				{
 					"component": "feature_item",
 					"tag": "webApp · cooperatives & exporters",
-					"title": "Manage suppliers, purchases and sales",
-					"text": "Supplier invitations, upstream-downstream links, purchase and sales tracking — your whole chain in one interface.",
+					"title": "Manage your whole chain from a single interface",
+					"text": "Supplier invitations, upstream-downstream links, purchase and sales tracking.",
 					"image": "__ASSET__:webapp-suppliers.png"
 				}
 			]
@@ -112,7 +112,7 @@
 			"component": "social_proof",
 			"eyebrow": "Proof",
 			"title": "Built on international standards",
-			"intro": "ClearOrigin doesn't reinvent verification: it relies on the industry's reference tools.",
+			"intro": "ClearOrigin doesn't reinvent verification: it relies on your industry's reference tools.",
 			"stats": [
 				{
 					"component": "stat_item",
@@ -170,7 +170,7 @@
 				}
 			],
 			"bonus_title": "Onboarding support",
-			"bonus_text": "BF Consult sets up your legality grids with you and onboards your first producers — so your first compliant batch ships in days, not months."
+			"bonus_text": "BFConsult sets up your legality grids with you and onboards your first producers — so your first compliant batch ships in days, not months."
 		},
 		{
 			"component": "guarantees",
@@ -198,7 +198,7 @@
 		{
 			"component": "faq",
 			"eyebrow": "FAQ",
-			"title": "The questions we get asked",
+			"title": "Frequently asked questions",
 			"intro": "",
 			"items": [
 				{
@@ -245,7 +245,7 @@
 			"secondary_link": "https://clear-origin-demo-bcdbhjdpasbadmht.belgiumcentral-01.azurewebsites.net/webApp/lots/public/01a014f9-6589-73e4-97ab-1f24100e194c",
 			"image": "__ASSET__:demo-map-2x.png",
 			"image_caption": "Full traceability — Côte d'Ivoire → Europe · low risk",
-			"note": "Reply within 48 hours — BF Consult"
+			"note": "Reply within 48 hours — BFConsult"
 		}
 	]
 }

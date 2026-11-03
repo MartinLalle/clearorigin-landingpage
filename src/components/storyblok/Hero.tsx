@@ -65,10 +65,10 @@ export default function Hero({ blok }: { blok: HeroBlok }) {
 								<i />
 							</div>
 							<img
-								src={sbSrc(blok.image.filename, 1104)}
-								srcSet={sbSrcSet(blok.image.filename, [640, 1104, 1600])}
+								src={sbSrc(blok.image, 1104)}
+								srcSet={sbSrcSet(blok.image, [640, 1104, 1600])}
 								sizes="(max-width: 900px) 100vw, 552px"
-								{...sbDims(blok.image.filename)}
+								{...sbDims(blok.image)}
 								alt={blok.image.alt || blok.image_alt || ''}
 								loading="eager"
 								fetchPriority="high"

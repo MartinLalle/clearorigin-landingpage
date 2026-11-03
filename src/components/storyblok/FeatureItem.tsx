@@ -12,7 +12,7 @@ type FeatureItemBlok = Blok<{
 }>;
 
 export default function FeatureItem({ blok }: { blok: FeatureItemBlok }) {
-	const dims = blok.image?.filename ? sbDims(blok.image.filename) : undefined;
+	const dims = blok.image?.filename ? sbDims(blok.image) : undefined;
 	const isPortrait = !!dims && dims.height > dims.width;
 
 	return (
@@ -26,7 +26,7 @@ export default function FeatureItem({ blok }: { blok: FeatureItemBlok }) {
 					}
 				>
 					<img
-						src={sbSrc(blok.image.filename, isPortrait ? 390 : 800)}
+						src={sbSrc(blok.image, isPortrait ? 390 : 800)}
 						{...dims}
 						alt={blok.image.alt || blok.image_alt || ''}
 						loading="lazy"

@@ -79,10 +79,10 @@ export default function CtaFinal({ blok }: { blok: CtaFinalBlok }) {
 				{blok.image?.filename && (
 					<figure className="cta-final__proof reveal">
 						<img
-							src={sbSrc(blok.image.filename, 1000)}
-							srcSet={sbSrcSet(blok.image.filename, [640, 1000, 1440])}
+							src={sbSrc(blok.image, 1000)}
+							srcSet={sbSrcSet(blok.image, [640, 1000, 1440])}
 							sizes="(max-width: 900px) 100vw, 520px"
-							{...sbDims(blok.image.filename)}
+							{...sbDims(blok.image)}
 							alt={blok.image.alt || ''}
 							loading="lazy"
 						/>

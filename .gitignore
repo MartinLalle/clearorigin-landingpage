@@ -17,4 +17,4 @@ npm-debug.log*
 # Certificats HTTPS dev (next dev --experimental-https)
 *.pem
 certificates/
-screenshots/
+/screenshots/

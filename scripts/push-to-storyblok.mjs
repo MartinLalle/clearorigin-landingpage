@@ -2,7 +2,7 @@
  * Pousse tout vers le space Storyblok via la Management API :
  *   1. Langues du space (en, es, pt — fr = langue par défaut)
  *   2. Composants (storyblok/components.json)
- *   3. Assets (screenshots/ — placeholders __ASSET__:<nom> dans le contenu)
+ *   3. Assets (src/content/screenshots/ — placeholders __ASSET__:<nom> dans le contenu)
  *   4. Story `home` (contenu FR + traductions field-level __i18n__)
  *   5. URL de preview du Visual Editor
  *
@@ -32,7 +32,7 @@ if (!SPACE_ID) {
 }
 const MAPI = 'https://mapi.storyblok.com/v1';
 const PREVIEW_URL = 'https://localhost:3000/';
-const SCREENSHOTS_DIR = process.env.SCREENSHOTS_DIR || path.join(ROOT, 'screenshots');
+const SCREENSHOTS_DIR = process.env.SCREENSHOTS_DIR || path.join(ROOT, 'src', 'content', 'screenshots');
 const LANGS = [
 	{ code: 'en', name: 'English' },
 	{ code: 'es', name: 'Español' },

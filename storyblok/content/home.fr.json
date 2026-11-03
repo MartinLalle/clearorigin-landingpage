@@ -5,9 +5,9 @@
 	"body": [
 		{
 			"component": "hero",
-			"badge": "Règlement (UE) 2023/1115 — en vigueur depuis le 30 déc. 2025",
-			"headline": "Prouvez votre conformité EUDR, de la parcelle à l'importateur",
-			"subheadline": "ClearOrigin centralise géolocalisation des parcelles, documents de légalité et analyse de déforestation par satellite — pour que chaque lot de bois, café, cacao ou caoutchouc entre en Europe avec une diligence raisonnée complète.",
+			"badge": "Règlement (UE) 2023/1115 — en application à partir du 31 déc. 2026",
+			"headline": "Démontrez votre conformité EUDR, de la parcelle à l'importateur",
+			"subheadline": "ClearOrigin centralise géolocalisation des parcelles, documents de légalité et analyse de déforestation par satellite, pour que vos produits entrent sur le marché de l'Union européenne avec une diligence raisonnée complète.",
 			"cta_label": "Demander une démo",
 			"cta_link": "#cta",
 			"cta_secondary_label": "Voir comment ça marche",
@@ -19,7 +19,7 @@
 			"component": "benefits",
 			"eyebrow": "Pourquoi",
 			"title": "La diligence raisonnée ne devrait pas être un métier à plein temps",
-			"intro": "Depuis le 30 décembre 2025, chaque lot importé dans l'UE doit prouver qu'il ne provient pas d'une terre déboisée. Sans outil dédié, ce sont des tableurs, des scans perdus et des semaines de retard à chaque expédition.",
+			"intro": "A partir du 31 décembre 2026, chaque lot importé dans l'UE doit prouver qu'il ne provient pas d'une terre déboisée. Sans outil dédié, ce sont des tableurs, des scans perdus et des semaines de retard à chaque expédition.",
 			"items": [
 				{
 					"component": "benefit_item",
@@ -30,34 +30,34 @@
 				{
 					"component": "benefit_item",
 					"icon": "satellite",
-					"title": "L'analyse de déforestation en automatique",
+					"title": "Une analyse de la déforestation automatisée",
 					"text": "À chaque création de lot, l'outil WHISP de la FAO évalue le risque de déforestation de chaque parcelle. Résultat normalisé : Low, Medium, High."
 				},
 				{
 					"component": "benefit_item",
 					"icon": "file-check",
 					"title": "Une charge documentaire divisée",
-					"text": "Les grilles de légalité par pays et par produit vous disent exactement quels documents collecter — et leur statut en un coup d'œil."
+					"text": "Les grilles de légalité par pays et par produit vous disent exactement quels documents collecter ainsi que leur validité en un coup d'œil."
 				},
 				{
 					"component": "benefit_item",
 					"icon": "share",
 					"title": "Une chaîne sans maillon manquant",
-					"text": "Producteurs sans smartphone ? Votre coopérative les représente dans l'outil. La traçabilité reste complète, du champ au port."
+					"text": "Producteurs sans smartphone ? Votre coopérative les représente dans l'outil. La traçabilité reste complète, du champ jusqu'au port."
 				}
 			]
 		},
 		{
 			"component": "steps",
 			"eyebrow": "Comment",
-			"title": "Quatre étapes, une preuve irréfutable",
+			"title": "Quatre étapes, une preuve indiscutable",
 			"intro": "",
 			"items": [
 				{
 					"component": "step_item",
 					"title": "Géolocalisez les parcelles",
-					"text": "Le producteur dessine ses parcelles sur fond satellite depuis son téléphone — ou la coopérative le fait pour lui.",
-					"image": "__ASSET__:pwa-home.png"
+					"text": "Le producteur dessine ses parcelles sur fond satellite depuis son téléphone ou la coopérative le fait pour lui.",
+					"image": "__ASSET__:pwa-parcel-draw.png"
 				},
 				{
 					"component": "step_item",
@@ -74,7 +74,7 @@
 				{
 					"component": "step_item",
 					"title": "Partagez la preuve à l'importateur",
-					"text": "Un lien public et un QR code donnent à votre client européen la vue complète : carte, chaîne d'approvisionnement, documents, niveau de risque. Sans créer de compte.",
+					"text": "Un lien public et un QR code donnent à votre client européen la vue complète : carte, chaîne d'approvisionnement, documents, niveau de risque, et ce, sans besoin de créer de compte !",
 					"image": "__ASSET__:demo-map-2x.png"
 				}
 			]
@@ -82,15 +82,15 @@
 		{
 			"component": "features_grid",
 			"eyebrow": "La plateforme",
-			"title": "Une webApp pour le bureau, une app mobile pour le terrain",
-			"intro": "Chaque acteur de la chaîne a son interface — dans sa langue.",
+			"title": "Une webApp pour le bureau, une application mobile pour le terrain",
+			"intro": "Chaque acteur de la chaîne peut accéder à son interface, disponible dans sa langue.",
 			"items": [
 				{
 					"component": "feature_item",
 					"tag": "PWA · producteurs",
-					"title": "L'app mobile pensée pour le terrain",
+					"title": "L'application mobile pensée pour le terrain",
 					"text": "Dessin de parcelle sur fond satellite, photo des documents, création de lots — depuis n’importe quel smartphone.",
-					"image": "__ASSET__:pwa-parcel-draw.png"
+					"image": "__ASSET__:pwa-parcels.png"
 				},
 				{
 					"component": "feature_item",
@@ -102,8 +102,8 @@
 				{
 					"component": "feature_item",
 					"tag": "webApp · coopératives & exportateurs",
-					"title": "Pilotez fournisseurs, achats et ventes",
-					"text": "Invitations de fournisseurs, liaisons amont-aval, suivi des achats et des ventes — toute la chaîne dans une seule interface.",
+					"title": "Gérez toute votre chaîne depuis une seule interface",
+					"text": "Invitations des fournisseurs, liaisons amont-aval, suivi des achats et des ventes.",
 					"image": "__ASSET__:webapp-suppliers.png"
 				}
 			]
@@ -111,8 +111,8 @@
 		{
 			"component": "social_proof",
 			"eyebrow": "Preuves",
-			"title": "Adossé aux standards internationaux",
-			"intro": "ClearOrigin ne réinvente pas la vérification : il s'appuie sur les outils de référence de la filière.",
+			"title": "Adossées aux standards internationaux",
+			"intro": "ClearOrigin ne réinvente pas la vérification : il s'appuie sur les outils de référence de votre filière.",
 			"stats": [
 				{
 					"component": "stat_item",
@@ -170,7 +170,7 @@
 				}
 			],
 			"bonus_title": "Accompagnement à la mise en route",
-			"bonus_text": "BF Consult paramètre vos grilles de légalité avec vous et embarque vos premiers producteurs — pour que votre premier lot conforme sorte en jours, pas en mois."
+			"bonus_text": "BFConsult paramètre vos grilles de légalité avec vous et embarque vos premiers producteurs — pour que votre premier lot conforme sorte en jours, pas en mois."
 		},
 		{
 			"component": "guarantees",
@@ -198,7 +198,7 @@
 		{
 			"component": "faq",
 			"eyebrow": "FAQ",
-			"title": "Les questions qu'on nous pose",
+			"title": "Questions fréquentes",
 			"intro": "",
 			"items": [
 				{
@@ -245,7 +245,7 @@
 			"secondary_link": "https://clear-origin-demo-bcdbhjdpasbadmht.belgiumcentral-01.azurewebsites.net/webApp/lots/public/01a014f9-6589-73e4-97ab-1f24100e194c",
 			"image": "__ASSET__:demo-map-2x.png",
 			"image_caption": "Traçabilité complète — Côte d'Ivoire → Europe · risque faible",
-			"note": "Réponse sous 48 h — BF Consult"
+			"note": "Réponse sous 48 h — BFConsult"
 		}
 	]
 }

@@ -13,7 +13,7 @@ export default function StepItem({
 	index?: number;
 }) {
 	const number = String(index + 1).padStart(2, '0');
-	const dims = blok.image?.filename ? sbDims(blok.image.filename) : undefined;
+	const dims = blok.image?.filename ? sbDims(blok.image) : undefined;
 	const width = dims ? Math.min(680, dims.width) : 680;
 
 	return (
@@ -28,7 +28,7 @@ export default function StepItem({
 			{blok.image?.filename && (
 				<div className="step__media">
 					<img
-						src={sbSrc(blok.image.filename, width)}
+						src={sbSrc(blok.image, width)}
 						{...dims}
 						alt={blok.image.alt || ''}
 						loading="lazy"

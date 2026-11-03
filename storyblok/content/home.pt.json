@@ -57,7 +57,7 @@
 					"component": "step_item",
 					"title": "Geolocalize as parcelas",
 					"text": "O produtor desenha suas parcelas sobre fundo de satélite pelo celular — ou a cooperativa faz por ele.",
-					"image": "__ASSET__:pwa-home.png"
+					"image": "__ASSET__:pwa-parcel-draw.png"
 				},
 				{
 					"component": "step_item",
@@ -90,7 +90,7 @@
 					"tag": "PWA · produtores",
 					"title": "O app mobile feito para o campo",
 					"text": "Desenho de parcelas sobre imagem de satélite, foto de documentos, criação de lotes — de qualquer smartphone.",
-					"image": "__ASSET__:pwa-parcel-draw.png"
+					"image": "__ASSET__:pwa-parcels.png"
 				},
 				{
 					"component": "feature_item",
@@ -102,8 +102,8 @@
 				{
 					"component": "feature_item",
 					"tag": "webApp · cooperativas e exportadores",
-					"title": "Gerencie fornecedores, compras e vendas",
-					"text": "Convites de fornecedores, vínculos na cadeia, acompanhamento de compras e vendas — toda a cadeia em uma única interface.",
+					"title": "Gerencie toda a sua cadeia a partir de uma única interface",
+					"text": "Convites de fornecedores, vínculos na cadeia, acompanhamento de compras e vendas.",
 					"image": "__ASSET__:webapp-suppliers.png"
 				}
 			]
@@ -112,7 +112,7 @@
 			"component": "social_proof",
 			"eyebrow": "Provas",
 			"title": "Apoiado nos padrões internacionais",
-			"intro": "A ClearOrigin não reinventa a verificação: ela se apoia nas ferramentas de referência do setor.",
+			"intro": "A ClearOrigin não reinventa a verificação: ela se apoia nas ferramentas de referência do seu setor.",
 			"stats": [
 				{
 					"component": "stat_item",
@@ -170,7 +170,7 @@
 				}
 			],
 			"bonus_title": "Acompanhamento na implantação",
-			"bonus_text": "A BF Consult configura suas grades de legalidade com você e integra seus primeiros produtores — para que seu primeiro lote conforme saia em dias, não em meses."
+			"bonus_text": "A BFConsult configura suas grades de legalidade com você e integra seus primeiros produtores — para que seu primeiro lote conforme saia em dias, não em meses."
 		},
 		{
 			"component": "guarantees",
@@ -198,7 +198,7 @@
 		{
 			"component": "faq",
 			"eyebrow": "FAQ",
-			"title": "As perguntas que nos fazem",
+			"title": "Perguntas frequentes",
 			"intro": "",
 			"items": [
 				{
@@ -245,7 +245,7 @@
 			"secondary_link": "https://clear-origin-demo-bcdbhjdpasbadmht.belgiumcentral-01.azurewebsites.net/webApp/lots/public/01a014f9-6589-73e4-97ab-1f24100e194c",
 			"image": "__ASSET__:demo-map-2x.png",
 			"image_caption": "Rastreabilidade completa — Costa do Marfim → Europa · risco baixo",
-			"note": "Resposta em 48 h — BF Consult"
+			"note": "Resposta em 48 h — BFConsult"
 		}
 	]
 }

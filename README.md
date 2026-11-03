@@ -34,7 +34,18 @@ La story `home` est un `landing_page` dont le champ `body` empile les bloks :
 
 Chaque blok a son composant React dans `src/components/storyblok/` (mapping dans `src/lib/storyblok.ts`) et sa définition de schéma dans `storyblok/components.json`.
 
-## Modifier le contenu
+## Source du contenu
+
+**Par défaut, la page lit le contenu du repo** : `storyblok/content/home.<lang>.json`, avec les images de `src/content/screenshots/` (déclarées dans `src/lib/local-content.ts`). Depuis novembre 2026, l'essai Storyblok du space a expiré et le client ne modifie plus le contenu lui-même : toute modification se fait dans ces fichiers, puis commit et déploiement.
+
+Pour revenir à Storyblok si l'abonnement est repris :
+
+1. Relancer `npm run push:storyblok` pour que le space reprenne le contenu du repo.
+2. Définir `CONTENT_SOURCE=storyblok` (dans `.env` et chez l'hébergeur).
+
+À partir de là, Storyblok redevient la source, et les sections ci-dessous s'appliquent de nouveau.
+
+## Modifier le contenu (mode Storyblok)
 
 Deux façons :
 
@@ -48,10 +59,10 @@ npx storyblok@latest login        # une fois (Management API)
 npm run push:storyblok            # langues + composants + assets + story + preview URL
 ```
 
-Options : `--skip-assets` (ne pas uploader `screenshots/`), `--no-publish` (laisser en draft).
+Options : `--skip-assets` (ne pas uploader `src/content/screenshots/`), `--no-publish` (laisser en draft).
 Le script lit le token du login CLI (`~/.storyblok/credentials.json`) ou `STORYBLOK_MANAGEMENT_TOKEN`.
 
-Les screenshots de l'app vont dans `screenshots/` (non versionné) ; le contenu les référence par `__ASSET__:<nom>.png`, résolus à l'upload.
+Les screenshots de l'app vont dans `src/content/screenshots/` (versionné) ; le contenu les référence par `__ASSET__:<nom>.png`, résolus à l'upload.
 
 ## Déploiement
 
