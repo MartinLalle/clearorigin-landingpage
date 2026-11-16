@@ -242,7 +242,7 @@
 			"cta_label": "Request a demo",
 			"cta_link": "mailto:info@bfconsult.be?subject=ClearOrigin%20demo&body=Hello%2C%0D%0A%0D%0AI%27d%20like%20a%20demo%20of%20ClearOrigin.%0D%0A%0D%0ACompany%3A%20%0D%0ARole%20(exporter%2C%20cooperative%2C%20importer)%3A%20%0D%0ACommodities%3A%20%0D%0ACountries%20of%20origin%3A%20",
 			"secondary_label": "Explore the importer view — no account needed",
-			"secondary_link": "https://clear-origin-demo-bcdbhjdpasbadmht.belgiumcentral-01.azurewebsites.net/webApp/lots/public/01a014f9-6589-73e4-97ab-1f24100e194c",
+			"secondary_link": "/en/demo/",
 			"image": "__ASSET__:demo-map-2x.png",
 			"image_caption": "Full traceability — Côte d'Ivoire → Europe · low risk",
 			"note": "Reply within 48 hours — BFConsult"

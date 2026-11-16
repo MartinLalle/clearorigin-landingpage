@@ -242,7 +242,7 @@
 			"cta_label": "Solicitar una demo",
 			"cta_link": "mailto:info@bfconsult.be?subject=Demo%20ClearOrigin&body=Hola%2C%0D%0A%0D%0AMe%20gustar%C3%ADa%20una%20demo%20de%20ClearOrigin.%0D%0A%0D%0AEmpresa%3A%20%0D%0ARol%20(exportador%2C%20cooperativa%2C%20importador)%3A%20%0D%0AMaterias%20primas%3A%20%0D%0APa%C3%ADses%20de%20origen%3A%20",
 			"secondary_label": "Explorar la vista del importador — sin cuenta",
-			"secondary_link": "https://clear-origin-demo-bcdbhjdpasbadmht.belgiumcentral-01.azurewebsites.net/webApp/lots/public/01a014f9-6589-73e4-97ab-1f24100e194c",
+			"secondary_link": "/es/demo/",
 			"image": "__ASSET__:demo-map-2x.png",
 			"image_caption": "Trazabilidad completa — Costa de Marfil → Europa · riesgo bajo",
 			"note": "Respuesta en 48 h — BFConsult"

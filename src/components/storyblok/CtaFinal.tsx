@@ -58,8 +58,10 @@ export default function CtaFinal({ blok }: { blok: CtaFinalBlok }) {
 							<a
 								className="btn btn--ghost"
 								href={blok.secondary_link}
-								target="_blank"
-								rel="noreferrer"
+								// Lien externe : nouvel onglet. La simulation interne (/demo/) s'ouvre sur place.
+								{...(/^https?:/.test(blok.secondary_link)
+									? { target: '_blank', rel: 'noreferrer' }
+									: {})}
 							>
 								{blok.secondary_label}
 							</a>

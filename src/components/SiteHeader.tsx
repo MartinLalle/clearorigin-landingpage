@@ -1,9 +1,23 @@
 import './site-header.css';
-import { CHROME, LANGS, type LangCode } from '@/lib/i18n';
+import {
+	CHROME,
+	LANGS,
+	pagePath,
+	type LangCode,
+	type PageKey,
+} from '@/lib/i18n';
 
-export default function SiteHeader({ lang }: { lang: LangCode }) {
+export default function SiteHeader({
+	lang,
+	page = 'home',
+}: {
+	lang: LangCode;
+	page?: PageKey;
+}) {
 	const chrome = CHROME[lang] ?? CHROME.fr;
-	const homePath = LANGS.find((l) => l.code === lang)?.path ?? '/';
+	const homePath = pagePath(lang);
+	// Sur la simulation, le CTA ramène au formulaire de contact de la landing.
+	const ctaHref = page === 'home' ? '#cta' : `${homePath}#cta`;
 
 	return (
 		<header className="site-header">
@@ -21,7 +35,7 @@ export default function SiteHeader({ lang }: { lang: LangCode }) {
 						{LANGS.map((l) => (
 							<li key={l.code}>
 								<a
-									href={l.path}
+									href={pagePath(l.code, page)}
 									hrefLang={l.code}
 									aria-current={l.code === lang ? 'page' : undefined}
 								>
@@ -30,7 +44,7 @@ export default function SiteHeader({ lang }: { lang: LangCode }) {
 							</li>
 						))}
 					</ul>
-					<a href="#cta" className="btn btn--primary site-header__cta">
+					<a href={ctaHref} className="btn btn--primary site-header__cta">
 						{chrome.cta}
 					</a>
 				</nav>

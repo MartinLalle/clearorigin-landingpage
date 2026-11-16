@@ -2,7 +2,9 @@ import type { Metadata } from 'next';
 import { StoryblokStory } from '@storyblok/react/rsc';
 import { getLandingStory } from '@/lib/getLandingStory';
 import { notFound } from 'next/navigation';
-import { isKnownLangPath, resolveLang } from '@/lib/i18n';
+import { parseLandingPath, resolveLang } from '@/lib/i18n';
+import ImporterDemo from '@/components/importer-demo/ImporterDemo';
+import { getSimMeta } from '@/content/importer-demo/strings';
 
 // Rendu à chaque requête, sans aucune couche de cache.
 //
@@ -20,7 +22,20 @@ type PageProps = { params: Promise<{ lang?: string[] }> };
 export async function generateMetadata({
 	params,
 }: PageProps): Promise<Metadata> {
-	const lang = resolveLang((await params).lang);
+	const segments = (await params).lang;
+	const lang = resolveLang(segments);
+
+	if (parseLandingPath(segments)?.page === 'demo') {
+		const meta = getSimMeta(lang);
+		return {
+			title: meta.title,
+			description: meta.description,
+			icons: { icon: '/images/logo_wout_title_forest.png' },
+			// Page de simulation : utile aux visiteurs, sans intérêt pour les moteurs.
+			robots: { index: false, follow: true },
+		};
+	}
+
 	const story = await getLandingStory(lang);
 	const content = story.content;
 	const fallbackTitle =
@@ -46,8 +61,10 @@ export async function generateMetadata({
 
 export default async function Page({ params }: PageProps) {
 	const segments = (await params).lang;
-	if (!isKnownLangPath(segments)) notFound();
-	const lang = resolveLang(segments);
+	const route = parseLandingPath(segments);
+	if (!route) notFound();
+	const { lang } = route;
+	if (route.page === 'demo') return <ImporterDemo lang={lang} />;
 	const story = await getLandingStory(lang);
 
 	return <StoryblokStory story={story} />;
