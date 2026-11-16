@@ -1,7 +1,8 @@
 .site-footer {
-	border-top: 1px solid var(--line);
-	background: var(--mist);
-	padding-block: 40px;
+	background: var(--canopy-950);
+	color: var(--on-dark-muted);
+	border-top: 1px solid rgba(163, 207, 78, 0.14);
+	padding-block: 36px;
 }
 
 .site-footer__inner {
@@ -18,6 +19,15 @@
 }
 
 .site-footer__by {
-	font-size: 0.9rem;
-	color: var(--text-muted);
+	font-size: 0.92rem;
+}
+
+.site-footer__by strong {
+	color: var(--sprout);
+	font-weight: 600;
+}
+
+.site-footer__legal {
+	font-size: 0.85rem;
+	color: rgba(255, 255, 255, 0.5);
 }

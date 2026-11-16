@@ -31,7 +31,7 @@ export async function generateMetadata({
 	return {
 		title: content.seo_title || fallbackTitle,
 		description: content.seo_description || '',
-		icons: { icon: '/images/logo_icon_orange.png' },
+		icons: { icon: '/images/logo_wout_title_forest.png' },
 		alternates: {
 			languages: {
 				fr: '/',

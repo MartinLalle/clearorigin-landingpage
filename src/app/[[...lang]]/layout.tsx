@@ -1,24 +1,22 @@
 import type { ReactNode } from 'react';
-import { Lexend, IBM_Plex_Mono } from 'next/font/google';
+import type { Viewport } from 'next';
+import { Instrument_Sans } from 'next/font/google';
 import '@/styles/global.css';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import ScrollReveal from '@/components/ScrollReveal';
 import { resolveLang } from '@/lib/i18n';
 
-const lexend = Lexend({
-	subsets: ['latin'],
-	weight: ['300', '400', '500', '600', '700', '800'],
-	variable: '--font-lexend',
+// Police de marque de l'app ClearOrigin. Fonte variable : graisse + largeur
+// (axe `wdth`), les titres utilisent la largeur réduite via `font-stretch`.
+const instrumentSans = Instrument_Sans({
+	subsets: ['latin', 'latin-ext'],
+	axes: ['wdth'],
+	variable: '--font-instrument',
 	display: 'swap',
 });
 
-const plexMono = IBM_Plex_Mono({
-	subsets: ['latin'],
-	weight: ['400', '500'],
-	variable: '--font-plex-mono',
-	display: 'swap',
-});
+export const viewport: Viewport = { themeColor: '#0f3326' };
 
 export function generateStaticParams() {
 	return [{ lang: [] }, { lang: ['en'] }, { lang: ['es'] }, { lang: ['pt'] }];
@@ -36,7 +34,7 @@ export default async function RootLayout({
 	const lang = resolveLang((await params).lang);
 
 	return (
-		<html lang={lang} className={`${lexend.variable} ${plexMono.variable}`}>
+		<html lang={lang} className={instrumentSans.variable}>
 			<body>
 				<SiteHeader lang={lang} />
 				<main>{children}</main>

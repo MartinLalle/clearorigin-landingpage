@@ -10,7 +10,7 @@ export default function Testimonial({ blok }: { blok: TestimonialBlok }) {
 			<blockquote className="quote__text">“{blok.quote}”</blockquote>
 			<figcaption className="quote__author">
 				<strong>{blok.author}</strong>
-				{blok.role && <span className="geo-tag quote__role">{blok.role}</span>}
+				{blok.role && <span className="meta quote__role">{blok.role}</span>}
 			</figcaption>
 		</figure>
 	);

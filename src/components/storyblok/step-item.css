@@ -1,51 +1,58 @@
 .step {
 	display: grid;
-	grid-template-columns: 56px minmax(0, 1.1fr) minmax(0, 0.9fr);
-	gap: 24px;
+	grid-template-columns: 52px minmax(0, 1fr) minmax(0, 1fr);
+	gap: 32px;
 	align-items: center;
-	padding-block: 30px;
+	padding-block: 40px;
 }
 
-.step + .step {
-	border-top: 1px solid var(--line);
-}
-
+/* Nœud du fil de traçabilité : anneau latérite, numéro lime sur canopée */
 .step__marker {
-	font-family: var(--font-mono);
-	font-size: 0.9rem;
-	font-weight: 500;
-	width: 54px;
-	height: 54px;
+	position: relative;
+	z-index: 1;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
+	width: 52px;
+	height: 52px;
 	border-radius: 50%;
-	background: var(--navy-deep);
-	color: var(--orange);
-	position: relative;
-	z-index: 1;
-	align-self: start;
+	background: var(--canopy);
+	border: 2px solid var(--laterite);
+	box-shadow: 0 0 0 6px var(--surface);
+	align-self: center;
+	color: var(--sprout);
+	font-size: 0.95rem;
+	font-weight: 650;
+	font-variant-numeric: tabular-nums;
+}
+
+.step__body {
+	align-self: center;
 }
 
 .step__title {
-	font-size: 1.15rem;
-	font-weight: 600;
+	font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+	font-weight: 650;
+	font-stretch: 85%;
+	line-height: 1.12;
+	color: var(--canopy);
 }
 
 .step__text {
-	margin-top: 8px;
-	color: var(--text-muted);
-	max-width: 52ch;
+	margin-top: 12px;
+	color: var(--ink-muted);
+	font-size: 1.02rem;
+	max-width: 46ch;
 }
 
 .step__media {
-	border-radius: var(--radius-sm);
-	border: 1px solid var(--line);
-	box-shadow: var(--shadow-card);
-	overflow: hidden;
-	width: min(100%, 340px);
-	max-height: 320px;
 	justify-self: center;
+	width: min(100%, 460px);
+	border-radius: var(--radius-lg);
+	border: 1px solid var(--line);
+	box-shadow: var(--shadow-raised);
+	overflow: hidden;
+	background: var(--surface);
 }
 
 .step__media img {
@@ -54,18 +61,59 @@
 	height: auto;
 }
 
-@media (max-width: 720px) {
+/* Capture téléphone : cadre canopée, coupé en pied (le haut de l'écran suffit) */
+.step__media--phone {
+	position: relative;
+	width: min(100%, 250px);
+	max-height: 380px;
+	padding: 7px 7px 0;
+	border: none;
+	border-radius: 34px 34px 0 0;
+	background: var(--canopy-950);
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+	-webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent);
+	mask-image: linear-gradient(to bottom, #000 72%, transparent);
+}
+
+.step__media--phone img {
+	border-radius: 27px 27px 0 0;
+}
+
+@media (max-width: 900px) {
 	.step {
-		grid-template-columns: 42px minmax(0, 1fr);
+		grid-template-columns: 52px minmax(0, 1fr);
+		gap: 20px 24px;
 	}
 
-	.step__marker {
-		width: 42px;
-		height: 42px;
-		font-size: 0.8rem;
+	.step__marker,
+	.step__body {
+		align-self: start;
+	}
+
+	.step__body {
+		padding-top: 8px;
 	}
 
 	.step__media {
 		grid-column: 2;
+		justify-self: start;
+	}
+}
+
+@media (max-width: 720px) {
+	.step {
+		grid-template-columns: 40px minmax(0, 1fr);
+		padding-block: 28px;
+	}
+
+	.step__marker {
+		width: 40px;
+		height: 40px;
+		font-size: 0.82rem;
+	}
+
+	.step__media--phone {
+		width: min(100%, 220px);
+		max-height: 320px;
 	}
 }

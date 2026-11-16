@@ -1,35 +1,52 @@
-/* ClearOrigin landing — design tokens & shared patterns */
+/* ClearOrigin landing — design tokens & shared patterns
+ *
+ * Identité « Canopée », alignée sur l'app ClearOrigin
+ * (ClearOrigin/Frontend/src/common/index.css, jetons `--co-*`) :
+ * - canopy   : vert sous-bois, surfaces sombres
+ * - forest   : vert d'action (boutons, liens, focus)
+ * - sprout   : lime BFConsult, accent sur fond sombre
+ * - laterite : la piste rouge — fil de traçabilité, usage rare
+ * - paper / line / ink : neutres teintés mousse
+ */
 
 :root {
-	/* Brand */
-	--orange: #f8922b;
-	--orange-deep: #d9740f;
-	--orange-soft: #fdeedd;
-	--navy: #1e293b;
-	--navy-deep: #131c2b;
-	--navy-soft: #33415c;
-	--forest: #2f6b4f;
-	--forest-soft: #e5f1ea;
-	--paper: #ffffff;
-	--mist: #f4f6f8;
-	--line: #e2e8f0;
-	--text: #1e293b;
-	--text-muted: #55637a;
-	--text-inverse: #f4f6f8;
-	--text-inverse-muted: #9aa8bf;
+	--canopy-950: #0a2419;
+	--canopy: #0f3326;
+	--canopy-800: #17452f;
+	--forest: #1f6b45;
+	--forest-hover: #185a3a;
+	--forest-soft: #e5efe7;
+	--sprout: #a3cf4e;
+	--sprout-hover: #b4da68;
+	--sprout-soft: #eef6dc;
+	--laterite: #b5562b;
+	--laterite-soft: #f7e8df;
+	--paper: #f3f5f0;
+	--surface: #ffffff;
+	--line: #dce3d9;
+	--line-strong: #c3cdc1;
+	--ink: #15241c;
+	--ink-muted: #54625a;
+	--ink-faint: #8a968e;
 
-	/* Type — polices servies par next/font (variables posées sur <html>) */
+	/* Sur fond canopée */
+	--on-dark: #ffffff;
+	--on-dark-muted: rgba(255, 255, 255, 0.72);
+	--on-dark-line: rgba(163, 207, 78, 0.22);
+
+	/* Type — Instrument Sans servie par next/font (variable posée sur <html>) */
 	--font-sans:
-		var(--font-lexend), 'Lexend', system-ui, -apple-system, 'Segoe UI', Roboto,
-		Helvetica, Arial, sans-serif;
-	--font-mono:
-		var(--font-plex-mono), 'IBM Plex Mono', 'Cascadia Code', Consolas, monospace;
+		var(--font-instrument), 'Instrument Sans', system-ui, -apple-system,
+		'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 
-	--radius: 14px;
-	--radius-sm: 8px;
-	--shadow-card:
-		0 1px 2px rgba(19, 28, 43, 0.06), 0 12px 32px -12px rgba(19, 28, 43, 0.18);
-	--container: 1160px;
+	--radius-sm: 6px;
+	--radius: 10px;
+	--radius-lg: 16px;
+	--shadow-raised:
+		0 1px 2px rgba(15, 51, 38, 0.06), 0 8px 24px -12px rgba(15, 51, 38, 0.18);
+	--shadow-float:
+		0 2px 4px rgba(10, 36, 25, 0.08), 0 30px 60px -24px rgba(10, 36, 25, 0.45);
+	--container: 1180px;
 }
 
 * {
@@ -44,12 +61,17 @@ html {
 
 body {
 	font-family: var(--font-sans);
-	font-weight: 300;
-	color: var(--text);
-	background: var(--paper);
+	font-weight: 400;
+	color: var(--ink);
+	background: var(--surface);
 	line-height: 1.6;
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizeLegibility;
+}
+
+::selection {
+	background: var(--sprout);
+	color: var(--canopy);
 }
 
 img {
@@ -61,6 +83,15 @@ a {
 	color: inherit;
 }
 
+/* Titres : largeur réduite de la fonte variable, interlettrage resserré (comme l'app). */
+h1,
+h2,
+h3 {
+	font-stretch: 88%;
+	letter-spacing: -0.015em;
+	text-wrap: balance;
+}
+
 /* ---- Shared layout ---- */
 
 .container {
@@ -70,27 +101,41 @@ a {
 }
 
 .section {
-	padding-block: 96px;
+	padding-block: 104px;
 }
 
-.section--mist {
-	background: var(--mist);
+.section--paper {
+	background: var(--paper);
 }
 
-.section--navy {
-	background: var(--navy-deep);
-	color: var(--text-inverse);
+/* Surface sombre de marque — même dégradé que `.co-canopy-surface` dans l'app */
+.section--canopy {
+	position: relative;
+	overflow: hidden;
+	background:
+		radial-gradient(120% 80% at 85% 10%, rgba(163, 207, 78, 0.12), transparent 60%),
+		linear-gradient(
+			165deg,
+			var(--canopy-800) 0%,
+			var(--canopy) 45%,
+			var(--canopy-950) 100%
+		);
+	color: var(--on-dark);
+}
+
+.section--canopy > .container {
+	position: relative;
+	z-index: 1;
 }
 
 /* ---- Type patterns ---- */
 
+/* Libellé de section : casse de phrase, précédé d'un nœud du fil de traçabilité */
 .eyebrow {
-	font-family: var(--font-mono);
-	font-size: 0.78rem;
-	font-weight: 500;
-	letter-spacing: 0.14em;
-	text-transform: uppercase;
-	color: var(--orange-deep);
+	font-size: 0.92rem;
+	font-weight: 600;
+	letter-spacing: 0.01em;
+	color: var(--forest);
 	display: inline-flex;
 	align-items: center;
 	gap: 10px;
@@ -98,33 +143,61 @@ a {
 
 .eyebrow::before {
 	content: '';
-	width: 22px;
-	height: 1px;
-	background: var(--orange);
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: var(--sprout);
+	box-shadow: 0 0 0 2px var(--surface), 0 0 0 3.5px var(--laterite);
+	flex-shrink: 0;
 }
 
-.section--navy .eyebrow {
-	color: var(--orange);
+.section--paper .eyebrow::before {
+	box-shadow: 0 0 0 2px var(--paper), 0 0 0 3.5px var(--laterite);
+}
+
+.section--canopy .eyebrow {
+	color: var(--sprout);
+}
+
+.section--canopy .eyebrow::before {
+	box-shadow: 0 0 0 2px var(--canopy), 0 0 0 3.5px var(--laterite);
 }
 
 .section-title {
-	font-size: clamp(1.7rem, 3.4vw, 2.5rem);
-	font-weight: 600;
-	line-height: 1.18;
-	letter-spacing: -0.015em;
-	margin-top: 14px;
+	font-size: clamp(1.9rem, 3.8vw, 2.9rem);
+	font-weight: 650;
+	font-stretch: 82%;
+	line-height: 1.06;
+	letter-spacing: -0.02em;
+	margin-top: 16px;
 	max-width: 22ch;
+	color: var(--canopy);
+}
+
+.section--canopy .section-title {
+	color: var(--on-dark);
 }
 
 .section-intro {
-	margin-top: 16px;
-	max-width: 58ch;
-	color: var(--text-muted);
-	font-size: 1.05rem;
+	margin-top: 18px;
+	max-width: 60ch;
+	color: var(--ink-muted);
+	font-size: 1.08rem;
+	line-height: 1.6;
 }
 
-.section--navy .section-intro {
-	color: var(--text-inverse-muted);
+.section--canopy .section-intro {
+	color: var(--on-dark-muted);
+}
+
+.meta {
+	font-size: 0.85rem;
+	font-weight: 500;
+	color: var(--ink-muted);
+}
+
+.section--canopy .meta {
+	color: var(--on-dark-muted);
 }
 
 /* ---- Buttons ---- */
@@ -134,15 +207,17 @@ a {
 	align-items: center;
 	gap: 10px;
 	font-family: var(--font-sans);
-	font-weight: 500;
+	font-weight: 600;
 	font-size: 1rem;
-	padding: 14px 28px;
-	border-radius: 999px;
+	line-height: 1.2;
+	padding: 14px 24px;
+	border-radius: 8px;
 	text-decoration: none;
 	border: 1.5px solid transparent;
 	transition:
 		background-color 160ms ease,
 		border-color 160ms ease,
+		color 160ms ease,
 		transform 160ms ease;
 	cursor: pointer;
 }
@@ -152,69 +227,71 @@ a {
 }
 
 .btn--primary {
-	background: var(--orange);
-	color: var(--navy-deep);
+	background: var(--forest);
+	color: #fff;
 }
 
 .btn--primary:hover {
-	background: var(--orange-deep);
+	background: var(--forest-hover);
 }
 
 .btn--ghost {
-	border-color: var(--line);
-	color: var(--text);
+	border-color: var(--line-strong);
+	color: var(--ink);
 	background: transparent;
 }
 
 .btn--ghost:hover {
-	border-color: var(--navy);
+	border-color: var(--forest);
+	color: var(--forest);
 }
 
-.section--navy .btn--ghost {
-	border-color: var(--navy-soft);
-	color: var(--text-inverse);
+/* Sur fond canopée : le lime BFConsult porte l'action */
+.section--canopy .btn--primary {
+	background: var(--sprout);
+	color: var(--canopy);
 }
 
-.section--navy .btn--ghost:hover {
-	border-color: var(--text-inverse);
+.section--canopy .btn--primary:hover {
+	background: var(--sprout-hover);
+}
+
+.section--canopy .btn--ghost {
+	border-color: rgba(255, 255, 255, 0.28);
+	color: var(--on-dark);
+}
+
+.section--canopy .btn--ghost:hover {
+	border-color: var(--sprout);
+	color: var(--sprout);
+}
+
+.btn__arrow {
+	width: 18px;
+	height: 18px;
+	transition: transform 160ms ease;
+}
+
+.btn:hover .btn__arrow {
+	transform: translateX(3px);
 }
 
 :focus-visible {
-	outline: 2px solid var(--orange-deep);
+	outline: 2px solid var(--forest);
 	outline-offset: 3px;
 	border-radius: 4px;
 }
 
-/* ---- Signature: GIS parcel motif ---- */
-
-.parcel-motif {
-	position: absolute;
-	pointer-events: none;
-	fill: none;
-	stroke: var(--orange);
-	stroke-width: 1.5;
-	stroke-dasharray: 7 6;
-	opacity: 0.5;
-}
-
-.parcel-motif circle {
-	fill: var(--orange);
-	stroke: none;
-}
-
-.geo-tag {
-	font-family: var(--font-mono);
-	font-size: 0.72rem;
-	letter-spacing: 0.04em;
-	color: var(--text-muted);
+.section--canopy :focus-visible {
+	outline-color: var(--sprout);
 }
 
 /* ---- Cards ---- */
 
 .card {
-	background: var(--paper);
+	background: var(--surface);
 	border: 1px solid var(--line);
-	border-radius: var(--radius);
+	border-radius: var(--radius-lg);
 	padding: 28px;
 }
 
@@ -236,8 +313,22 @@ a {
 	}
 }
 
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	::before,
+	::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}
+
 @media (max-width: 720px) {
 	.section {
-		padding-block: 64px;
+		padding-block: 72px;
 	}
 }

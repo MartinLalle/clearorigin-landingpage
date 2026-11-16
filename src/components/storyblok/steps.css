@@ -1,25 +1,53 @@
 .steps__list {
 	list-style: none;
-	margin-top: 56px;
+	margin-top: 48px;
 	display: grid;
-	gap: 0;
-	position: relative;
 }
 
-/* The supply-chain thread: a dashed line linking every step, parcel → importer */
-.steps__list::before {
+/* Le fil de traçabilité : une piste latérite qui relie chaque étape, de la parcelle à
+   l'importateur. Tracée par segment (un par étape) pour partir du premier nœud et
+   s'éteindre sur le dernier, quelle que soit la hauteur des captures. */
+.steps__list > .step {
+	position: relative;
+	--node-y: 50%;
+}
+
+.steps__list > .step::before {
 	content: '';
 	position: absolute;
-	left: 27px;
-	top: 10px;
-	bottom: 10px;
-	width: 0;
-	border-left: 1.5px dashed var(--orange);
-	opacity: 0.55;
+	left: 24.5px;
+	top: 0;
+	bottom: 0;
+	width: 3px;
+	background: var(--laterite);
+}
+
+.steps__list > .step:first-child::before {
+	top: var(--node-y);
+}
+
+.steps__list > .step:last-child::before {
+	bottom: auto;
+	height: var(--node-y);
+}
+
+.steps__list > .step:only-child::before {
+	display: none;
+}
+
+@media (max-width: 900px) {
+	/* Le nœud passe en haut de l'étape : padding 40px + demi-nœud */
+	.steps__list > .step {
+		--node-y: 66px;
+	}
 }
 
 @media (max-width: 720px) {
-	.steps__list::before {
-		left: 21px;
+	.steps__list > .step {
+		--node-y: 48px;
+	}
+
+	.steps__list > .step::before {
+		left: 18.5px;
 	}
 }

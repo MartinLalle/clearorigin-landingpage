@@ -12,7 +12,7 @@ export default function OfferItem({ blok }: { blok: OfferItemBlok }) {
 				viewBox="0 0 24 24"
 				fill="none"
 				stroke="currentColor"
-				strokeWidth="2"
+				strokeWidth="2.6"
 				strokeLinecap="round"
 				strokeLinejoin="round"
 				aria-hidden="true"

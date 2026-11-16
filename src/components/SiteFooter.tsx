@@ -9,16 +9,16 @@ export default function SiteFooter({ lang }: { lang: LangCode }) {
 		<footer className="site-footer">
 			<div className="container site-footer__inner">
 				<img
-					src="/images/logo_orange.png"
+					src="/images/logo_white.png"
 					alt="ClearOrigin"
-					width={150}
+					width={154}
 					height={24}
 					className="site-footer__logo"
 				/>
 				<p className="site-footer__by">
 					{chrome.developedBy} <strong>BFConsult</strong>
 				</p>
-				<p className="geo-tag">
+				<p className="site-footer__legal">
 					© {currentYear} — {chrome.legal}
 				</p>
 			</div>

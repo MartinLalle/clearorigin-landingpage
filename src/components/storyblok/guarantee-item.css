@@ -1,24 +1,39 @@
 .guarantee {
-	border-top: 3px solid var(--forest);
-	background: var(--forest-soft);
-	border-radius: var(--radius-sm);
-	padding: 26px 28px;
+	position: relative;
+	background: var(--surface);
+	border: 1px solid var(--line);
+	border-radius: var(--radius-lg);
+	padding: 30px 30px 32px;
+	overflow: hidden;
+}
+
+/* Liseré lime → forêt en tête de carte */
+.guarantee::before {
+	content: '';
+	position: absolute;
+	inset: 0 0 auto;
+	height: 4px;
+	background: linear-gradient(90deg, var(--sprout), var(--forest));
 }
 
 .guarantee__icon {
-	width: 26px;
-	height: 26px;
-	color: var(--forest);
+	width: 44px;
+	height: 44px;
+	padding: 10px;
+	border-radius: 12px;
+	background: var(--canopy);
+	color: var(--sprout);
 }
 
 .guarantee__title {
-	margin-top: 14px;
-	font-size: 1.05rem;
-	font-weight: 600;
+	margin-top: 20px;
+	font-size: 1.22rem;
+	font-weight: 650;
+	color: var(--canopy);
 }
 
 .guarantee__text {
-	margin-top: 8px;
-	color: var(--text-muted);
-	font-size: 0.94rem;
+	margin-top: 10px;
+	color: var(--ink-muted);
+	font-size: 0.98rem;
 }

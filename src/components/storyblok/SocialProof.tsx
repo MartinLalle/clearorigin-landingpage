@@ -3,6 +3,7 @@ import {
 	storyblokEditable,
 } from '@storyblok/react/rsc';
 import type { Blok } from '@/lib/types';
+import CanopyMotif from '@/components/CanopyMotif';
 import './social-proof.css';
 
 type StatBlok = Blok<{ value?: string; label?: string }>;
@@ -18,10 +19,11 @@ type SocialProofBlok = Blok<{
 export default function SocialProof({ blok }: { blok: SocialProofBlok }) {
 	return (
 		<section
-			className="section section--navy"
+			className="section section--canopy"
 			id="proof"
 			{...storyblokEditable(blok)}
 		>
+			<CanopyMotif className="proof__motif" trace={false} />
 			<div className="container">
 				{blok.eyebrow && <p className="eyebrow">{blok.eyebrow}</p>}
 				<h2 className="section-title">{blok.title}</h2>
@@ -35,8 +37,8 @@ export default function SocialProof({ blok }: { blok: SocialProofBlok }) {
 								key={stat._uid}
 								{...storyblokEditable(stat)}
 							>
-								<dd>{stat.value}</dd>
 								<dt>{stat.label}</dt>
+								<dd>{stat.value}</dd>
 							</div>
 						))}
 					</dl>

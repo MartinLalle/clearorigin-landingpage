@@ -1,18 +1,27 @@
 .faq__inner {
 	display: grid;
 	grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-	gap: 56px;
+	gap: 64px;
 	align-items: start;
+}
+
+.faq__head {
+	position: sticky;
+	top: 104px;
 }
 
 .faq__list {
 	display: grid;
-	gap: 12px;
+	border-top: 1px solid var(--line);
 }
 
 @media (max-width: 900px) {
 	.faq__inner {
 		grid-template-columns: 1fr;
 		gap: 32px;
+	}
+
+	.faq__head {
+		position: static;
 	}
 }

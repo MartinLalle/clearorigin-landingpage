@@ -34,7 +34,7 @@ export default function FeatureItem({ blok }: { blok: FeatureItemBlok }) {
 				</div>
 			)}
 			<div className="feature__body">
-				{blok.tag && <p className="geo-tag feature__tag">{blok.tag}</p>}
+				{blok.tag && <p className="meta feature__tag">{blok.tag}</p>}
 				<h3 className="feature__title">{blok.title}</h3>
 				<p className="feature__text">{blok.text}</p>
 			</div>

@@ -1,6 +1,6 @@
 .features__grid {
-	margin-top: 48px;
+	margin-top: 56px;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-	gap: 22px;
+	gap: 20px;
 }

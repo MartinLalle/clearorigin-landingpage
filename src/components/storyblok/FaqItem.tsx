@@ -17,7 +17,7 @@ export default function FaqItem({ blok }: { blok: FaqItemBlok }) {
 					strokeLinecap="round"
 					aria-hidden="true"
 				>
-					<path d="M6 9l6 6 6-6"></path>
+					<path d="M12 5v14M5 12h14"></path>
 				</svg>
 			</summary>
 			<p className="faq-item__answer">{blok.answer}</p>

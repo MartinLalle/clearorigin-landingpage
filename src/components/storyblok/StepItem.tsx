@@ -14,7 +14,8 @@ export default function StepItem({
 }) {
 	const number = String(index + 1).padStart(2, '0');
 	const dims = blok.image?.filename ? sbDims(blok.image) : undefined;
-	const width = dims ? Math.min(680, dims.width) : 680;
+	const isPortrait = !!dims && dims.height > dims.width;
+	const width = isPortrait ? 390 : dims ? Math.min(1000, dims.width) : 680;
 
 	return (
 		<li className="step reveal" {...storyblokEditable(blok)}>
@@ -26,7 +27,11 @@ export default function StepItem({
 				<p className="step__text">{blok.text}</p>
 			</div>
 			{blok.image?.filename && (
-				<div className="step__media">
+				<div
+					className={
+						isPortrait ? 'step__media step__media--phone' : 'step__media'
+					}
+				>
 					<img
 						src={sbSrc(blok.image, width)}
 						{...dims}

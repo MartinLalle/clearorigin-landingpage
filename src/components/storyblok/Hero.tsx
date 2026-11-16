@@ -1,6 +1,8 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
 import type { Blok, SbAsset } from '@/lib/types';
 import { sbDims, sbSrc, sbSrcSet } from '@/lib/sb-image';
+import CanopyMotif from '@/components/CanopyMotif';
+import ArrowIcon from '@/components/ArrowIcon';
 import './hero.css';
 
 type HeroBlok = Blok<{
@@ -18,21 +20,8 @@ type HeroBlok = Blok<{
 
 export default function Hero({ blok }: { blok: HeroBlok }) {
 	return (
-		<section className="hero" {...storyblokEditable(blok)}>
-			<svg
-				className="parcel-motif hero__motif"
-				viewBox="0 0 340 300"
-				aria-hidden="true"
-			>
-				<polygon points="20,110 90,30 210,18 320,80 290,210 150,270 40,230"></polygon>
-				<circle cx="20" cy="110" r="3.5"></circle>
-				<circle cx="90" cy="30" r="3.5"></circle>
-				<circle cx="210" cy="18" r="3.5"></circle>
-				<circle cx="320" cy="80" r="3.5"></circle>
-				<circle cx="290" cy="210" r="3.5"></circle>
-				<circle cx="150" cy="270" r="3.5"></circle>
-				<circle cx="40" cy="230" r="3.5"></circle>
-			</svg>
+		<section className="section--canopy hero" {...storyblokEditable(blok)}>
+			<CanopyMotif className="hero__motif" />
 
 			<div className="container hero__inner">
 				<div className="hero__copy">
@@ -43,6 +32,7 @@ export default function Hero({ blok }: { blok: HeroBlok }) {
 						{blok.cta_label && (
 							<a className="btn btn--primary" href={blok.cta_link || '#cta'}>
 								{blok.cta_label}
+								<ArrowIcon />
 							</a>
 						)}
 						{blok.cta_secondary_label && (
@@ -63,11 +53,12 @@ export default function Hero({ blok }: { blok: HeroBlok }) {
 								<i />
 								<i />
 								<i />
+								<span className="hero__frame-url" />
 							</div>
 							<img
 								src={sbSrc(blok.image, 1104)}
 								srcSet={sbSrcSet(blok.image, [640, 1104, 1600])}
-								sizes="(max-width: 900px) 100vw, 552px"
+								sizes="(max-width: 900px) 100vw, 600px"
 								{...sbDims(blok.image)}
 								alt={blok.image.alt || blok.image_alt || ''}
 								loading="eager"
@@ -75,7 +66,7 @@ export default function Hero({ blok }: { blok: HeroBlok }) {
 							/>
 						</div>
 						{blok.image_caption && (
-							<figcaption className="geo-tag hero__caption">
+							<figcaption className="meta hero__caption">
 								{blok.image_caption}
 							</figcaption>
 						)}

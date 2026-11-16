@@ -14,7 +14,11 @@ type GuaranteesBlok = Blok<{
 
 export default function Guarantees({ blok }: { blok: GuaranteesBlok }) {
 	return (
-		<section className="section" id="guarantees" {...storyblokEditable(blok)}>
+		<section
+			className="section section--paper"
+			id="guarantees"
+			{...storyblokEditable(blok)}
+		>
 			<div className="container">
 				{blok.eyebrow && <p className="eyebrow">{blok.eyebrow}</p>}
 				<h2 className="section-title">{blok.title}</h2>

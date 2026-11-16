@@ -30,7 +30,7 @@ export default function Offer({ blok }: { blok: OfferBlok }) {
 				</div>
 				{blok.bonus_title && (
 					<aside className="offer__bonus reveal">
-						<p className="offer__bonus-kicker geo-tag">+ Bonus</p>
+						<p className="offer__bonus-kicker meta">+ Bonus</p>
 						<h3 className="offer__bonus-title">{blok.bonus_title}</h3>
 						<p className="offer__bonus-text">{blok.bonus_text}</p>
 					</aside>

@@ -14,13 +14,9 @@ type FaqBlok = Blok<{
 
 export default function Faq({ blok }: { blok: FaqBlok }) {
 	return (
-		<section
-			className="section section--mist"
-			id="faq"
-			{...storyblokEditable(blok)}
-		>
+		<section className="section" id="faq" {...storyblokEditable(blok)}>
 			<div className="container faq__inner">
-				<div>
+				<div className="faq__head">
 					{blok.eyebrow && <p className="eyebrow">{blok.eyebrow}</p>}
 					<h2 className="section-title">{blok.title}</h2>
 					{blok.intro && <p className="section-intro">{blok.intro}</p>}

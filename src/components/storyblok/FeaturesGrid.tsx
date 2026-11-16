@@ -15,7 +15,7 @@ type FeaturesGridBlok = Blok<{
 export default function FeaturesGrid({ blok }: { blok: FeaturesGridBlok }) {
 	return (
 		<section
-			className="section section--mist"
+			className="section section--paper"
 			id="features"
 			{...storyblokEditable(blok)}
 		>

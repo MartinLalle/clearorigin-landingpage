@@ -1,6 +1,8 @@
 import { storyblokEditable } from '@storyblok/react/rsc';
 import type { Blok, SbAsset } from '@/lib/types';
 import { sbDims, sbSrc, sbSrcSet } from '@/lib/sb-image';
+import CanopyMotif from '@/components/CanopyMotif';
+import ArrowIcon from '@/components/ArrowIcon';
 import './cta-final.css';
 
 type CtaFinalBlok = Blok<{
@@ -25,23 +27,11 @@ export default function CtaFinal({ blok }: { blok: CtaFinalBlok }) {
 
 	return (
 		<section
-			className="section section--navy cta-final"
+			className="section section--canopy cta-final"
 			id="cta"
 			{...storyblokEditable(blok)}
 		>
-			<svg
-				className="parcel-motif cta-final__motif"
-				viewBox="0 0 340 300"
-				aria-hidden="true"
-			>
-				<polygon points="30,90 130,20 280,45 310,170 220,270 70,250"></polygon>
-				<circle cx="30" cy="90" r="3.5"></circle>
-				<circle cx="130" cy="20" r="3.5"></circle>
-				<circle cx="280" cy="45" r="3.5"></circle>
-				<circle cx="310" cy="170" r="3.5"></circle>
-				<circle cx="220" cy="270" r="3.5"></circle>
-				<circle cx="70" cy="250" r="3.5"></circle>
-			</svg>
+			<CanopyMotif className="cta-final__motif" trace={false} />
 			<div className="container cta-final__inner">
 				<div className="cta-final__copy">
 					{blok.flag && <p className="cta-final__flag">{blok.flag}</p>}
@@ -61,6 +51,7 @@ export default function CtaFinal({ blok }: { blok: CtaFinalBlok }) {
 								href={blok.cta_link || 'mailto:info@bfconsult.be'}
 							>
 								{blok.cta_label}
+								<ArrowIcon />
 							</a>
 						)}
 						{blok.secondary_label && blok.secondary_link && (
@@ -74,20 +65,22 @@ export default function CtaFinal({ blok }: { blok: CtaFinalBlok }) {
 							</a>
 						)}
 					</div>
-					{blok.note && <p className="geo-tag cta-final__note">{blok.note}</p>}
+					{blok.note && <p className="meta cta-final__note">{blok.note}</p>}
 				</div>
 				{blok.image?.filename && (
 					<figure className="cta-final__proof reveal">
-						<img
-							src={sbSrc(blok.image, 1000)}
-							srcSet={sbSrcSet(blok.image, [640, 1000, 1440])}
-							sizes="(max-width: 900px) 100vw, 520px"
-							{...sbDims(blok.image)}
-							alt={blok.image.alt || ''}
-							loading="lazy"
-						/>
+						<div className="cta-final__frame">
+							<img
+								src={sbSrc(blok.image, 1000)}
+								srcSet={sbSrcSet(blok.image, [640, 1000, 1440])}
+								sizes="(max-width: 900px) 100vw, 520px"
+								{...sbDims(blok.image)}
+								alt={blok.image.alt || ''}
+								loading="lazy"
+							/>
+						</div>
 						{blok.image_caption && (
-							<figcaption className="geo-tag">{blok.image_caption}</figcaption>
+							<figcaption className="meta">{blok.image_caption}</figcaption>
 						)}
 					</figure>
 				)}

@@ -15,7 +15,7 @@ type BenefitsBlok = Blok<{
 export default function Benefits({ blok }: { blok: BenefitsBlok }) {
 	return (
 		<section
-			className="section section--mist"
+			className="section section--paper"
 			id="why"
 			{...storyblokEditable(blok)}
 		>

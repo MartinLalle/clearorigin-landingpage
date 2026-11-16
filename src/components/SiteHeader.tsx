@@ -10,9 +10,9 @@ export default function SiteHeader({ lang }: { lang: LangCode }) {
 			<div className="container site-header__inner">
 				<a href={homePath} className="site-header__brand">
 					<img
-						src="/images/logo_orange.png"
+						src="/images/logo_forest.png"
 						alt="ClearOrigin"
-						width={170}
+						width={173}
 						height={27}
 					/>
 				</a>
@@ -22,6 +22,7 @@ export default function SiteHeader({ lang }: { lang: LangCode }) {
 							<li key={l.code}>
 								<a
 									href={l.path}
+									hrefLang={l.code}
 									aria-current={l.code === lang ? 'page' : undefined}
 								>
 									{l.label}

@@ -1,46 +1,69 @@
 .offer__inner {
 	display: grid;
 	grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-	gap: 56px;
+	gap: 64px;
 	align-items: start;
 }
 
 .offer__list {
 	list-style: none;
-	margin-top: 36px;
+	margin-top: 40px;
 	display: grid;
-	gap: 14px;
+	gap: 10px;
+	counter-reset: offer;
 }
 
+/* Le bonus : une carte canopée, le seul aplat sombre de la section */
 .offer__bonus {
-	background: var(--orange-soft);
-	border: 1.5px dashed var(--orange);
-	border-radius: var(--radius);
-	padding: 30px;
 	position: sticky;
-	top: 96px;
+	top: 104px;
+	overflow: hidden;
+	border-radius: var(--radius-lg);
+	padding: 34px 32px 36px;
+	color: var(--on-dark);
+	background:
+		radial-gradient(
+			120% 80% at 90% 0%,
+			rgba(163, 207, 78, 0.2),
+			transparent 60%
+		),
+		linear-gradient(
+			165deg,
+			var(--canopy-800),
+			var(--canopy) 55%,
+			var(--canopy-950)
+		);
+	box-shadow: var(--shadow-float);
 }
 
 .offer__bonus-kicker {
-	color: var(--orange-deep);
-	font-weight: 500;
+	display: inline-flex;
+	align-items: center;
+	padding: 4px 12px;
+	border-radius: 999px;
+	background: var(--sprout);
+	color: var(--canopy);
+	font-weight: 650;
 }
 
 .offer__bonus-title {
-	margin-top: 10px;
-	font-size: 1.2rem;
-	font-weight: 600;
+	margin-top: 18px;
+	font-size: 1.6rem;
+	font-weight: 650;
+	font-stretch: 82%;
+	line-height: 1.1;
 }
 
 .offer__bonus-text {
-	margin-top: 10px;
-	color: var(--text-muted);
-	font-size: 0.95rem;
+	margin-top: 14px;
+	color: var(--on-dark-muted);
+	font-size: 1rem;
 }
 
 @media (max-width: 900px) {
 	.offer__inner {
 		grid-template-columns: 1fr;
+		gap: 40px;
 	}
 
 	.offer__bonus {
