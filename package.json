@@ -10,7 +10,7 @@
 		"push:storyblok": "node scripts/push-to-storyblok.mjs"
 	},
 	"dependencies": {
-		"@storyblok/react": "^7.3.0",
+		"@storyblok/react": "^7.5.1",
 		"leaflet": "^1.9.4",
 		"next": "^16.3.1",
 		"react": "^19.2.8",
