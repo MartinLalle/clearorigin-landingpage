@@ -241,7 +241,7 @@
 			"bullets": "Una demo con casos reales: sus productos, sus países de origen\nLa vista del importador en directo — decisión, mapa, niveles de riesgo\nUn piloto posible desde la semana siguiente",
 			"cta_label": "Solicitar una demo",
 			"cta_link": "mailto:info@bfconsult.be?subject=Demo%20ClearOrigin&body=Hola%2C%0D%0A%0D%0AMe%20gustar%C3%ADa%20una%20demo%20de%20ClearOrigin.%0D%0A%0D%0AEmpresa%3A%20%0D%0ARol%20(exportador%2C%20cooperativa%2C%20importador)%3A%20%0D%0AMaterias%20primas%3A%20%0D%0APa%C3%ADses%20de%20origen%3A%20",
-			"secondary_label": "Explorar la vista del importador — sin cuenta",
+			"secondary_label": "Explorar la vista del importador",
 			"secondary_link": "/es/demo/",
 			"image": "__ASSET__:demo-map-2x.png",
 			"image_caption": "Trazabilidad completa — Costa de Marfil → Europa · riesgo bajo",

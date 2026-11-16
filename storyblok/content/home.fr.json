@@ -241,7 +241,7 @@
 			"bullets": "Une démo sur des cas réels : vos produits, vos pays d'origine\nLa vue importateur en direct — décision, carte, niveaux de risque\nUn pilote possible dès la semaine suivante",
 			"cta_label": "Demander une démo",
 			"cta_link": "mailto:info@bfconsult.be?subject=D%C3%A9mo%20ClearOrigin&body=Bonjour%2C%0D%0A%0D%0AJe%20souhaite%20une%20d%C3%A9mo%20de%20ClearOrigin.%0D%0A%0D%0AEntreprise%20%3A%20%0D%0AR%C3%B4le%20(exportateur%2C%20coop%C3%A9rative%2C%20importateur)%20%3A%20%0D%0AMati%C3%A8res%20premi%C3%A8res%20%3A%20%0D%0APays%20d%27origine%20%3A%20",
-			"secondary_label": "Explorer la vue importateur — sans compte",
+			"secondary_label": "Explorer la vue importateur",
 			"secondary_link": "/demo/",
 			"image": "__ASSET__:demo-map-2x.png",
 			"image_caption": "Traçabilité complète — Côte d'Ivoire → Europe · risque faible",

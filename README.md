@@ -36,7 +36,7 @@ Chaque blok a son composant React dans `src/components/storyblok/` (mapping dans
 
 ## Simulation de la vue importateur (`/demo/`)
 
-Le bouton « Explorer la vue importateur — sans compte » du CTA final mène à `/demo/` (`/en/demo/`, `/es/demo/`, `/pt/demo/`) : une reproduction de la page publique d'un lot de l'app (`ImporterLotDetail`), servie par la landing elle-même, sans dépendre d'un environnement ClearOrigin. On peut approuver ou refuser le lot (rien n'est enregistré), ouvrir la grille de légalité des producteurs, cliquer dans la légende de la carte et lire le rapport de déforestation de chaque parcelle.
+Le bouton « Explorer la vue importateur » du CTA final mène à `/demo/` (`/en/demo/`, `/es/demo/`, `/pt/demo/`) : une reproduction de la page publique d'un lot de l'app (`ImporterLotDetail`), servie par la landing elle-même, sans dépendre d'un environnement ClearOrigin. On peut approuver ou refuser le lot (rien n'est enregistré), ouvrir la grille de légalité des producteurs, cliquer dans la légende de la carte et lire le rapport de déforestation de chaque parcelle.
 
 - Composants : `src/components/importer-demo/` (carte Leaflet, imagerie satellite Esri).
 - Données : `src/content/importer-demo/`. Les parcelles et leurs rapports WHISP viennent d'un vrai lot de démo construit en local ; producteurs, documents et montants sont fictifs.
